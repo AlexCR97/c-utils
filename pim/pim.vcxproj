@@ -127,29 +127,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="arr.c" />
-    <ClCompile Include="cns.c" />
-    <ClCompile Include="ds_list.c" />
-    <ClCompile Include="dt.c" />
-    <ClCompile Include="err.c" />
-    <ClCompile Include="log.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="maybe.c" />
+    <ClCompile Include="pim\arr.c" />
+    <ClCompile Include="pim\cns.c" />
+    <ClCompile Include="pim\ds_list.c" />
+    <ClCompile Include="pim\dt.c" />
+    <ClCompile Include="pim\err.c" />
+    <ClCompile Include="pim\log.c" />
+    <ClCompile Include="pim\maybe.c" />
+    <ClCompile Include="pim\str_string.c" />
+    <ClCompile Include="pim\str_string_builder.c" />
     <ClCompile Include="pim\test.c" />
-    <ClCompile Include="str_string.c" />
-    <ClCompile Include="str_string_builder.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="arr.h" />
-    <ClInclude Include="cns.h" />
-    <ClInclude Include="ds_list.h" />
-    <ClInclude Include="dt.h" />
-    <ClInclude Include="err.h" />
-    <ClInclude Include="log.h" />
-    <ClInclude Include="maybe.h" />
+    <ClInclude Include="pim\arr.h" />
+    <ClInclude Include="pim\cns.h" />
+    <ClInclude Include="pim\ds_list.h" />
+    <ClInclude Include="pim\dt.h" />
+    <ClInclude Include="pim\err.h" />
+    <ClInclude Include="pim\log.h" />
+    <ClInclude Include="pim\maybe.h" />
+    <ClInclude Include="pim\str_string.h" />
+    <ClInclude Include="pim\str_string_builder.h" />
     <ClInclude Include="pim\test.h" />
-    <ClInclude Include="str_string.h" />
-    <ClInclude Include="str_string_builder.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
