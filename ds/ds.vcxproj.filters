@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\test\readme.md" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="ds_list.c">
       <Filter>Source Files</Filter>
     </ClCompile>

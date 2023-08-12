@@ -127,9 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="..\test\readme.md" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="arr.c" />
     <ClCompile Include="cns.c" />
     <ClCompile Include="ds_list.c" />

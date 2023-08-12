@@ -148,8 +148,8 @@ void test_string_builder() {
 int main() {
 	//test_arr_foreach();
 	//test_ds_list();
-	//test_err();
-	//test_logger();
+	test_err();
+	test_logger();
 	//test_maybe();
 	//test_maybe_2();
 	//test_str_to_string();
