@@ -10,6 +10,13 @@
 typedef void (*IntFunction)(int); // Function that takes an integer as an argument
 
 void arr_foreach(int* arr, size_t size, IntFunction func);
+
+// A function that receives the current index and item, and returns a new value
+typedef void* (*MapFunction)(size_t index, void* item);
+
+// Applies a map function to every element and returns them in a new array
+void* arr_map(void* arr, size_t item_size, size_t arr_length, MapFunction func);
+
 char* arr_tail_str(char** arr);
 char* arr_to_string(int* arr, size_t size);
 

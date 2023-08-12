@@ -1,5 +1,7 @@
-#include <stdio.h>
 #include "arr.h"
+
+#include <stdio.h>
+#include <stdlib.h>
 #include "str_string.h"
 #include "str_string_builder.h"
 
@@ -7,6 +9,24 @@ void arr_foreach(int* arr, size_t size, IntFunction func) {
     for (size_t i = 0; i < size; i++) {
         func(arr[i]);
     }
+}
+
+void* arr_map(void* arr, size_t item_size, size_t arr_length, MapFunction func) {
+    void* mapped_arr = malloc(item_size * arr_length);  // Allocate memory for the result array
+
+    if (mapped_arr == NULL) {
+        // TODO How to handle error?
+        return NULL;
+    }
+
+    for (size_t i = 0; i < arr_length; i++) {
+        void* current_item = (char*)arr + i * item_size;
+        void* mapped_item = func(i, current_item);
+        memcpy((char*)mapped_arr + i * item_size, mapped_item, item_size); // Copy the modified item to the result array
+        free(mapped_item);  // Free the memory allocated for the modified item
+    }
+
+    return mapped_arr;
 }
 
 char* arr_tail_str(char** arr) {
@@ -26,8 +46,7 @@ char* arr_tail_str(char** arr) {
     return *current;
 }
 
-char* arr_to_string(int* arr, size_t size)
-{
+char* arr_to_string(int* arr, size_t size) {
     StringBuilder sb = string_builder();
     string_builder_append(&sb, ARR_DELIMETER_HEAD);
     string_builder_append(&sb, " ");

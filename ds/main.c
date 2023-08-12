@@ -22,6 +22,26 @@ void test_arr_foreach() {
 	arr_foreach(arr, arr_length, _print_square);
 }
 
+int* _increment_by_index(size_t index, int* item) {
+	int* result = malloc(sizeof(int));
+	*result = *item + index;
+	return result;
+}
+
+void test_arr_map() {
+	Logger log = logger(LOG_LEVEL_DEBUG, "test_arr_map");
+
+	int nums[] = { 1, 2, 3, 4, 5 };
+	const int nums_length = ARR_LENGTH(nums);
+
+	LOGGER_DEBUG(log, "Nums:");
+	LOGGER_DEBUG(log, arr_to_string(nums, nums_length));
+
+	int* mapped_nums = arr_map(nums, sizeof(int), nums_length, _increment_by_index);
+	LOGGER_DEBUG(log, "Mapped nums:");
+	LOGGER_DEBUG(log, arr_to_string(mapped_nums, nums_length));
+}
+
 void test_ds_list() {
 	List my_list = list();
 	list_push(&my_list, 1);
@@ -147,9 +167,10 @@ void test_string_builder() {
 
 int main() {
 	//test_arr_foreach();
+	test_arr_map();
 	//test_ds_list();
-	test_err();
-	test_logger();
+	//test_err();
+	//test_logger();
 	//test_maybe();
 	//test_maybe_2();
 	//test_str_to_string();
