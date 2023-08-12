@@ -121,10 +121,6 @@ C Utils is a collection of utility libraries that aims to facilitate development
 | Trim Leading        |    ✓    |      -      |     -     |
 | Trim Trailing       |    ✓    |      -      |     -     |
 
-|            | Pending | In Progress | Completed |
-| ---------- | :-----: | :---------: | :-------: |
-| Log Levels |    ✓    |      -      |     -     |
-
 ## Testing
 
 |            | Pending | In Progress | Completed |
