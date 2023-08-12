@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\pim">
+      <UniqueIdentifier>{c6d59a06-ed22-40e2-a772-bf281a95682d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\pim">
+      <UniqueIdentifier>{57aac767-d490-4940-9dc1-b16d71162f69}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ds_list.c">
@@ -45,6 +51,9 @@
     <ClCompile Include="dt.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pim\test.c">
+      <Filter>Source Files\pim</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ds_list.h">
@@ -73,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="dt.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pim\test.h">
+      <Filter>Header Files\pim</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

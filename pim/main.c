@@ -6,6 +6,7 @@
 #include "maybe.h"
 #include "str_string.h"
 #include "str_string_builder.h"
+#include "pim/test.h"
 
 void _print_square(int num) {
 	printf("%d^2 = %d\n", num, num * num);
@@ -165,9 +166,39 @@ void test_string_builder() {
 	printf("%s\n", string_builder_to_string(sb));
 }
 
+void _test_1() {
+	printf("This is test 1\n");
+}
+
+void _test_2() {
+	printf("This is test 2\n");
+}
+
+void _test_3() {
+	printf("This is test 3\n");
+}
+
+void _test_4() {
+	printf("This is test 4\n");
+}
+
 int main() {
+	Test tests[] = {
+		test("Test 1", _test_1),
+		test("Test 2", _test_2),
+	};
+	TestSuite suite = test_suite("My Test Suite", tests);
+	test_suite_run(suite, sizeof(tests) / sizeof(tests[0]));
+
+	Test tests2[] = {
+		test("Test 3", _test_3),
+		test("Test 4", _test_4),
+	};
+	TestSuite suite2 = test_suite("My Test Suite 2", tests2);
+	test_suite_run(suite2, sizeof(tests2) / sizeof(tests2[0]));
+
 	//test_arr_foreach();
-	test_arr_map();
+	//test_arr_map();
 	//test_ds_list();
 	//test_err();
 	//test_logger();
@@ -175,5 +206,6 @@ int main() {
 	//test_maybe_2();
 	//test_str_to_string();
 	//test_string_builder();
+
 	return 0;
 }
