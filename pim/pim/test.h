@@ -29,4 +29,10 @@ TestSuite test_suite(char* name, Test tests[]);
 // Runs a test suite.
 void test_suite_run(TestSuite suite, const int tests_length);
 
+#define PM_ASSERT(expression) \
+    if (!(expression)) { \
+        fprintf(stderr, "Assertion failed: %s, file %s, line %d\n", #expression, __FILE__, __LINE__); \
+        return; \
+    }
+
 #endif // PIM_TEST_H
