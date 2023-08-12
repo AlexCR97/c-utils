@@ -26,7 +26,7 @@ C Utils is a collection of utility libraries that aims to facilitate development
 | Foreach     |    ✓    |      -      |     -     |
 | Head        |    ✓    |      -      |     -     |
 | Length      |    ✓    |      -      |     -     |
-| Map         |    ✓    |      -      |     -     |
+| Map         |         |             |     ✓     |
 | Reduce      |    ✓    |      -      |     -     |
 | Reverse     |    ✓    |      -      |     -     |
 | Skip        |    ✓    |      -      |     -     |
