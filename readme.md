@@ -13,17 +13,27 @@ C Utils is a collection of utility libraries that aims to facilitate development
 
 ## Arrays
 
-|          | Pending | In Progress | Completed |
-| -------- | :-----: | :---------: | :-------: |
-| Filter   |    ✓    |      -      |     -     |
-| Flatten  |    ✓    |      -      |     -     |
-| Foreach  |    ✓    |      -      |     -     |
-| Head     |    ✓    |      -      |     -     |
-| Length   |    ✓    |      -      |     -     |
-| Map      |    ✓    |      -      |     -     |
-| Reduce   |    ✓    |      -      |     -     |
-| Tail     |    ✓    |      -      |     -     |
-| ToString |    ✓    |      -      |     -     |
+|             | Pending | In Progress | Completed |
+| ----------- | :-----: | :---------: | :-------: |
+| Any         |    ✓    |      -      |     -     |
+| Concatenate |    ✓    |      -      |     -     |
+| Contains    |    ✓    |      -      |     -     |
+| Count       |    ✓    |      -      |     -     |
+| Every       |    ✓    |      -      |     -     |
+| Filter      |    ✓    |      -      |     -     |
+| Find        |    ✓    |      -      |     -     |
+| Flatten     |    ✓    |      -      |     -     |
+| Foreach     |    ✓    |      -      |     -     |
+| Head        |    ✓    |      -      |     -     |
+| Length      |    ✓    |      -      |     -     |
+| Map         |    ✓    |      -      |     -     |
+| Reduce      |    ✓    |      -      |     -     |
+| Reverse     |    ✓    |      -      |     -     |
+| Skip        |    ✓    |      -      |     -     |
+| Sort        |    ✓    |      -      |     -     |
+| Tail        |    ✓    |      -      |     -     |
+| Take        |    ✓    |      -      |     -     |
+| ToString    |    ✓    |      -      |     -     |
 
 ## Console Input
 
