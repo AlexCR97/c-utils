@@ -167,22 +167,23 @@ void test_string_builder() {
 }
 
 void _test_1() {
-	printf("This is test 1\n");
 	PM_ASSERT(10 > 9); // This will pass
 	PM_ASSERT(9 > 10); // This will fail
-	printf("Oh no!\n"); // This will not be executed
 }
 
 void _test_2() {
-	printf("This is test 2\n");
+	PM_ASSERT(10 > 9); // This will pass
+	PM_ASSERT(9 > 10); // This will fail
 }
 
 void _test_3() {
-	printf("This is test 3\n");
+	PM_ASSERT(10 > 9); // This will pass
+	PM_ASSERT(9 > 10); // This will fail
 }
 
 void _test_4() {
-	printf("This is test 4\n");
+	PM_ASSERT(10 > 9); // This will pass
+	PM_ASSERT(9 > 10); // This will fail
 }
 
 int main() {

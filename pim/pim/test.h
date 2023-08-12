@@ -1,4 +1,4 @@
-#ifndef PIM_TEST_H
+﻿#ifndef PIM_TEST_H
 #define PIM_TEST_H
 
 // A function that does not take arguments and does not return a value.
@@ -29,10 +29,20 @@ TestSuite test_suite(char* name, Test tests[]);
 // Runs a test suite.
 void test_suite_run(TestSuite suite, const int tests_length);
 
+#define _PM_ASSERT_COLOR_DEFAULT "\x1B[0m"
+#define _PM_ASSERT_COLOR_RED     "\x1B[31m"
+#define _PM_ASSERT_COLOR_GREEN   "\x1B[32m"
+
 #define PM_ASSERT(expression) \
     if (!(expression)) { \
-        fprintf(stderr, "Assertion failed: %s, file %s, line %d\n", #expression, __FILE__, __LINE__); \
+		printf(_PM_ASSERT_COLOR_RED); \
+        printf("Assertion failed: %s\n", #expression); \
+		printf(_PM_ASSERT_COLOR_DEFAULT); \
         return; \
-    }
+    } else { \
+		printf(_PM_ASSERT_COLOR_GREEN); \
+		printf("Assertion passed: %s\n", #expression); \
+		printf(_PM_ASSERT_COLOR_DEFAULT); \
+	}
 
 #endif // PIM_TEST_H

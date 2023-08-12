@@ -17,18 +17,17 @@ TestSuite test_suite(char* name, Test tests[]) {
 }
 
 void _run_test(Test test) {
-	printf("Running test \"%s\" ...\n", test.name);
+	printf("%s\n", test.name);
 	test.function();
-	printf("Ran test \"%s\"\n\n", test.name);
 }
 
 void test_suite_run(TestSuite suite, const int tests_length) {
-	printf("Running %d tests from suite \"%s\" ...\n\n", tests_length, suite.name);
+	printf("%s\n\n", suite.name);
 
 	for (int i = 0; i < tests_length; i++) {
 		Test test = suite.tests[i];
 		_run_test(test);
 	}
 
-	printf("Ran %d tests from suite \"%s\"\n\n", tests_length, suite.name);
+	printf("\n");
 }
