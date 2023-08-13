@@ -45,4 +45,6 @@ void test_suite_run(TestSuite suite, const int tests_length);
 		printf(_PM_ASSERT_COLOR_DEFAULT); \
 	}
 
+#define PM_ASSERT_EQ(a, b) PM_ASSERT((a) == (b))
+
 #endif // PIM_TEST_H
