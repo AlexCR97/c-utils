@@ -47,4 +47,8 @@ void test_suite_run(TestSuite suite, const int tests_length);
 
 #define PM_ASSERT_EQ(a, b) PM_ASSERT((a) == (b))
 
+#define PM_ASSERT_EQ_STR(a, b) \
+	const int difference = strcmp(a, b); \
+	PM_ASSERT_EQ(difference, 0);
+
 #endif // PIM_TEST_H
