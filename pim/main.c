@@ -7,21 +7,7 @@
 #include "pim/str_string.h"
 #include "pim/str_string_builder.h"
 #include "pim/test.h"
-
-void _print_square(int num) {
-	printf("%d^2 = %d\n", num, num * num);
-}
-
-void test_arr_foreach() {
-	int arr[] = { 1, 2, 3, 4, 5 };
-	size_t arr_length = ARR_LENGTH(arr);
-
-	printf("Original array:\n");
-	printf("%s\n\n", arr_to_string(arr, arr_length));
-
-	printf("Squared array:\n");
-	arr_foreach(arr, arr_length, _print_square);
-}
+#include "test_arrays.h"
 
 int* _increment_by_index(size_t index, int* item) {
 	int* result = malloc(sizeof(int));
@@ -42,7 +28,6 @@ void test_arr_map() {
 	LOGGER_DEBUG(log, "Mapped nums:");
 	LOGGER_DEBUG(log, arr_to_string(mapped_nums, nums_length));
 }
-
 void test_ds_list() {
 	List my_list = list();
 	list_push(&my_list, 1);
@@ -187,7 +172,9 @@ void _test_4() {
 }
 
 int main() {
-	Test tests[] = {
+	test_arrays();
+
+	/*Test tests[] = {
 		test("Test 1", _test_1),
 		test("Test 2", _test_2),
 	};
@@ -199,7 +186,7 @@ int main() {
 		test("Test 4", _test_4),
 	};
 	TestSuite suite2 = test_suite("My Test Suite 2", tests2);
-	test_suite_run(suite2, sizeof(tests2) / sizeof(tests2[0]));
+	test_suite_run(suite2, sizeof(tests2) / sizeof(tests2[0]));*/
 
 	//test_arr_foreach();
 	//test_arr_map();

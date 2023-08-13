@@ -138,6 +138,7 @@
     <ClCompile Include="pim\str_string.c" />
     <ClCompile Include="pim\str_string_builder.c" />
     <ClCompile Include="pim\test.c" />
+    <ClCompile Include="test_arrays.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pim\arr.h" />
@@ -150,6 +151,7 @@
     <ClInclude Include="pim\str_string.h" />
     <ClInclude Include="pim\str_string_builder.h" />
     <ClInclude Include="pim\test.h" />
+    <ClInclude Include="test_arrays.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
