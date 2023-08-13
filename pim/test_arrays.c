@@ -9,6 +9,20 @@ void _test_ARR_LENGTH() {
 	PM_ASSERT_EQ(length, 5);
 }
 
+int _increment_by_index(int index, int item) {
+	return item + index;
+}
+
+void _test_arr_map_int() {
+	int arr[] = { 1, 2, 3, 4, 5 };
+	int* mapped_arr = arr_map_int(arr, ARR_LENGTH(arr), _increment_by_index);
+	PM_ASSERT_EQ(mapped_arr[0], arr[0] + 0);
+	PM_ASSERT_EQ(mapped_arr[1], arr[1] + 1);
+	PM_ASSERT_EQ(mapped_arr[2], arr[2] + 2);
+	PM_ASSERT_EQ(mapped_arr[3], arr[3] + 3);
+	PM_ASSERT_EQ(mapped_arr[4], arr[4] + 4);
+}
+
 void _test_arr_to_string() {
 	int arr[] = { 1, 2, 3, 4, 5 };
 	char* arr_str = arr_to_string(arr, ARR_LENGTH(arr));
@@ -18,6 +32,7 @@ void _test_arr_to_string() {
 void test_arrays() {
 	Test tests[] = {
 		test("ARR_LENGTH", _test_ARR_LENGTH),
+		test("arr_map_int", _test_arr_map_int),
 		test("arr_to_string", _test_arr_to_string),
 	};
 

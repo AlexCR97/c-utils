@@ -29,6 +29,23 @@ void* arr_map(void* arr, size_t item_size, size_t arr_length, MapFunction func) 
     return mapped_arr;
 }
 
+int* arr_map_int(int arr[], size_t arr_length, MapFunctionInt func) {
+    int* mapped_arr = (int*)malloc(sizeof(int) * arr_length);
+
+    if (mapped_arr == NULL) {
+        // TODO How to handle error?
+        return NULL;
+    }
+
+    for (size_t i = 0; i < arr_length; i++) {
+        int current_item = arr[i];
+        int mapped_item = func(i, current_item);
+        mapped_arr[i] = mapped_item;
+    }
+
+    return mapped_arr;
+}
+
 char* arr_tail_str(char** arr) {
     if (arr == NULL || *arr == NULL) {
         return NULL;  // Return NULL if the input is invalid or the array is empty
