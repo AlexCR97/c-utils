@@ -151,26 +151,6 @@ void test_string_builder() {
 	printf("%s\n", string_builder_to_string(sb));
 }
 
-void _test_1() {
-	PM_ASSERT(10 > 9); // This will pass
-	PM_ASSERT(9 > 10); // This will fail
-}
-
-void _test_2() {
-	PM_ASSERT(10 > 9); // This will pass
-	PM_ASSERT(9 > 10); // This will fail
-}
-
-void _test_3() {
-	PM_ASSERT(10 > 9); // This will pass
-	PM_ASSERT(9 > 10); // This will fail
-}
-
-void _test_4() {
-	PM_ASSERT(10 > 9); // This will pass
-	PM_ASSERT(9 > 10); // This will fail
-}
-
 int main() {
 	test_arrays();
 

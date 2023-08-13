@@ -33,22 +33,27 @@ void test_suite_run(TestSuite suite, const int tests_length);
 #define _PM_ASSERT_COLOR_RED     "\x1B[31m"
 #define _PM_ASSERT_COLOR_GREEN   "\x1B[32m"
 
-#define PM_ASSERT(expression) \
-    if (!(expression)) { \
-		printf(_PM_ASSERT_COLOR_RED); \
-        printf("Assertion failed: %s\n", #expression); \
-		printf(_PM_ASSERT_COLOR_DEFAULT); \
-        return; \
-    } else { \
-		printf(_PM_ASSERT_COLOR_GREEN); \
-		printf("Assertion passed: %s\n", #expression); \
-		printf(_PM_ASSERT_COLOR_DEFAULT); \
-	}
+#define _PM_ASSERT(expression, format, ...) \
+    do { \
+        if (!(expression)) { \
+            printf(_PM_ASSERT_COLOR_RED); \
+            printf("Failed: "); \
+            printf(format, __VA_ARGS__); \
+            printf(_PM_ASSERT_COLOR_DEFAULT); \
+            printf("\n"); \
+            return; \
+        } \
+        printf(_PM_ASSERT_COLOR_GREEN); \
+        printf("Passed: "); \
+        printf(format, __VA_ARGS__); \
+        printf(_PM_ASSERT_COLOR_DEFAULT); \
+        printf("\n"); \
+    } while (0) // Use a do-while(0) loop to make the macro a single statement
 
-#define PM_ASSERT_EQ(a, b) PM_ASSERT((a) == (b))
+#define PM_ASSERT(expression) _PM_ASSERT(expression, "%s", #expression)
 
-#define PM_ASSERT_EQ_STR(a, b) \
-	const int difference = strcmp(a, b); \
-	PM_ASSERT_EQ(difference, 0);
+#define PM_ASSERT_EQ(a, b) _PM_ASSERT((a) == (b), "%s should be %d", #a, b)
+
+#define PM_ASSERT_EQ_STR(a, b) _PM_ASSERT(strcmp(a, b) == 0, "%s should match \"%s\"", #a, b);
 
 #endif // PIM_TEST_H
