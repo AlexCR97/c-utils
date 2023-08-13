@@ -3,24 +3,15 @@
 #include "pim/arr.h"
 #include "pim/test.h"
 
-void _print_square(int num) {
-	printf("%d^2 = %d\n", num, num * num);
-}
-
-void _test_arr_foreach() {
+void _test_ARR_LENGTH() {
 	int arr[] = { 1, 2, 3, 4, 5 };
-	size_t arr_length = ARR_LENGTH(arr);
-
-	printf("Original array:\n");
-	printf("%s\n\n", arr_to_string(arr, arr_length));
-
-	printf("Squared array:\n");
-	arr_foreach(arr, arr_length, _print_square);
+	int length = ARR_LENGTH(arr);
+	PM_ASSERT_EQ(length, 5);
 }
 
 void test_arrays() {
 	Test tests[] = {
-		test("Map", _test_arr_foreach),
+		test("ARR_LENGTH", _test_ARR_LENGTH),
 	};
 
 	TestSuite suite = test_suite("Arrays", tests);
