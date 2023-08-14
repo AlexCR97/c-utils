@@ -9,6 +9,11 @@ void _test_ARR_LENGTH() {
 	PM_ASSERT_EQ(length, 5);
 }
 
+void _test_arr_alloc_int() {
+	int* arr = arr_alloc_int(5);
+	PM_ASSERT_EQ(arr[0], 0);
+}
+
 int _increment_by_index(int index, int item) {
 	return item + index;
 }
@@ -32,6 +37,7 @@ void _test_arr_to_string() {
 void test_arrays() {
 	Test tests[] = {
 		test(PM_NAMEOF(ARR_LENGTH), _test_ARR_LENGTH),
+		test(PM_NAMEOF(arr_alloc_int), _test_arr_alloc_int),
 		test(PM_NAMEOF(arr_map_int), _test_arr_map_int),
 		test(PM_NAMEOF(arr_to_string), _test_arr_to_string),
 	};

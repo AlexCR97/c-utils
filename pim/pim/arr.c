@@ -1,9 +1,23 @@
 #include "arr.h"
 
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "str_string.h"
 #include "str_string_builder.h"
+
+int* arr_alloc_int(size_t length) {
+    int* arr = (int*)malloc(sizeof(int) * length);
+
+    if (arr == NULL) {
+        // TODO How to handle NULL?
+        return NULL;
+    }
+
+    arr[0] = NULL;
+
+    return arr;
+}
 
 void arr_foreach(int* arr, size_t size, IntFunction func) {
     for (size_t i = 0; i < size; i++) {

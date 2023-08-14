@@ -9,6 +9,9 @@
 
 typedef void (*IntFunction)(int); // Function that takes an integer as an argument
 
+// Allocates an array of int of the specified length
+int* arr_alloc_int(size_t length);
+
 void arr_foreach(int* arr, size_t size, IntFunction func);
 
 // A function that receives the current index and item, and returns a new value
@@ -24,6 +27,7 @@ typedef void* (*MapFunctionInt)(size_t index, int item);
 int* arr_map_int(int arr[], size_t arr_length, MapFunctionInt func);
 
 char* arr_tail_str(char** arr);
+
 char* arr_to_string(int* arr, size_t size);
 
 #endif // ARR_ARR_H
