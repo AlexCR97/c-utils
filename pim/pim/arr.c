@@ -6,6 +6,8 @@
 #include "str_string.h"
 #include "str_string_builder.h"
 
+const int _ARR_DEFAULT_INT = 0;
+
 int* arr_alloc_int(size_t length) {
     int* arr = (int*)malloc(sizeof(int) * length);
 
@@ -14,7 +16,7 @@ int* arr_alloc_int(size_t length) {
         return NULL;
     }
 
-    arr[0] = NULL;
+    arr[0] = _ARR_DEFAULT_INT;
 
     return arr;
 }
