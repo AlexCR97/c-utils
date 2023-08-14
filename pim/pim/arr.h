@@ -63,6 +63,9 @@ int* arr_map_int(int arr[], size_t arr_length, MapFunctionInt func);
 // Reverses the position of each item and returns them in a new array
 int* arr_reverse_int(int arr[], size_t arr_length);
 
+// Returns a sorted array
+int* arr_sort_int(int arr[], size_t arr_length);
+
 // Skips the specified offset of items and returns the rest in a new array
 int* arr_skip_int(int arr[], size_t arr_length, size_t offset);
 

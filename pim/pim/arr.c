@@ -188,6 +188,58 @@ int* arr_reverse_int(int arr[], size_t arr_length) {
     return reversed_arr;
 }
 
+// Quick sort - Swap two integers
+void swap(int* a, int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// Quick sort - Partitioning
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = (low - 1);
+
+    for (int j = low; j <= high - 1; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+
+    swap(&arr[i + 1], &arr[high]);
+
+    return (i + 1);
+}
+
+// Quick sort
+void quick_sort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        quick_sort(arr, low, pi - 1);
+        quick_sort(arr, pi + 1, high);
+    }
+}
+
+int* arr_sort_int(int arr[], size_t arr_length) {
+    int* sorted_arr = arr_alloc_int(arr_length);
+
+    if (sorted_arr == NULL) {
+        fprintf(stderr, "Memory allocation failed\n");
+        return NULL; // TODO Return Maybe?
+    }
+    
+    // Copy the original array into the sorted array
+    for (size_t i = 0; i < arr_length; i++) {
+        sorted_arr[i] = arr[i];
+    }
+
+    // Perform quick sort
+    quick_sort(sorted_arr, 0, arr_length - 1);
+
+    return sorted_arr;
+}
+
 int* arr_skip_int(int arr[], size_t arr_length, size_t offset) {
     if (offset >= arr_length) {
         return NULL; // TODO Return a Maybe?

@@ -139,6 +139,21 @@ void _test_arr_reverse_int() {
 	PM_ASSERT_EQ(reversed[4], arr[arr_length - 5]);
 }
 
+void _test_arr_sort_int() {
+	int arr[] = { 2, 4, 6, 8, 10, 1, 3, 5, 7, 9 };
+	int* sorted = arr_sort_int(arr, ARR_LENGTH(arr));
+	PM_ASSERT_EQ(sorted[0], 1);
+	PM_ASSERT_EQ(sorted[1], 2);
+	PM_ASSERT_EQ(sorted[2], 3);
+	PM_ASSERT_EQ(sorted[3], 4);
+	PM_ASSERT_EQ(sorted[4], 5);
+	PM_ASSERT_EQ(sorted[5], 6);
+	PM_ASSERT_EQ(sorted[6], 7);
+	PM_ASSERT_EQ(sorted[7], 8);
+	PM_ASSERT_EQ(sorted[8], 9);
+	PM_ASSERT_EQ(sorted[9], 10);
+}
+
 void _test_arr_skip_int() {
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	size_t arr_length = ARR_LENGTH(arr);
@@ -184,6 +199,7 @@ void test_arrays() {
 		test(PM_NAMEOF(arr_find_int), _test_arr_find_int),
 		test(PM_NAMEOF(arr_map_int), _test_arr_map_int),
 		test(PM_NAMEOF(arr_reverse_int), _test_arr_reverse_int),
+		test(PM_NAMEOF(arr_sort_int), _test_arr_sort_int),
 		test(PM_NAMEOF(arr_skip_int), _test_arr_skip_int),
 		test(PM_NAMEOF(arr_take_int), _test_arr_take_int),
 		test(PM_NAMEOF(arr_to_string), _test_arr_to_string),
