@@ -138,12 +138,6 @@ int arr_find_int(int arr[], size_t arr_length, FindFunctionInt predicate) {
     return -1; // TODO Return a Maybe?
 }
 
-void arr_foreach(int* arr, size_t size, IntFunction func) {
-    for (size_t i = 0; i < size; i++) {
-        func(arr[i]);
-    }
-}
-
 void* arr_map(void* arr, size_t item_size, size_t arr_length, MapFunction func) {
     void* mapped_arr = malloc(item_size * arr_length);  // Allocate memory for the result array
 

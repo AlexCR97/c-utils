@@ -169,7 +169,6 @@ int main() {
 	TestSuite suite2 = test_suite("My Test Suite 2", tests2);
 	test_suite_run(suite2, sizeof(tests2) / sizeof(tests2[0]));*/
 
-	//test_arr_foreach();
 	//test_arr_map();
 	//test_ds_list();
 	//test_err();
