@@ -25,6 +25,12 @@ int* arr_concat_int(int arr_a[], size_t arr_a_length, int arr_b[], size_t arr_b_
 // Returns true if the array contains the specified item, false otherwise
 bool arr_contains_int(int arr[], size_t arr_length, int item);
 
+// A function that receives the current index and item, and returns a bool
+typedef bool (*CountFunctionInt)(size_t index, int item);
+
+// Returns the amount of items that satisfy the predicate
+size_t arr_count_int(int arr[], size_t arr_length, CountFunctionInt predicate);
+
 void arr_foreach(int* arr, size_t size, IntFunction func);
 
 // A function that receives the current index and item, and returns a new value

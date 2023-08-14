@@ -63,6 +63,21 @@ bool arr_contains_int(int arr[], size_t arr_length, int item) {
     return false;
 }
 
+size_t arr_count_int(int arr[], size_t arr_length, CountFunctionInt predicate) {
+    // TODO Is there a way to improve performance?
+    size_t count = 0;
+
+    for (size_t i = 0; i < arr_length; i++) {
+        bool result = predicate(i, arr[i]);
+
+        if (result) {
+            count += 1;
+        }
+    }
+
+    return count;
+}
+
 void arr_foreach(int* arr, size_t size, IntFunction func) {
     for (size_t i = 0; i < size; i++) {
         func(arr[i]);
