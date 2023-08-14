@@ -90,6 +90,16 @@ void _test_arr_every_int() {
 	PM_ASSERT(all_odd == false);
 }
 
+bool _is_divisible_by_5(int index, int item) {
+	return item % 5 == 0;
+}
+
+void _test_arr_find_int() {
+	int nums[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	int divisible_by_5 = arr_find_int(nums, ARR_LENGTH(nums), _is_divisible_by_5);
+	PM_ASSERT_EQ(divisible_by_5, 5);
+}
+
 void _test_arr_map_int() {
 	int arr[] = { 1, 2, 3, 4, 5 };
 	int* mapped_arr = arr_map_int(arr, ARR_LENGTH(arr), _increment_by_index);
@@ -115,6 +125,7 @@ void test_arrays() {
 		test(PM_NAMEOF(arr_contains_int), _test_arr_contains_int),
 		test(PM_NAMEOF(arr_count_int), _test_arr_count_int),
 		test(PM_NAMEOF(arr_every_int), _test_arr_every_int),
+		test(PM_NAMEOF(arr_find_int), _test_arr_find_int),
 		test(PM_NAMEOF(arr_map_int), _test_arr_map_int),
 		test(PM_NAMEOF(arr_to_string), _test_arr_to_string),
 	};

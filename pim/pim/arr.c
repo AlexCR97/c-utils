@@ -92,6 +92,21 @@ bool arr_every_int(int arr[], size_t arr_length, EveryFunctionInt predicate) {
     return true;
 }
 
+int arr_find_int(int arr[], size_t arr_length, FindFunctionInt predicate) {
+    // TODO Is there a way to improve performance?
+
+    for (size_t i = 0; i < arr_length; i++) {
+        int current_item = arr[i];
+        bool satisfies_predicate = predicate(i, current_item);
+
+        if (satisfies_predicate) {
+            return current_item;
+        }
+    }
+
+    return -1; // TODO Return a Maybe?
+}
+
 void arr_foreach(int* arr, size_t size, IntFunction func) {
     for (size_t i = 0; i < size; i++) {
         func(arr[i]);

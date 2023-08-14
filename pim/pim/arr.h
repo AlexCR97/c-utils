@@ -37,6 +37,12 @@ typedef bool (*EveryFunctionInt)(size_t index, int item);
 // Returns true if all of the items satisfy the predicate, false otherwise
 bool arr_every_int(int arr[], size_t arr_length, EveryFunctionInt predicate);
 
+// A function that receives the current index and item, and returns a bool
+typedef bool (*FindFunctionInt)(size_t index, int item);
+
+// Returns the first item that satisfies the predicate
+int arr_find_int(int arr[], size_t arr_length, FindFunctionInt predicate); // TODO Return a Maybe?
+
 void arr_foreach(int* arr, size_t size, IntFunction func);
 
 // A function that receives the current index and item, and returns a new value
