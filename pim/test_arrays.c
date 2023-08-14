@@ -46,6 +46,16 @@ void _test_arr_concat_int() {
 	PM_ASSERT_EQ(arr_c[7], 8);
 }
 
+void _test_arr_contains_int() {
+	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+	bool contains_7 = arr_contains_int(arr, ARR_LENGTH(arr), 7);
+	PM_ASSERT(contains_7 == true);
+
+	bool contains_11 = arr_contains_int(arr, ARR_LENGTH(arr), 11);
+	PM_ASSERT(contains_11 == false);
+}
+
 void _test_arr_map_int() {
 	int arr[] = { 1, 2, 3, 4, 5 };
 	int* mapped_arr = arr_map_int(arr, ARR_LENGTH(arr), _increment_by_index);
@@ -68,6 +78,7 @@ void test_arrays() {
 		test(PM_NAMEOF(arr_alloc_int), _test_arr_alloc_int),
 		test(PM_NAMEOF(arr_any_int), _test_arr_any_int),
 		test(PM_NAMEOF(arr_concat_int), _test_arr_concat_int),
+		test(PM_NAMEOF(arr_contains_int), _test_arr_contains_int),
 		test(PM_NAMEOF(arr_map_int), _test_arr_map_int),
 		test(PM_NAMEOF(arr_to_string), _test_arr_to_string),
 	};

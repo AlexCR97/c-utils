@@ -51,6 +51,18 @@ int* arr_concat_int(int arr_a[], size_t arr_a_length, int arr_b[], size_t arr_b_
     return arr_c;
 }
 
+bool arr_contains_int(int arr[], size_t arr_length, int item) {
+    // TODO Is there a way to improve performance?
+
+    for (size_t i = 0; i < arr_length; i++) {
+        if (arr[i] == item) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void arr_foreach(int* arr, size_t size, IntFunction func) {
     for (size_t i = 0; i < size; i++) {
         func(arr[i]);

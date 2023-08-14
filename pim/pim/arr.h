@@ -22,6 +22,9 @@ bool arr_any_int(int arr[], size_t arr_length, AnyFunctionInt predicate);
 // Returns an array which is the concatenation of array A and array B
 int* arr_concat_int(int arr_a[], size_t arr_a_length, int arr_b[], size_t arr_b_length);
 
+// Returns true if the array contains the specified item, false otherwise
+bool arr_contains_int(int arr[], size_t arr_length, int item);
+
 void arr_foreach(int* arr, size_t size, IntFunction func);
 
 // A function that receives the current index and item, and returns a new value
