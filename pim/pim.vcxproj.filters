@@ -57,6 +57,9 @@
     <ClCompile Include="test_arrays.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="test_maybe.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pim\test.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files\pim</Filter>
     </ClInclude>
     <ClInclude Include="test_arrays.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test_maybe.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

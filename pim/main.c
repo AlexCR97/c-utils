@@ -44,15 +44,6 @@ void test_err() {
 	LOGGER_ERROR(log, error_to_string(err));
 }
 
-MaybeInt _divide(int a, int b) {
-	if (b == 0) {
-		const Error err = error(ERR_DIVISION_BY_ZERO, "Cannot divide by zero", NULL);
-		return pm_maybe_int_raise(err);
-	}
-
-	return pm_maybe_int(a / b);
-}
-
 void test_logger() {
 	//log_level_set(LOG_LEVEL_DEBUG);
 	//log_level_set(LOG_LEVEL_INFO);
@@ -86,18 +77,6 @@ void test_logger() {
 	simple_logger.show_timestamp = false;
 	LOGGER_DEBUG(simple_logger, "Hello, %s", "World!");
 	LOGGER_DEBUG(simple_logger, "%d %c %d %c %s", 1, '+', 2, '=', str_to_string(3));
-}
-
-void test_maybe() {
-	const int a = 100;
-	const int b = 0;
-	MaybeInt maybe_division = _divide(a, b);
-
-	if (maybe_division.raised_error) {
-		printf(error_to_string(maybe_division.error));
-	} else {
-		printf("%d / %d = %d\n", a, b, maybe_division.data);
-	}
 }
 
 Maybe _input_favorite_programming_lang() {
@@ -154,6 +133,7 @@ void test_string_builder() {
 
 int main() {
 	test_arrays();
+	test_maybe();
 
 	/*Test tests[] = {
 		test("Test 1", _test_1),
@@ -173,7 +153,6 @@ int main() {
 	//test_ds_list();
 	//test_err();
 	//test_logger();
-	test_maybe();
 	//test_maybe_2();
 	//test_str_to_string();
 	//test_string_builder();

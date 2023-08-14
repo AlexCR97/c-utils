@@ -3,6 +3,7 @@
 
 #define ERR_ALLOCATION_FAILED "allocation_failed"
 #define ERR_DIVISION_BY_ZERO "division_by_zero"
+#define ERR_INDEX_OUT_OF_BOUNDS "index_out_of_bounds"
 #define ERR_INVALID_ARGUMENT "invalid_argument"
 #define ERR_NULL_ARGUMENT "null_argument"
 #define ERR_UNKNOWN "unknown"
