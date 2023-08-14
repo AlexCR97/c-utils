@@ -128,6 +128,17 @@ void _test_arr_map_int() {
 	PM_ASSERT_EQ(mapped_arr[4], arr[4] + 4);
 }
 
+void _test_arr_reverse_int() {
+	int arr[] = { 1, 2, 3, 4, 5 };
+	const int arr_length = ARR_LENGTH(arr);
+	int* reversed = arr_reverse_int(arr, arr_length);
+	PM_ASSERT_EQ(reversed[0], arr[arr_length - 1]);
+	PM_ASSERT_EQ(reversed[1], arr[arr_length - 2]);
+	PM_ASSERT_EQ(reversed[2], arr[arr_length - 3]);
+	PM_ASSERT_EQ(reversed[3], arr[arr_length - 4]);
+	PM_ASSERT_EQ(reversed[4], arr[arr_length - 5]);
+}
+
 void _test_arr_to_string() {
 	int arr[] = { 1, 2, 3, 4, 5 };
 	char* arr_str = arr_to_string(arr, ARR_LENGTH(arr));
@@ -146,6 +157,7 @@ void test_arrays() {
 		test(PM_NAMEOF(arr_filter_int), _test_arr_filter_int),
 		test(PM_NAMEOF(arr_find_int), _test_arr_find_int),
 		test(PM_NAMEOF(arr_map_int), _test_arr_map_int),
+		test(PM_NAMEOF(arr_reverse_int), _test_arr_reverse_int),
 		test(PM_NAMEOF(arr_to_string), _test_arr_to_string),
 	};
 

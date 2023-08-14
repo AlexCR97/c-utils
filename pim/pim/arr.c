@@ -173,6 +173,21 @@ int* arr_map_int(int arr[], size_t arr_length, MapFunctionInt func) {
     return mapped_arr;
 }
 
+int* arr_reverse_int(int arr[], size_t arr_length) {
+    int* reversed_arr = arr_alloc_int(arr_length);
+
+    if (reversed_arr == NULL) {
+        // TODO Return a Maybe?
+        return NULL;
+    }
+
+    for (size_t i = 0; i < arr_length; i++) {
+        reversed_arr[i] = arr[arr_length - 1 - i];
+    }
+
+    return reversed_arr;
+}
+
 char* arr_tail_str(char** arr) {
     if (arr == NULL || *arr == NULL) {
         return NULL;  // Return NULL if the input is invalid or the array is empty
