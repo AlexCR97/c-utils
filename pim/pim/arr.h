@@ -38,12 +38,18 @@ typedef bool (*EveryFunctionInt)(size_t index, int item);
 bool arr_every_int(int arr[], size_t arr_length, EveryFunctionInt predicate);
 
 // A function that receives the current index and item, and returns a bool
+typedef bool (*FilterFunctionInt)(size_t index, int item);
+
+// Returns an array which is a subset of the specified array, where all of the items satisfy the predicate
+int* arr_filter_int(int arr[], size_t arr_length, FilterFunctionInt predicate);
+
+// A function that receives the current index and item, and returns a bool
 typedef bool (*FindFunctionInt)(size_t index, int item);
 
 // Returns the first item that satisfies the predicate
 int arr_find_int(int arr[], size_t arr_length, FindFunctionInt predicate); // TODO Return a Maybe?
 
-void arr_foreach(int* arr, size_t size, IntFunction func);
+void arr_foreach(int* arr, size_t size, IntFunction func); // TODO Remove this?
 
 // A function that receives the current index and item, and returns a new value
 typedef void* (*MapFunction)(size_t index, void* item);

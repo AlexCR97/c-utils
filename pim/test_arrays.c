@@ -94,6 +94,24 @@ bool _is_divisible_by_5(int index, int item) {
 	return item % 5 == 0;
 }
 
+void _test_arr_filter_int() {
+	int nums[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+	int* even_nums = arr_filter_int(nums, ARR_LENGTH(nums), _is_num_even);
+	PM_ASSERT_EQ(even_nums[0], 2);
+	PM_ASSERT_EQ(even_nums[1], 4);
+	PM_ASSERT_EQ(even_nums[2], 6);
+	PM_ASSERT_EQ(even_nums[3], 8);
+	PM_ASSERT_EQ(even_nums[4], 10);
+
+	int* odd_nums = arr_filter_int(nums, ARR_LENGTH(nums), _is_num_odd);
+	PM_ASSERT_EQ(odd_nums[0], 1);
+	PM_ASSERT_EQ(odd_nums[1], 3);
+	PM_ASSERT_EQ(odd_nums[2], 5);
+	PM_ASSERT_EQ(odd_nums[3], 7);
+	PM_ASSERT_EQ(odd_nums[4], 9);
+}
+
 void _test_arr_find_int() {
 	int nums[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	int divisible_by_5 = arr_find_int(nums, ARR_LENGTH(nums), _is_divisible_by_5);
@@ -125,6 +143,7 @@ void test_arrays() {
 		test(PM_NAMEOF(arr_contains_int), _test_arr_contains_int),
 		test(PM_NAMEOF(arr_count_int), _test_arr_count_int),
 		test(PM_NAMEOF(arr_every_int), _test_arr_every_int),
+		test(PM_NAMEOF(arr_filter_int), _test_arr_filter_int),
 		test(PM_NAMEOF(arr_find_int), _test_arr_find_int),
 		test(PM_NAMEOF(arr_map_int), _test_arr_map_int),
 		test(PM_NAMEOF(arr_to_string), _test_arr_to_string),

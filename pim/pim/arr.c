@@ -92,6 +92,37 @@ bool arr_every_int(int arr[], size_t arr_length, EveryFunctionInt predicate) {
     return true;
 }
 
+int* arr_filter_int(int arr[], size_t arr_length, FilterFunctionInt predicate) {
+    int* filtered_arr = arr_alloc_int(arr_length);
+
+    if (filtered_arr == NULL) {
+        // TODO How to handle NULL?
+        return NULL;
+    }
+
+    size_t filtered_length = 0;
+
+    for (size_t i = 0; i < arr_length; i++) {
+        int current_item = arr[i];
+        bool satisfies_predicate = predicate(i, current_item);
+
+        if (satisfies_predicate) {
+            filtered_arr[filtered_length] = current_item;
+            filtered_length++;
+        }
+    }
+
+    // Resize the allocated memory to match the actual number of filtered items
+    int* filtered_arr_resized = (int*)realloc(filtered_arr, filtered_length * sizeof(int));
+
+    if (filtered_arr_resized == NULL) {
+        // TODO How to handle NULL?
+        return NULL;
+    }
+
+    return filtered_arr_resized;
+}
+
 int arr_find_int(int arr[], size_t arr_length, FindFunctionInt predicate) {
     // TODO Is there a way to improve performance?
 
