@@ -22,7 +22,7 @@ C Utils is a collection of utility libraries that aims to facilitate development
 | Every (int)       |         |             |     ✓     |
 | Filter (int)      |         |             |     ✓     |
 | Find (int)        |         |             |     ✓     |
-| Find Index (int)  |    ✓    |             |           |
+| Find Index (int)  |         |             |     ✓     |
 | Flatten (int)     |    ✓    |             |           |
 | Length            |         |             |     ✓     |
 | Map (int)         |         |             |     ✓     |
