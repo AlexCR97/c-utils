@@ -208,6 +208,26 @@ int* arr_skip_int(int arr[], size_t arr_length, size_t offset) {
     return offset_arr;
 }
 
+int* arr_take_int(int arr[], size_t arr_length, size_t count) {
+    if (count > arr_length) {
+        printf("Error: Count is greater than array length\n");
+        return NULL; // TODO Ignore and normalize count?
+    }
+
+    int* result = arr_alloc_int(count);
+
+    if (result == NULL) {
+        printf("Error: Memory allocation failed\n");
+        return NULL; // TODO Return a Maybe?
+    }
+
+    for (size_t i = 0; i < count; i++) {
+        result[i] = arr[i];
+    }
+
+    return result;
+}
+
 char* arr_tail_str(char** arr) {
     if (arr == NULL || *arr == NULL) {
         return NULL;  // Return NULL if the input is invalid or the array is empty

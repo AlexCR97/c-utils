@@ -66,6 +66,9 @@ int* arr_reverse_int(int arr[], size_t arr_length);
 // Skips the specified offset of items and returns the rest in a new array
 int* arr_skip_int(int arr[], size_t arr_length, size_t offset);
 
+// Takes the specified count of items and returns them in a new array
+int* arr_take_int(int arr[], size_t arr_length, size_t count);
+
 char* arr_tail_str(char** arr);
 
 char* arr_to_string(int* arr, size_t size);
