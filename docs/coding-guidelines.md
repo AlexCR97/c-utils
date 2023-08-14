@@ -68,7 +68,7 @@ typedef enum PmLogLevel {
 	PM_LOG_LEVEL_INFO,
 	PM_LOG_LEVEL_WARNING,
 	PM_LOG_LEVEL_ERROR,
-} LogLevel;
+} PmLogLevel;
 ```
 
 ### Structs
