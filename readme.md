@@ -13,24 +13,25 @@ C Utils is a collection of utility libraries that aims to facilitate development
 
 ## Arrays
 
-|             | Pending | In Progress | Completed |
-| ----------- | :-----: | :---------: | :-------: |
-| Any         |    ✓    |      -      |     -     |
-| Concatenate |    ✓    |      -      |     -     |
-| Contains    |    ✓    |      -      |     -     |
-| Count       |    ✓    |      -      |     -     |
-| Every       |    ✓    |      -      |     -     |
-| Filter      |    ✓    |      -      |     -     |
-| Find        |    ✓    |      -      |     -     |
-| Flatten     |    ✓    |      -      |     -     |
-| Length      |    ✓    |      -      |     -     |
-| Map         |         |             |     ✓     |
-| Reduce      |    ✓    |      -      |     -     |
-| Reverse     |    ✓    |      -      |     -     |
-| Skip        |    ✓    |      -      |     -     |
-| Sort        |    ✓    |      -      |     -     |
-| Take        |    ✓    |      -      |     -     |
-| ToString    |    ✓    |      -      |     -     |
+|                   | Pending | In Progress | Completed |
+| ----------------- | :-----: | :---------: | :-------: |
+| Any (int)         |         |             |     ✓     |
+| Concatenate (int) |         |             |     ✓     |
+| Contains (int)    |         |             |     ✓     |
+| Count (int)       |         |             |     ✓     |
+| Every (int)       |         |             |     ✓     |
+| Filter (int)      |         |             |     ✓     |
+| Find (int)        |         |             |     ✓     |
+| Find Index (int)  |    ✓    |             |           |
+| Flatten (int)     |    ✓    |             |           |
+| Length            |         |             |     ✓     |
+| Map (int)         |         |             |     ✓     |
+| Reduce (int)      |    ✓    |             |           |
+| Reverse (int)     |         |             |     ✓     |
+| Skip (int)        |         |             |     ✓     |
+| Sort (int)        |         |             |     ✓     |
+| Take (int)        |         |             |     ✓     |
+| ToString (int)    |         |             |     ✓     |
 
 ## Console Input
 
