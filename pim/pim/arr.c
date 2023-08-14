@@ -188,6 +188,26 @@ int* arr_reverse_int(int arr[], size_t arr_length) {
     return reversed_arr;
 }
 
+int* arr_skip_int(int arr[], size_t arr_length, size_t offset) {
+    if (offset >= arr_length) {
+        return NULL; // TODO Return a Maybe?
+    }
+
+    size_t offset_arr_length = arr_length - offset;
+    int* offset_arr = arr_alloc_int(offset_arr_length);
+
+    if (offset_arr == NULL) {
+        perror("Memory allocation error");
+        return NULL; // TODO Return a Maybe?
+    }
+
+    for (size_t i = offset; i < arr_length; i++) {
+        offset_arr[i - offset] = arr[i];
+    }
+
+    return offset_arr;
+}
+
 char* arr_tail_str(char** arr) {
     if (arr == NULL || *arr == NULL) {
         return NULL;  // Return NULL if the input is invalid or the array is empty

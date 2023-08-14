@@ -139,6 +139,22 @@ void _test_arr_reverse_int() {
 	PM_ASSERT_EQ(reversed[4], arr[arr_length - 5]);
 }
 
+void _test_arr_skip_int() {
+	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	size_t arr_length = ARR_LENGTH(arr);
+
+	size_t offset = 3;
+	int* arr_with_offset = arr_skip_int(arr, arr_length, offset);
+
+	PM_ASSERT_EQ(arr_with_offset[0], arr[0 + offset]);
+	PM_ASSERT_EQ(arr_with_offset[1], arr[1 + offset]);
+	PM_ASSERT_EQ(arr_with_offset[2], arr[2 + offset]);
+	PM_ASSERT_EQ(arr_with_offset[3], arr[3 + offset]);
+	PM_ASSERT_EQ(arr_with_offset[4], arr[4 + offset]);
+	PM_ASSERT_EQ(arr_with_offset[5], arr[5 + offset]);
+	PM_ASSERT_EQ(arr_with_offset[6], arr[6 + offset]);
+}
+
 void _test_arr_to_string() {
 	int arr[] = { 1, 2, 3, 4, 5 };
 	char* arr_str = arr_to_string(arr, ARR_LENGTH(arr));
@@ -158,6 +174,7 @@ void test_arrays() {
 		test(PM_NAMEOF(arr_find_int), _test_arr_find_int),
 		test(PM_NAMEOF(arr_map_int), _test_arr_map_int),
 		test(PM_NAMEOF(arr_reverse_int), _test_arr_reverse_int),
+		test(PM_NAMEOF(arr_skip_int), _test_arr_skip_int),
 		test(PM_NAMEOF(arr_to_string), _test_arr_to_string),
 	};
 
