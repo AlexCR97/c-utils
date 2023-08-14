@@ -23,15 +23,12 @@ C Utils is a collection of utility libraries that aims to facilitate development
 | Filter      |    ✓    |      -      |     -     |
 | Find        |    ✓    |      -      |     -     |
 | Flatten     |    ✓    |      -      |     -     |
-| Foreach     |    ✓    |      -      |     -     |
-| Head        |    ✓    |      -      |     -     |
 | Length      |    ✓    |      -      |     -     |
 | Map         |         |             |     ✓     |
 | Reduce      |    ✓    |      -      |     -     |
 | Reverse     |    ✓    |      -      |     -     |
 | Skip        |    ✓    |      -      |     -     |
 | Sort        |    ✓    |      -      |     -     |
-| Tail        |    ✓    |      -      |     -     |
 | Take        |    ✓    |      -      |     -     |
 | ToString    |    ✓    |      -      |     -     |
 
@@ -123,6 +120,9 @@ C Utils is a collection of utility libraries that aims to facilitate development
 
 ## Testing
 
-|            | Pending | In Progress | Completed |
-| ---------- | :-----: | :---------: | :-------: |
-| Assertions |    ✓    |      -      |     -     |
+|             | Pending | In Progress | Completed |
+| ----------- | :-----: | :---------: | :-------: |
+| Test Suites |    ✓    |      -      |     -     |
+| Unit Tests  |    ✓    |      -      |     -     |
+| Assertions  |    ✓    |      -      |     -     |
+| Test Runner |    ✓    |      -      |     -     |
