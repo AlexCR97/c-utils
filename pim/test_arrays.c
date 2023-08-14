@@ -14,6 +14,20 @@ void _test_arr_alloc_int() {
 	PM_ASSERT_EQ(arr[0], 0);
 }
 
+bool _is_even(size_t index, int item) {
+	return item % 2 == 0;
+}
+
+void _test_arr_any_int() {
+	int nums[] = { 1, 2, 3, 4, 5 };
+	bool nums_any_even = arr_any_int(nums, ARR_LENGTH(nums), _is_even);
+	PM_ASSERT(nums_any_even == true);
+
+	int odd_nums[] = { 1, 3, 5, 7, 9 };
+	bool odd_nums_any_even = arr_any_int(odd_nums, ARR_LENGTH(odd_nums), _is_even);
+	PM_ASSERT(odd_nums_any_even == false);
+}
+
 int _increment_by_index(int index, int item) {
 	return item + index;
 }
@@ -38,6 +52,7 @@ void test_arrays() {
 	Test tests[] = {
 		test(PM_NAMEOF(ARR_LENGTH), _test_ARR_LENGTH),
 		test(PM_NAMEOF(arr_alloc_int), _test_arr_alloc_int),
+		test(PM_NAMEOF(arr_any_int), _test_arr_any_int),
 		test(PM_NAMEOF(arr_map_int), _test_arr_map_int),
 		test(PM_NAMEOF(arr_to_string), _test_arr_to_string),
 	};

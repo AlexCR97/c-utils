@@ -1,6 +1,7 @@
 #ifndef ARR_ARR_H
 #define ARR_ARR_H
 
+#include <stdbool.h>
 #include <stdio.h>
 
 #define ARR_LENGTH(arr) (sizeof(arr) / sizeof(arr[0]))
@@ -12,6 +13,12 @@ typedef void (*IntFunction)(int); // Function that takes an integer as an argume
 // Allocates an array of int of the specified length
 int* arr_alloc_int(size_t length);
 
+// A function that receives the current index and item, and returns a bool
+typedef bool (*AnyFunctionInt)(size_t index, int item);
+
+// Returns true if any of the items in the array satisfies the predicate
+bool arr_any_int(int arr[], size_t arr_length, AnyFunctionInt predicate);
+
 void arr_foreach(int* arr, size_t size, IntFunction func);
 
 // A function that receives the current index and item, and returns a new value
@@ -21,7 +28,7 @@ typedef void* (*MapFunction)(size_t index, void* item);
 void* arr_map(void* arr, size_t item_size, size_t arr_length, MapFunction func);
 
 // A function that receives the current index and item, and returns a new value
-typedef void* (*MapFunctionInt)(size_t index, int item);
+typedef void* (*MapFunctionInt)(size_t index, int item); // TODO Change void* to int?
 
 // Applies a map function to every element and returns them in a new array
 int* arr_map_int(int arr[], size_t arr_length, MapFunctionInt func);

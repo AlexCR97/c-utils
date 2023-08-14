@@ -21,6 +21,20 @@ int* arr_alloc_int(size_t length) {
     return arr;
 }
 
+bool arr_any_int(int arr[], size_t arr_length, AnyFunctionInt predicate) {
+    // TODO Is there a way to improve performance?
+
+    for (size_t i = 0; i < arr_length; i++) {
+        bool result = predicate(i, arr[i]);
+
+        if (result) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void arr_foreach(int* arr, size_t size, IntFunction func) {
     for (size_t i = 0; i < size; i++) {
         func(arr[i]);
