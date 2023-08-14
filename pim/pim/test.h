@@ -1,6 +1,8 @@
 ﻿#ifndef PIM_TEST_H
 #define PIM_TEST_H
 
+#define PM_NAMEOF(x) #x
+
 // A function that does not take arguments and does not return a value.
 typedef void (*TestFunction)();
 

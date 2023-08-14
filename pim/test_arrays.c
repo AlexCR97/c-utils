@@ -31,9 +31,9 @@ void _test_arr_to_string() {
 
 void test_arrays() {
 	Test tests[] = {
-		test("ARR_LENGTH", _test_ARR_LENGTH),
-		test("arr_map_int", _test_arr_map_int),
-		test("arr_to_string", _test_arr_to_string),
+		test(PM_NAMEOF(ARR_LENGTH), _test_ARR_LENGTH),
+		test(PM_NAMEOF(arr_map_int), _test_arr_map_int),
+		test(PM_NAMEOF(arr_to_string), _test_arr_to_string),
 	};
 
 	TestSuite suite = test_suite("Arrays", tests);
