@@ -8,6 +8,9 @@
   - [Macros](#macros)
   - [Private members](#private-members)
 - [File placement and structure](#file-placement-and-structure)
+  - [File placement](#file-placement)
+  - [File names](#file-names)
+  - [Including the files](#including-the-files)
 
 ## Naming conventions
 
@@ -139,4 +142,50 @@ typedef struct _MyPrivateStruct {
 
 ## File placement and structure
 
-TODO
+### File placement
+
+All header files and source files should live under the `pim` namespace.
+
+### File names
+
+The file names should have the following syntax:
+
+```
+module.c
+module.h
+
+module_submodule_A.c
+module_submodule_A.h
+
+module_submodule_B.c
+module_submodule_B.h
+```
+
+Where:
+
+- `module` is a specific module of the library, e.g.: `arrays`, `datetime`, `strings`, etc.
+- `submodule_*` is a specific submodule of the primary module, e.g.: `string_builder`
+
+#### Examples
+
+```
+arrays.c
+arrays.h
+
+strings.c
+strings.h
+
+strings_string_builder.c
+strings_string_builder.h
+```
+
+### Including the files
+
+When including the lib headers, it should look something like this:
+
+```c
+#include "pim/arrays.h"
+#include "pim/datetime.h"
+#include "pim/strings.h"
+#include "pim/strings_string_builder.h"
+```
