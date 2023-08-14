@@ -32,6 +32,20 @@ int _increment_by_index(int index, int item) {
 	return item + index;
 }
 
+void _test_arr_concat_int() {
+	int arr_a[] = { 1, 2, 3, 4 };
+	int arr_b[] = { 5, 6, 7, 8 };
+	int* arr_c = arr_concat_int(arr_a, ARR_LENGTH(arr_a), arr_b, ARR_LENGTH(arr_b));
+	PM_ASSERT_EQ(arr_c[0], 1);
+	PM_ASSERT_EQ(arr_c[1], 2);
+	PM_ASSERT_EQ(arr_c[2], 3);
+	PM_ASSERT_EQ(arr_c[3], 4);
+	PM_ASSERT_EQ(arr_c[4], 5);
+	PM_ASSERT_EQ(arr_c[5], 6);
+	PM_ASSERT_EQ(arr_c[6], 7);
+	PM_ASSERT_EQ(arr_c[7], 8);
+}
+
 void _test_arr_map_int() {
 	int arr[] = { 1, 2, 3, 4, 5 };
 	int* mapped_arr = arr_map_int(arr, ARR_LENGTH(arr), _increment_by_index);
@@ -53,6 +67,7 @@ void test_arrays() {
 		test(PM_NAMEOF(ARR_LENGTH), _test_ARR_LENGTH),
 		test(PM_NAMEOF(arr_alloc_int), _test_arr_alloc_int),
 		test(PM_NAMEOF(arr_any_int), _test_arr_any_int),
+		test(PM_NAMEOF(arr_concat_int), _test_arr_concat_int),
 		test(PM_NAMEOF(arr_map_int), _test_arr_map_int),
 		test(PM_NAMEOF(arr_to_string), _test_arr_to_string),
 	};

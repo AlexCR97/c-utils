@@ -35,6 +35,22 @@ bool arr_any_int(int arr[], size_t arr_length, AnyFunctionInt predicate) {
     return false;
 }
 
+int* arr_concat_int(int arr_a[], size_t arr_a_length, int arr_b[], size_t arr_b_length) {
+    size_t arr_c_length = arr_a_length + arr_b_length;
+    int* arr_c = arr_alloc_int(arr_c_length);
+
+    for (size_t i = 0; i < arr_a_length; i++) {
+        arr_c[i] = arr_a[i];
+    }
+
+    for (size_t i = 0; i < arr_b_length; i++) {
+        size_t index = arr_a_length + i;
+        arr_c[index] = arr_b[i];
+    }
+
+    return arr_c;
+}
+
 void arr_foreach(int* arr, size_t size, IntFunction func) {
     for (size_t i = 0; i < size; i++) {
         func(arr[i]);
