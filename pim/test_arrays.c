@@ -74,6 +74,22 @@ void _test_arr_count_int() {
 	PM_ASSERT_EQ(odd_count, 6);
 }
 
+void _test_arr_every_int() {
+	int evens[] = { 2, 4, 6, 8, 10 };
+	bool all_even = arr_every_int(evens, ARR_LENGTH(evens), _is_num_even);
+	PM_ASSERT(all_even == true);
+
+	int odds[] = { 1, 3, 5, 7, 9 };
+	bool all_odd = arr_every_int(odds, ARR_LENGTH(odds), _is_num_odd);
+	PM_ASSERT(all_odd == true);
+
+	all_even = arr_every_int(evens, ARR_LENGTH(evens), _is_num_odd);
+	PM_ASSERT(all_even == false);
+
+	all_odd = arr_every_int(odds, ARR_LENGTH(odds), _is_num_even);
+	PM_ASSERT(all_odd == false);
+}
+
 void _test_arr_map_int() {
 	int arr[] = { 1, 2, 3, 4, 5 };
 	int* mapped_arr = arr_map_int(arr, ARR_LENGTH(arr), _increment_by_index);
@@ -98,6 +114,7 @@ void test_arrays() {
 		test(PM_NAMEOF(arr_concat_int), _test_arr_concat_int),
 		test(PM_NAMEOF(arr_contains_int), _test_arr_contains_int),
 		test(PM_NAMEOF(arr_count_int), _test_arr_count_int),
+		test(PM_NAMEOF(arr_every_int), _test_arr_every_int),
 		test(PM_NAMEOF(arr_map_int), _test_arr_map_int),
 		test(PM_NAMEOF(arr_to_string), _test_arr_to_string),
 	};

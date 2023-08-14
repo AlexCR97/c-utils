@@ -78,6 +78,20 @@ size_t arr_count_int(int arr[], size_t arr_length, CountFunctionInt predicate) {
     return count;
 }
 
+bool arr_every_int(int arr[], size_t arr_length, EveryFunctionInt predicate) {
+    // TODO Is there a way to improve performance?
+
+    for (size_t i = 0; i < arr_length; i++) {
+        bool result = predicate(i, arr[i]);
+
+        if (result == false) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 void arr_foreach(int* arr, size_t size, IntFunction func) {
     for (size_t i = 0; i < size; i++) {
         func(arr[i]);

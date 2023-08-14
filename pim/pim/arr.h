@@ -31,6 +31,12 @@ typedef bool (*CountFunctionInt)(size_t index, int item);
 // Returns the amount of items that satisfy the predicate
 size_t arr_count_int(int arr[], size_t arr_length, CountFunctionInt predicate);
 
+// A function that receives the current index and item, and returns a bool
+typedef bool (*EveryFunctionInt)(size_t index, int item);
+
+// Returns true if all of the items satisfy the predicate, false otherwise
+bool arr_every_int(int arr[], size_t arr_length, EveryFunctionInt predicate);
+
 void arr_foreach(int* arr, size_t size, IntFunction func);
 
 // A function that receives the current index and item, and returns a new value
