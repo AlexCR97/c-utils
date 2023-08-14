@@ -6,15 +6,14 @@
 
 // Maybe for int
 
-typedef struct {
-	Error* error;
+typedef struct MaybeInt {
 	int data;
-} MaybeI;
+	Error error;
+	bool raised_error;
+} MaybeInt;
 
-MaybeI maybe_i_error(Error* error);
-MaybeI maybe_i_success(int data);
-bool maybe_i_failed(MaybeI maybe);
-void maybe_i_dispose(MaybeI* maybe);
+MaybeInt pm_maybe_int(int data);
+MaybeInt pm_maybe_int_raise(Error error);
 
 // Maybe for generics
 

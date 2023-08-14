@@ -44,13 +44,13 @@ void test_err() {
 	LOGGER_ERROR(log, error_to_string(err));
 }
 
-MaybeI _divide(int a, int b) {
+MaybeInt _divide(int a, int b) {
 	if (b == 0) {
 		const Error err = error(ERR_DIVISION_BY_ZERO, "Cannot divide by zero", NULL);
-		return maybe_i_error(&err);
+		return pm_maybe_int_raise(err);
 	}
 
-	return maybe_i_success(a / b);
+	return pm_maybe_int(a / b);
 }
 
 void test_logger() {
@@ -91,10 +91,10 @@ void test_logger() {
 void test_maybe() {
 	const int a = 100;
 	const int b = 0;
-	MaybeI maybe_division = _divide(a, b);
+	MaybeInt maybe_division = _divide(a, b);
 
-	if (maybe_i_failed(maybe_division)) {
-		printf(error_to_string(*maybe_division.error));
+	if (maybe_division.raised_error) {
+		printf(error_to_string(maybe_division.error));
 	} else {
 		printf("%d / %d = %d\n", a, b, maybe_division.data);
 	}
@@ -173,7 +173,7 @@ int main() {
 	//test_ds_list();
 	//test_err();
 	//test_logger();
-	//test_maybe();
+	test_maybe();
 	//test_maybe_2();
 	//test_str_to_string();
 	//test_string_builder();

@@ -4,28 +4,21 @@
 
 // Maybe for int
 
-MaybeI _maybe_i(Error* error, int data) {
-	MaybeI maybe;
-	maybe.error = error;
+MaybeInt _maybe_int(int data, Error error, bool raised_error) {
+	MaybeInt maybe;
 	maybe.data = data;
+	maybe.error = error;
+	maybe.raised_error = raised_error;
 	return maybe;
 }
 
-MaybeI maybe_i_error(Error* error) {
-	return _maybe_i(error, 0);
+MaybeInt pm_maybe_int(int data) {
+	Error empty_error = error(NULL, NULL, NULL);
+	return _maybe_int(data, empty_error, false);
 }
 
-MaybeI maybe_i_success(int data) {
-	return _maybe_i(NULL, data);
-}
-
-bool maybe_i_failed(MaybeI maybe) {
-	return maybe.error != NULL;
-}
-
-void maybe_i_dispose(MaybeI* maybe) {
-	free(maybe->error);
-	free(maybe);
+MaybeInt pm_maybe_int_raise(Error error) {
+	return _maybe_int(0, error, true);
 }
 
 // Maybe for generics
