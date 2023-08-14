@@ -47,6 +47,8 @@ typedef bool (*FindFunctionInt)(size_t index, int item);
 // Returns the first item that satisfies the predicate
 int arr_find_int(int arr[], size_t arr_length, FindFunctionInt predicate); // TODO Return a Maybe?
 
+// Returns the first item that satisfies the predicate
+int arr_find_index_int(int arr[], size_t arr_length, FindFunctionInt predicate); // TODO Return a Maybe?
 
 // A function that receives the current index and item, and returns a new value
 typedef void* (*MapFunction)(size_t index, void* item);

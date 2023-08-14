@@ -123,7 +123,7 @@ int* arr_filter_int(int arr[], size_t arr_length, FilterFunctionInt predicate) {
     return filtered_arr_resized;
 }
 
-int arr_find_int(int arr[], size_t arr_length, FindFunctionInt predicate) {
+int _arr_find_index_int(int arr[], size_t arr_length, FindFunctionInt predicate) {
     // TODO Is there a way to improve performance?
 
     for (size_t i = 0; i < arr_length; i++) {
@@ -131,11 +131,20 @@ int arr_find_int(int arr[], size_t arr_length, FindFunctionInt predicate) {
         bool satisfies_predicate = predicate(i, current_item);
 
         if (satisfies_predicate) {
-            return current_item;
+            return i;
         }
     }
 
     return -1; // TODO Return a Maybe?
+}
+
+int arr_find_int(int arr[], size_t arr_length, FindFunctionInt predicate) {
+    int index = _arr_find_index_int(arr, arr_length, predicate);
+    return arr[index];
+}
+
+int arr_find_index_int(int arr[], size_t arr_length, FindFunctionInt predicate) {
+    return _arr_find_index_int(arr, arr_length, predicate);
 }
 
 void* arr_map(void* arr, size_t item_size, size_t arr_length, MapFunction func) {
