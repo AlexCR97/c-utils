@@ -128,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
-    <ClCompile Include="pim\arr.c" />
+    <ClCompile Include="pim\arrays.c" />
     <ClCompile Include="pim\cns.c" />
     <ClCompile Include="pim\ds_list.c" />
     <ClCompile Include="pim\dt.c" />
@@ -142,7 +142,7 @@
     <ClCompile Include="test_maybe.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pim\arr.h" />
+    <ClInclude Include="pim\arrays.h" />
     <ClInclude Include="pim\cns.h" />
     <ClInclude Include="pim\ds_list.h" />
     <ClInclude Include="pim\dt.h" />

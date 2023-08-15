@@ -1,4 +1,4 @@
-#include "pim/arr.h"
+#include "pim/arrays.h"
 #include "pim/cns.h"
 #include "pim/ds_list.h"
 #include "pim/errors.h"

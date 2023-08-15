@@ -27,7 +27,7 @@
     <ClCompile Include="pim\test.c">
       <Filter>Source Files\pim</Filter>
     </ClCompile>
-    <ClCompile Include="pim\arr.c">
+    <ClCompile Include="pim\arrays.c">
       <Filter>Source Files\pim</Filter>
     </ClCompile>
     <ClCompile Include="pim\cns.c">
@@ -65,7 +65,7 @@
     <ClInclude Include="pim\test.h">
       <Filter>Header Files\pim</Filter>
     </ClInclude>
-    <ClInclude Include="pim\arr.h">
+    <ClInclude Include="pim\arrays.h">
       <Filter>Header Files\pim</Filter>
     </ClInclude>
     <ClInclude Include="pim\cns.h">

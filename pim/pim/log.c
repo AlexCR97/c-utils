@@ -4,7 +4,7 @@
 // https://stackoverflow.com/questions/3585846/color-text-in-terminal-applications-in-unix
 
 #include <stdio.h>
-#include "arr.h"
+#include "arrays.h"
 #include "str_string.h"
 
 #define LOG_COLOR_DEFAULT "\x1B[0m"

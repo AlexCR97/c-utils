@@ -1,6 +1,6 @@
 #include "test_arrays.h"
 
-#include "pim/arr.h"
+#include "pim/arrays.h"
 #include "pim/test.h"
 
 void _test_ARR_LENGTH() {
