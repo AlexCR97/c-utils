@@ -47,6 +47,13 @@ void _test_pm_str_to_lower() {
 	free(str_lower);
 }
 
+void _test_pm_str_to_upper() {
+	char* str = "This Is A String Used For Testing\0";
+	char* str_upper = pm_str_to_upper(str).data;
+	PM_ASSERT_EQ_STR(str_upper, "THIS IS A STRING USED FOR TESTING");
+	free(str_upper);
+}
+
 void _test_pm_str_to_string_int() {
 	int num = 1972;
 	char* num_str = pm_str_to_string_int(num).data;
@@ -67,6 +74,7 @@ void test_strings() {
 		test(PM_NAMEOF(pm_str_equals), _test_pm_str_equals),
 		test(PM_NAMEOF(pm_str_split), _test_pm_str_split),
 		test(PM_NAMEOF(pm_str_to_lower), _test_pm_str_to_lower),
+		test(PM_NAMEOF(pm_str_to_upper), _test_pm_str_to_upper),
 		test(PM_NAMEOF(pm_str_to_string_int), _test_pm_str_to_string_int),
 		test(PM_NAMEOF(pm_str_trim_trailing), _test_pm_str_trim_trailing),
 	};
