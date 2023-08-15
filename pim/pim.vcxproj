@@ -132,7 +132,7 @@
     <ClCompile Include="pim\cns.c" />
     <ClCompile Include="pim\ds_list.c" />
     <ClCompile Include="pim\dt.c" />
-    <ClCompile Include="pim\err.c" />
+    <ClCompile Include="pim\errors.c" />
     <ClCompile Include="pim\log.c" />
     <ClCompile Include="pim\maybe.c" />
     <ClCompile Include="pim\str_string.c" />
@@ -146,7 +146,7 @@
     <ClInclude Include="pim\cns.h" />
     <ClInclude Include="pim\ds_list.h" />
     <ClInclude Include="pim\dt.h" />
-    <ClInclude Include="pim\err.h" />
+    <ClInclude Include="pim\errors.h" />
     <ClInclude Include="pim\log.h" />
     <ClInclude Include="pim\maybe.h" />
     <ClInclude Include="pim\str_string.h" />

@@ -1,5 +1,5 @@
 #include <stddef.h>
-#include "err.h"
+#include "errors.h"
 #include "str_string_builder.h"
 
 char* _error_code_get(PmError error);

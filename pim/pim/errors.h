@@ -1,5 +1,5 @@
-#ifndef ERR_H
-#define ERR_H
+#ifndef PM_ERRORS_H
+#define PM_ERRORS_H
 
 #define ERR_ALLOCATION_FAILED "allocation_failed"
 #define ERR_DIVISION_BY_ZERO "division_by_zero"
@@ -18,4 +18,4 @@ PmError pm_error(char* code, char* message, void* data);
 void pm_error_dispose(PmError error);
 char* pm_error_to_string(PmError error);
 
-#endif // ERR_H
+#endif // PM_ERRORS_H

@@ -2,7 +2,7 @@
 #define MAYBE_H
 
 #include <stdbool.h>
-#include "err.h"
+#include "errors.h"
 
 // Maybe for int
 

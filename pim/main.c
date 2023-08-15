@@ -1,7 +1,7 @@
 #include "pim/arr.h"
 #include "pim/cns.h"
 #include "pim/ds_list.h"
-#include "pim/err.h"
+#include "pim/errors.h"
 #include "pim/log.h"
 #include "pim/maybe.h"
 #include "pim/str_string.h"
