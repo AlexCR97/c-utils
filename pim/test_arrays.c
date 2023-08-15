@@ -1,5 +1,6 @@
 #include "test_arrays.h"
 
+#include <stdlib.h>
 #include "pim/arrays.h"
 #include "pim/test.h"
 
@@ -12,6 +13,7 @@ void _test_PM_ARR_LENGTH() {
 void _test_pm_arr_alloc_int() {
 	int* arr = pm_arr_alloc_int(5).data;
 	PM_ASSERT_EQ(arr[0], 0);
+	free(arr);
 }
 
 bool _is_even(size_t index, int item) {
@@ -44,6 +46,7 @@ void _test_pm_arr_concat_int() {
 	PM_ASSERT_EQ(arr_c[5], 6);
 	PM_ASSERT_EQ(arr_c[6], 7);
 	PM_ASSERT_EQ(arr_c[7], 8);
+	free(arr_c);
 }
 
 void _test_pm_arr_contains_int() {
@@ -103,6 +106,7 @@ void _test_pm_arr_filter_int() {
 	PM_ASSERT_EQ(even_nums[2], 6);
 	PM_ASSERT_EQ(even_nums[3], 8);
 	PM_ASSERT_EQ(even_nums[4], 10);
+	free(even_nums);
 
 	int* odd_nums = pm_arr_filter_int(nums, PM_ARR_LENGTH(nums), _is_num_odd).data;
 	PM_ASSERT_EQ(odd_nums[0], 1);
@@ -110,6 +114,7 @@ void _test_pm_arr_filter_int() {
 	PM_ASSERT_EQ(odd_nums[2], 5);
 	PM_ASSERT_EQ(odd_nums[3], 7);
 	PM_ASSERT_EQ(odd_nums[4], 9);
+	free(odd_nums);
 }
 
 void _test_pm_arr_find_int() {
@@ -133,6 +138,7 @@ void _test_pm_arr_map_int() {
 	PM_ASSERT_EQ(mapped_arr[2], arr[2] + 2);
 	PM_ASSERT_EQ(mapped_arr[3], arr[3] + 3);
 	PM_ASSERT_EQ(mapped_arr[4], arr[4] + 4);
+	free(mapped_arr);
 }
 
 void _test_pm_arr_reverse_int() {
@@ -144,6 +150,7 @@ void _test_pm_arr_reverse_int() {
 	PM_ASSERT_EQ(reversed[2], arr[arr_length - 3]);
 	PM_ASSERT_EQ(reversed[3], arr[arr_length - 4]);
 	PM_ASSERT_EQ(reversed[4], arr[arr_length - 5]);
+	free(reversed);
 }
 
 void _test_pm_arr_sort_int() {
@@ -159,6 +166,7 @@ void _test_pm_arr_sort_int() {
 	PM_ASSERT_EQ(sorted[7], 8);
 	PM_ASSERT_EQ(sorted[8], 9);
 	PM_ASSERT_EQ(sorted[9], 10);
+	free(sorted);
 }
 
 void _test_pm_arr_skip_int() {
@@ -175,6 +183,8 @@ void _test_pm_arr_skip_int() {
 	PM_ASSERT_EQ(arr_with_offset[4], arr[4 + offset]);
 	PM_ASSERT_EQ(arr_with_offset[5], arr[5 + offset]);
 	PM_ASSERT_EQ(arr_with_offset[6], arr[6 + offset]);
+
+	free(arr_with_offset);
 }
 
 void _test_pm_arr_take_int() {
@@ -185,12 +195,14 @@ void _test_pm_arr_take_int() {
 	PM_ASSERT_EQ(taken[1], arr[1]);
 	PM_ASSERT_EQ(taken[2], arr[2]);
 	PM_ASSERT(taken[3] != arr[3]);
+	free(taken);
 }
 
 void _test_pm_arr_to_string() {
 	int arr[] = { 1, 2, 3, 4, 5 };
 	char* arr_str = pm_arr_to_string(arr, PM_ARR_LENGTH(arr));
 	PM_ASSERT_EQ_STR(arr_str, "{ 1, 2, 3, 4, 5 }");
+	free(arr_str);
 }
 
 void test_arrays() {
