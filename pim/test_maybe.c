@@ -14,7 +14,7 @@ PmMaybeInt _divide(int a, int b) {
 		_DivisionByZeroErrData err_data;
 		err_data.dividend = a;
 		err_data.divisor = b;
-		PmError err = pm_error(ERR_DIVISION_BY_ZERO, "Cannot divide by zero", &err_data);
+		PmError err = pm_error(PM_ERR_DIVISION_BY_ZERO, "Cannot divide by zero", &err_data);
 		return pm_maybe_int_raise(err);
 	}
 

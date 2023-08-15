@@ -4,7 +4,7 @@
 
 Maybe cns_prompt(const char* message, size_t capacity) {
     if (message == NULL) {
-        const PmError err = pm_error(ERR_NULL_ARGUMENT, "The argument \"message\" is null", NULL);
+        const PmError err = pm_error(PM_ERR_NULL_ARGUMENT, "The argument \"message\" is null", NULL);
         return maybe_error(&err);
     }
 
@@ -13,7 +13,7 @@ Maybe cns_prompt(const char* message, size_t capacity) {
     char* input = (char*)malloc(capacity * sizeof(char));
 
     if (input == NULL) {
-        const PmError err = pm_error(ERR_ALLOCATION_FAILED, "Could not allocate buffer for input", NULL);
+        const PmError err = pm_error(PM_ERR_ALLOCATION_FAILED, "Could not allocate buffer for input", NULL);
         return maybe_error(&err);
     }
 
