@@ -40,12 +40,20 @@ void _test_pm_str_to_string_int() {
 	free(num_str);
 }
 
+void _test_pm_str_trim_trailing() {
+	char* str = "string with leading whitespaces    \0";
+	char* str_trimmed = pm_str_trim_trailing(str, ' ');
+	PM_ASSERT_EQ_STR(str_trimmed, "string with leading whitespaces");
+	free(str_trimmed);
+}
+
 void test_strings() {
 	Test tests[] = {
 		test(PM_NAMEOF(pm_str_equals), _test_pm_str_equals),
 		test(PM_NAMEOF(pm_str_split), _test_pm_str_split),
 		test(PM_NAMEOF(pm_str_to_lower), _test_pm_str_to_lower),
 		test(PM_NAMEOF(pm_str_to_string_int), _test_pm_str_to_string_int),
+		test(PM_NAMEOF(pm_str_trim_trailing), _test_pm_str_trim_trailing),
 	};
 
 	TestSuite suite = test_suite("pim/strings", tests);
