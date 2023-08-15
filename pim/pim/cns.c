@@ -23,7 +23,8 @@ PmMaybe cns_prompt(const char* message, size_t capacity) {
         return pm_maybe_raise(err);
     }
 
-    input = pm_str_trim_trailing(input, '\n');
+    // TODO handle error
+    input = pm_str_trim_trailing(input, '\n').data;
 
     return pm_maybe(input);
 }

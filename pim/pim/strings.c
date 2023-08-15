@@ -68,34 +68,43 @@ char** pm_str_split(const char* str, char split_by) {
     return result;
 }
 
-char* pm_str_to_lower(const char* str) {
+PmMaybeStr pm_str_to_lower(const char* str) {
     if (str == NULL) {
-        return NULL; // Handle NULL input gracefully
+        return pm_maybe_raise_str(pm_error(PM_ERR_NULL_ARGUMENT, NULL, NULL));
     }
 
     size_t len = strlen(str);
-    char* lower_str = (char*)malloc(len + 1); // +1 for null terminator
 
-    if (lower_str != NULL) {
-        for (size_t i = 0; i < len; i++) {
-            lower_str[i] = tolower(str[i]);
-        }
-        lower_str[len] = '\0'; // Null-terminate the new string
+    // TODO allocate with pm_str_alloc
+    char* lower_str = (char*)malloc(len + _PM_STR_NULL_TERMINATOR_OFFSET);
+
+    if (lower_str == NULL) {
+        return pm_maybe_raise_str(pm_error(PM_ERR_ALLOCATION_FAILED, NULL, NULL));
     }
 
-    return lower_str;
+    for (size_t i = 0; i < len; i++) {
+        lower_str[i] = tolower(str[i]);
+    }
+
+    lower_str[len] = _PM_STR_NULL_TERMINATOR;
+
+    return pm_maybe_str(lower_str);
 }
 
-char* pm_str_to_string_int(int num) {
+PmMaybeStr pm_str_to_string_int(int num) {
     int length = snprintf(NULL, 0, "%d", num);
-    char* str = (char*)malloc((length + 1) * sizeof(char)); // +1 for null terminator
-    snprintf(str, length + 1, "%d", num);
-    return str;
+    
+    // TODO allocate with pm_str_alloc
+    char* str = (char*)malloc((length + _PM_STR_NULL_TERMINATOR_OFFSET) * sizeof(char));
+
+    snprintf(str, length + _PM_STR_NULL_TERMINATOR_OFFSET, "%d", num);
+
+    return pm_maybe_str(str);
 }
 
-char* pm_str_trim_trailing(const char* str, char trim) {
+PmMaybeStr pm_str_trim_trailing(const char* str, char trim) {
     if (str == NULL) {
-        return NULL; // Handle NULL input gracefully
+        return pm_maybe_raise_str(pm_error(PM_ERR_NULL_ARGUMENT, NULL, NULL));
     }
 
     size_t len = strlen(str);
@@ -105,12 +114,13 @@ char* pm_str_trim_trailing(const char* str, char trim) {
         end--;
     }
 
-    char* trimmed = (char*)malloc(end + 1); // +1 for null terminator
+    // TODO allocate with pm_str_alloc
+    char* trimmed = (char*)malloc(end + _PM_STR_NULL_TERMINATOR_OFFSET);
 
     if (trimmed != NULL) {
-        strncpy_s(trimmed, end + 1, str, end);
-        trimmed[end] = '\0'; // Null-terminate the trimmed string
+        strncpy_s(trimmed, end + _PM_STR_NULL_TERMINATOR_OFFSET, str, end);
+        trimmed[end] = _PM_STR_NULL_TERMINATOR;
     }
 
-    return trimmed;
+    return pm_maybe_str(trimmed);
 }

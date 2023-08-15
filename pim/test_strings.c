@@ -28,21 +28,21 @@ void _test_pm_str_split() {
 
 void _test_pm_str_to_lower() {
 	char* str = "This Is A String Used For Testing\0";
-	char* str_lower = pm_str_to_lower(str);
+	char* str_lower = pm_str_to_lower(str).data;
 	PM_ASSERT_EQ_STR(str_lower, "this is a string used for testing");
 	free(str_lower);
 }
 
 void _test_pm_str_to_string_int() {
 	int num = 1972;
-	char* num_str = pm_str_to_string_int(num);
+	char* num_str = pm_str_to_string_int(num).data;
 	PM_ASSERT_EQ_STR(num_str, "1972");
 	free(num_str);
 }
 
 void _test_pm_str_trim_trailing() {
 	char* str = "string with leading whitespaces    \0";
-	char* str_trimmed = pm_str_trim_trailing(str, ' ');
+	char* str_trimmed = pm_str_trim_trailing(str, ' ').data;
 	PM_ASSERT_EQ_STR(str_trimmed, "string with leading whitespaces");
 	free(str_trimmed);
 }

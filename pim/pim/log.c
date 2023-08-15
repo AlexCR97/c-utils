@@ -125,7 +125,7 @@ void logger_log(Logger log, LogLevel level, const char* file, int line, const ch
 		printf(LOG_COLOR_MAGENTA);
 		printf(file_name);
 		printf("@");
-		printf(pm_str_to_string_int(line));
+		printf(pm_str_to_string_int(line).data); // TODO handle error
 		printf(LOG_COLOR_DEFAULT);
 		printf(") ");
 	}

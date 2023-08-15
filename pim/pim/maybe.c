@@ -21,6 +21,25 @@ PmMaybeInt pm_maybe_raise_int(PmError error) {
 	return _maybe_int(0, error, true);
 }
 
+////////// PmMaybeStr
+
+PmMaybeStr _maybe_str(char* data, PmError error, bool raised_error) {
+	PmMaybeStr maybe;
+	maybe.data = data;
+	maybe.error = error;
+	maybe.raised_error = raised_error;
+	return maybe;
+}
+
+PmMaybeStr pm_maybe_str(char* data) {
+	PmError empty_error = pm_error(NULL, NULL, NULL);
+	return _maybe_str(data, empty_error, false);
+}
+
+PmMaybeStr pm_maybe_raise_str(PmError error) {
+	return _maybe_str(NULL, error, true);
+}
+
 ////////// PmMaybeArrInt
 
 PmMaybeArrInt _maybe_arrint(int data[], PmError error, bool raised_error) {

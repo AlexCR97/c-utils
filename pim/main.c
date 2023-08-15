@@ -81,13 +81,6 @@ void test_logger() {
 	LOGGER_DEBUG(simple_logger, "%d %c %d %c %s", 1, '+', 2, '=', pm_str_to_string_int(3));
 }
 
-void test_str_to_string() {
-	int number = 12345;
-	char* string = pm_str_to_string_int(number);
-	printf("number: %i\n", number);
-	printf("string: %s\n", string);
-}
-
 void test_string_builder() {
 	StringBuilder sb = string_builder();
 	string_builder_append(&sb, "Hello, ");
@@ -127,7 +120,6 @@ int main() {
 	//test_err();
 	//test_logger();
 	//test_maybe_2();
-	//test_str_to_string();
 	//test_string_builder();
 
 	return 0;

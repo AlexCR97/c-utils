@@ -15,6 +15,17 @@ typedef struct PmMaybeInt {
 PmMaybeInt pm_maybe_int(int data);
 PmMaybeInt pm_maybe_raise_int(PmError error);
 
+////////// PmMaybeStr
+
+typedef struct PmMaybeStr {
+	char* data;
+	PmError error;
+	bool raised_error;
+} PmMaybeStr;
+
+PmMaybeStr pm_maybe_str(char* data);
+PmMaybeStr pm_maybe_raise_str(PmError error);
+
 ////////// PmMaybeArrInt
 
 typedef struct PmMaybeArrInt {

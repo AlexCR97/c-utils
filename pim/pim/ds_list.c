@@ -49,7 +49,11 @@ char* list_to_string(List list) {
     ListNode* current_node = list.head;
 
     while (current_node != NULL) {
-        string_builder_append(&sb, pm_str_to_string_int(current_node->data));
+        char* str = pm_str_to_string_int(current_node->data).data;
+
+        // TODO handle error
+
+        string_builder_append(&sb, str);
 
         if (current_node->next != NULL) {
             string_builder_append(&sb, ", ");
