@@ -5,8 +5,8 @@
 #include <stdio.h>
 
 #define PM_ARR_LENGTH(arr) (sizeof(arr) / sizeof(arr[0]))
-#define ARR_DELIMETER_HEAD "{"
-#define ARR_DELIMETER_TAIL "}"
+#define PM_ARR_DELIMETER_HEAD "{"
+#define PM_ARR_DELIMETER_TAIL "}"
 
 // Allocates an array of int of the specified length
 int* arr_alloc_int(size_t length);

@@ -308,7 +308,7 @@ char* arr_tail_str(char** arr) {
 
 char* arr_to_string(int* arr, size_t size) {
     StringBuilder sb = string_builder();
-    string_builder_append(&sb, ARR_DELIMETER_HEAD);
+    string_builder_append(&sb, PM_ARR_DELIMETER_HEAD);
     string_builder_append(&sb, " ");
 
     for (size_t i = 0; i < size; i++) {
@@ -321,7 +321,7 @@ char* arr_to_string(int* arr, size_t size) {
         }
     }
 
-    string_builder_append(&sb, ARR_DELIMETER_TAIL);
+    string_builder_append(&sb, PM_ARR_DELIMETER_TAIL);
 
     return string_builder_to_string(sb);
 }
