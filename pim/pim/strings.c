@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "arrays.h"
 
 /// <summary>
 /// A character that represents the end of a string.
@@ -40,12 +41,14 @@ PmMaybeArrStr pm_str_split(const char* str, char split_by) {
     }
 
     // Allocate memory for an array of pointers
-    // TODO allocate with pm_arr_alloc_str
-    char** result = (char**)malloc((count + 2) * sizeof(char*));  // +2 to account for the strings and a NULL terminator
+    PmMaybeArrStr maybe_result = pm_arr_alloc_str(count);
 
-    if (result == NULL) {
-        return pm_maybe_raise_arrstr(pm_error(PM_ERR_ALLOCATION_FAILED, NULL, NULL));
+    if (maybe_result.raised_error) {
+        return maybe_result;
     }
+
+    // TODO allocate with pm_arr_alloc_str
+    char** result = maybe_result.data;
 
     // Split the input string
     int index = 0;
@@ -74,7 +77,7 @@ PmMaybeArrStr pm_str_split(const char* str, char split_by) {
             break;
         }
 
-        ptr++;  // Skip the split character
+        ptr++; // Skip the split character
     }
 
     result[index] = _PM_STR_NULL_TERMINATOR;
