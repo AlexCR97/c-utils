@@ -61,10 +61,17 @@ void _test_pm_str_to_string_int() {
 	free(num_str);
 }
 
-void _test_pm_str_trim_trailing() {
-	char* str = "string with leading whitespaces    \0";
-	char* str_trimmed = pm_str_trim_trailing(str, ' ').data;
+void _test_pm_str_trim_leading() {
+	char* str = "    string with leading whitespaces\0";
+	char* str_trimmed = pm_str_trim_leading(str, ' ').data;
 	PM_ASSERT_EQ_STR(str_trimmed, "string with leading whitespaces");
+	free(str_trimmed);
+}
+
+void _test_pm_str_trim_trailing() {
+	char* str = "string with trailing whitespaces    \0";
+	char* str_trimmed = pm_str_trim_trailing(str, ' ').data;
+	PM_ASSERT_EQ_STR(str_trimmed, "string with trailing whitespaces");
 	free(str_trimmed);
 }
 
@@ -76,6 +83,7 @@ void test_strings() {
 		test(PM_NAMEOF(pm_str_to_lower), _test_pm_str_to_lower),
 		test(PM_NAMEOF(pm_str_to_upper), _test_pm_str_to_upper),
 		test(PM_NAMEOF(pm_str_to_string_int), _test_pm_str_to_string_int),
+		test(PM_NAMEOF(pm_str_trim_leading), _test_pm_str_trim_leading),
 		test(PM_NAMEOF(pm_str_trim_trailing), _test_pm_str_trim_trailing),
 	};
 
