@@ -20,7 +20,7 @@ bool pm_str_equals(const char* a, const char* b);
 /// <param name="str">The string to split.</param>
 /// <param name="split_by">The character to split by.</param>
 /// <returns>An array of strings.</returns>
-char** pm_str_split(const char* str, char split_by); // TODO Return PmMaybeArrStr
+PmMaybeArrStr pm_str_split(const char* str, char split_by);
 
 /// <summary>
 /// Converts a string to lowercase.

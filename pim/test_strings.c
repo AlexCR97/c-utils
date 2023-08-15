@@ -18,7 +18,7 @@ void _test_pm_str_equals() {
 
 void _test_pm_str_split() {
 	char* str = "this is a string\0";
-	char** tokens = pm_str_split(str, ' ');
+	char** tokens = pm_str_split(str, ' ').data;
 	PM_ASSERT_EQ_STR(tokens[0], "this");
 	PM_ASSERT_EQ_STR(tokens[1], "is");
 	PM_ASSERT_EQ_STR(tokens[2], "a");

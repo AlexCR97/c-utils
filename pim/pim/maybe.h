@@ -37,6 +37,17 @@ typedef struct PmMaybeArrInt {
 PmMaybeArrInt pm_maybe_arrint(int data[]);
 PmMaybeArrInt pm_maybe_raise_arrint(PmError error);
 
+////////// PmMaybeArrStr
+
+typedef struct PmMaybeArrStr {
+	char** data;
+	PmError error;
+	bool raised_error;
+} PmMaybeArrStr;
+
+PmMaybeArrStr pm_maybe_arrstr(char* data[]);
+PmMaybeArrStr pm_maybe_raise_arrstr(PmError error);
+
 ////////// PmMaybe (generic)
 
 typedef struct PmMaybe {

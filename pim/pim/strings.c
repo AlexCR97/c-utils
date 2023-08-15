@@ -18,7 +18,7 @@ bool pm_str_equals(char* a, char* b) {
     return difference == 0;
 }
 
-char** pm_str_split(const char* str, char split_by) {
+PmMaybeArrStr pm_str_split(const char* str, char split_by) {
     // Count the number of occurrences of the split character
     int count = 0;
     const char* ptr = str;
@@ -30,10 +30,11 @@ char** pm_str_split(const char* str, char split_by) {
     }
 
     // Allocate memory for an array of pointers
+    // TODO allocate with pm_arr_alloc_str
     char** result = (char**)malloc((count + 2) * sizeof(char*));  // +2 to account for the strings and a NULL terminator
+
     if (result == NULL) {
-        perror("Memory allocation failed");
-        exit(EXIT_FAILURE);
+        return pm_maybe_raise_arrstr(pm_error(PM_ERR_ALLOCATION_FAILED, NULL, NULL));
     }
 
     // Split the input string
@@ -46,13 +47,14 @@ char** pm_str_split(const char* str, char split_by) {
         }
 
         int length = ptr - start;
+
+        // TODO allocate with pm_str_alloc
         result[index] = (char*)malloc((length + 1) * sizeof(char));
+
         if (result[index] == NULL) {
-            perror("Memory allocation failed");
-            exit(EXIT_FAILURE);
+            return pm_maybe_raise_arrstr(pm_error(PM_ERR_ALLOCATION_FAILED, NULL, NULL));
         }
 
-        //strncpy(result[index], start, length);
         strncpy_s(result[index], length + 1, start, length);
         result[index][length] = '\0';
         index++;
@@ -60,12 +62,14 @@ char** pm_str_split(const char* str, char split_by) {
         if (*ptr == '\0') {
             break;
         }
+
         ptr++;  // Skip the split character
     }
 
-    result[index] = NULL;  // Null-terminate the array
+    // TODO use null terminator here?
+    result[index] = NULL; // Null-terminate the array
 
-    return result;
+    return pm_maybe_arrstr(result);
 }
 
 PmMaybeStr pm_str_to_lower(const char* str) {

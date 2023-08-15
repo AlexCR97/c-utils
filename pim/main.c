@@ -78,7 +78,7 @@ void test_logger() {
 	simple_logger.show_level = false;
 	simple_logger.show_timestamp = false;
 	LOGGER_DEBUG(simple_logger, "Hello, %s", "World!");
-	LOGGER_DEBUG(simple_logger, "%d %c %d %c %s", 1, '+', 2, '=', pm_str_to_string_int(3));
+	LOGGER_DEBUG(simple_logger, "%d %c %d %c %s", 1, '+', 2, '=', pm_str_to_string_int(3).data);
 }
 
 void test_string_builder() {
@@ -118,7 +118,7 @@ int main() {
 	//test_arr_map();
 	//test_ds_list();
 	//test_err();
-	//test_logger();
+	test_logger();
 	//test_maybe_2();
 	//test_string_builder();
 
