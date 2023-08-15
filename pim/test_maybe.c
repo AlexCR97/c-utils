@@ -21,7 +21,7 @@ PmMaybeInt _divide(int a, int b) {
 	return pm_maybe_int(a / b);
 }
 
-void _test_maybe_int_succeeded() {
+void _test_pm_maybe_int_succeeded() {
 	PmMaybeInt maybe_division = _divide(100, 10);
 	PM_ASSERT_EQ(maybe_division.data, 100 / 10);
 	PM_ASSERT_EQ(maybe_division.error.code, NULL);
@@ -30,7 +30,7 @@ void _test_maybe_int_succeeded() {
 	PM_ASSERT_EQ(maybe_division.raised_error, false);
 };
 
-void _test_maybe_int_raised() {
+void _test_pm_maybe_int_raised() {
 	PmMaybeInt maybe_division = _divide(100, 0);
 	PM_ASSERT_EQ(maybe_division.data, 0);
 	PM_ASSERT_EQ(maybe_division.raised_error, true);
@@ -44,11 +44,11 @@ void _test_maybe_int_raised() {
 
 void test_maybe() {
 	Test tests[] = {
-		test(PM_NAMEOF(pm_maybe_int), _test_maybe_int_succeeded),
-		test(PM_NAMEOF(pm_maybe_int), _test_maybe_int_raised),
+		test(PM_NAMEOF(pm_maybe_int), _test_pm_maybe_int_succeeded),
+		test(PM_NAMEOF(pm_maybe_int), _test_pm_maybe_int_raised),
 	};
 
-	TestSuite suite = test_suite("Maybe", tests);
+	TestSuite suite = test_suite("pim/maybe", tests);
 
 	test_suite_run(suite, sizeof(tests) / sizeof(tests[0]));
 }
