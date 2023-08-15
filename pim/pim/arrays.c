@@ -6,6 +6,9 @@
 #include "str_string.h"
 #include "str_string_builder.h"
 
+const char* _PM_ARR_DELIMETER_HEAD = "{";
+const char* _PM_ARR_DELIMETER_TAIL = "}";
+
 #pragma region int
 
 const int _ARR_DEFAULT_INT = 0;
@@ -23,7 +26,7 @@ int* pm_arr_alloc_int(size_t length) {
     return arr;
 }
 
-bool pm_arr_any_int(int arr[], size_t arr_length, PmAnyFunctionInt predicate) {
+bool pm_arr_any_int(int arr[], size_t arr_length, PmArrPredicateFunctionInt predicate) {
     // TODO Is there a way to improve performance?
 
     for (size_t i = 0; i < arr_length; i++) {
@@ -65,7 +68,7 @@ bool pm_arr_contains_int(int arr[], size_t arr_length, int item) {
     return false;
 }
 
-size_t pm_arr_count_int(int arr[], size_t arr_length, PmCountFunctionInt predicate) {
+size_t pm_arr_count_int(int arr[], size_t arr_length, PmArrPredicateFunctionInt predicate) {
     // TODO Is there a way to improve performance?
     size_t count = 0;
 
@@ -80,7 +83,7 @@ size_t pm_arr_count_int(int arr[], size_t arr_length, PmCountFunctionInt predica
     return count;
 }
 
-bool pm_arr_every_int(int arr[], size_t arr_length, PmEveryFunctionInt predicate) {
+bool pm_arr_every_int(int arr[], size_t arr_length, PmArrPredicateFunctionInt predicate) {
     // TODO Is there a way to improve performance?
 
     for (size_t i = 0; i < arr_length; i++) {
@@ -94,7 +97,7 @@ bool pm_arr_every_int(int arr[], size_t arr_length, PmEveryFunctionInt predicate
     return true;
 }
 
-int* pm_arr_filter_int(int arr[], size_t arr_length, PmFilterFunctionInt predicate) {
+int* pm_arr_filter_int(int arr[], size_t arr_length, PmArrPredicateFunctionInt predicate) {
     int* filtered_arr = pm_arr_alloc_int(arr_length);
 
     if (filtered_arr == NULL) {
@@ -125,7 +128,7 @@ int* pm_arr_filter_int(int arr[], size_t arr_length, PmFilterFunctionInt predica
     return filtered_arr_resized;
 }
 
-int _arr_find_index_int(int arr[], size_t arr_length, PmFindFunctionInt predicate) {
+int _arr_find_index_int(int arr[], size_t arr_length, PmArrPredicateFunctionInt predicate) {
     // TODO Is there a way to improve performance?
 
     for (size_t i = 0; i < arr_length; i++) {
@@ -140,16 +143,16 @@ int _arr_find_index_int(int arr[], size_t arr_length, PmFindFunctionInt predicat
     return -1; // TODO Return a Maybe?
 }
 
-int pm_arr_find_int(int arr[], size_t arr_length, PmFindFunctionInt predicate) {
+int pm_arr_find_int(int arr[], size_t arr_length, PmArrPredicateFunctionInt predicate) {
     int index = _arr_find_index_int(arr, arr_length, predicate);
     return arr[index];
 }
 
-int pm_arr_find_index_int(int arr[], size_t arr_length, PmFindFunctionInt predicate) {
+int pm_arr_find_index_int(int arr[], size_t arr_length, PmArrPredicateFunctionInt predicate) {
     return _arr_find_index_int(arr, arr_length, predicate);
 }
 
-int* pm_arr_map_int(int arr[], size_t arr_length, PmMapFunctionInt func) {
+int* pm_arr_map_int(int arr[], size_t arr_length, PmArrMapFunctionInt func) {
     int* mapped_arr = (int*)malloc(sizeof(int) * arr_length);
 
     if (mapped_arr == NULL) {
@@ -273,11 +276,9 @@ int* pm_arr_take_int(int arr[], size_t arr_length, size_t count) {
     return result;
 }
 
-
-
 char* pm_arr_to_string(int* arr, size_t size) {
     StringBuilder sb = string_builder();
-    string_builder_append(&sb, PM_ARR_DELIMETER_HEAD);
+    string_builder_append(&sb, _PM_ARR_DELIMETER_HEAD);
     string_builder_append(&sb, " ");
 
     for (size_t i = 0; i < size; i++) {
@@ -290,7 +291,7 @@ char* pm_arr_to_string(int* arr, size_t size) {
         }
     }
 
-    string_builder_append(&sb, PM_ARR_DELIMETER_TAIL);
+    string_builder_append(&sb, _PM_ARR_DELIMETER_TAIL);
 
     return string_builder_to_string(sb);
 }
