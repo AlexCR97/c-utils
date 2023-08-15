@@ -8,6 +8,8 @@
 #include "pim/str_string_builder.h"
 #include "pim/test.h"
 #include "test_arrays.h"
+#include "test_maybe.h"
+#include "test_strings.h"
 
 //int* _increment_by_index(size_t index, int* item) {
 //	int* result = malloc(sizeof(int));
@@ -104,6 +106,7 @@ void test_string_builder() {
 int main() {
 	test_arrays();
 	test_maybe();
+	test_strings();
 
 	/*Test tests[] = {
 		test("Test 1", _test_1),
