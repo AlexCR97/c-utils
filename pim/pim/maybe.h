@@ -13,7 +13,7 @@ typedef struct MaybeInt {
 } PmMaybeInt;
 
 PmMaybeInt pm_maybe_int(int data);
-PmMaybeInt pm_maybe_int_raise(PmError error);
+PmMaybeInt pm_maybe_raise_int(PmError error);
 
 ////////// Maybe (generic)
 

@@ -17,7 +17,7 @@ PmMaybeInt pm_maybe_int(int data) {
 	return _maybe_int(data, empty_error, false);
 }
 
-PmMaybeInt pm_maybe_int_raise(PmError error) {
+PmMaybeInt pm_maybe_raise_int(PmError error) {
 	return _maybe_int(0, error, true);
 }
 
