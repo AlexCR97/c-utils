@@ -6,6 +6,8 @@
 #include "str_string.h"
 #include "str_string_builder.h"
 
+#pragma region int
+
 const int _ARR_DEFAULT_INT = 0;
 
 int* pm_arr_alloc_int(size_t length) {
@@ -147,24 +149,6 @@ int pm_arr_find_index_int(int arr[], size_t arr_length, PmFindFunctionInt predic
     return _arr_find_index_int(arr, arr_length, predicate);
 }
 
-void* pm_arr_map(void* arr, size_t item_size, size_t arr_length, PmMapFunction func) {
-    void* mapped_arr = malloc(item_size * arr_length);  // Allocate memory for the result array
-
-    if (mapped_arr == NULL) {
-        // TODO How to handle error?
-        return NULL;
-    }
-
-    for (size_t i = 0; i < arr_length; i++) {
-        void* current_item = (char*)arr + i * item_size;
-        void* mapped_item = func(i, current_item);
-        memcpy((char*)mapped_arr + i * item_size, mapped_item, item_size); // Copy the modified item to the result array
-        free(mapped_item);  // Free the memory allocated for the modified item
-    }
-
-    return mapped_arr;
-}
-
 int* pm_arr_map_int(int arr[], size_t arr_length, PmMapFunctionInt func) {
     int* mapped_arr = (int*)malloc(sizeof(int) * arr_length);
 
@@ -289,22 +273,7 @@ int* pm_arr_take_int(int arr[], size_t arr_length, size_t count) {
     return result;
 }
 
-char* pm_arr_tail_str(char** arr) {
-    if (arr == NULL || *arr == NULL) {
-        return NULL;  // Return NULL if the input is invalid or the array is empty
-    }
 
-    // Traverse the array to find the last non-null element
-    char** current = arr;
-    while (*current != NULL) {
-        current++;
-    }
-
-    // The pointer at 'current' points to the first NULL element, so we decrement it to get the last non-null element
-    current--;
-
-    return *current;
-}
 
 char* pm_arr_to_string(int* arr, size_t size) {
     StringBuilder sb = string_builder();
@@ -325,3 +294,48 @@ char* pm_arr_to_string(int* arr, size_t size) {
 
     return string_builder_to_string(sb);
 }
+
+#pragma endregion
+
+#pragma region char*
+
+char* pm_arr_tail_str(char** arr) {
+    if (arr == NULL || *arr == NULL) {
+        return NULL;  // Return NULL if the input is invalid or the array is empty
+    }
+
+    // Traverse the array to find the last non-null element
+    char** current = arr;
+    while (*current != NULL) {
+        current++;
+    }
+
+    // The pointer at 'current' points to the first NULL element, so we decrement it to get the last non-null element
+    current--;
+
+    return *current;
+}
+
+#pragma endregion
+
+#pragma region void*
+
+void* pm_arr_map(void* arr, size_t item_size, size_t arr_length, PmMapFunction func) {
+    void* mapped_arr = malloc(item_size * arr_length);  // Allocate memory for the result array
+
+    if (mapped_arr == NULL) {
+        // TODO How to handle error?
+        return NULL;
+    }
+
+    for (size_t i = 0; i < arr_length; i++) {
+        void* current_item = (char*)arr + i * item_size;
+        void* mapped_item = func(i, current_item);
+        memcpy((char*)mapped_arr + i * item_size, mapped_item, item_size); // Copy the modified item to the result array
+        free(mapped_item);  // Free the memory allocated for the modified item
+    }
+
+    return mapped_arr;
+}
+
+#pragma endregion
