@@ -13,17 +13,17 @@ const char* _PM_ARR_DELIMETER_TAIL = "}";
 
 const int _ARR_DEFAULT_INT = 0;
 
-int* pm_arr_alloc_int(size_t length) {
+PmMaybeArrInt pm_arr_alloc_int(size_t length) {
     int* arr = (int*)malloc(sizeof(int) * length);
 
     if (arr == NULL) {
-        // TODO How to handle NULL?
-        return NULL;
+        PmError err = pm_error(PM_ERR_ALLOCATION_FAILED, NULL, NULL);
+        return pm_maybe_raise_arrint(err);
     }
 
     arr[0] = _ARR_DEFAULT_INT;
 
-    return arr;
+    return pm_maybe_arrint(arr);
 }
 
 bool pm_arr_any_int(int arr[], size_t arr_length, PmArrPredicateFunctionInt predicate) {
@@ -40,9 +40,15 @@ bool pm_arr_any_int(int arr[], size_t arr_length, PmArrPredicateFunctionInt pred
     return false;
 }
 
-int* pm_arr_concat_int(int arr_a[], size_t arr_a_length, int arr_b[], size_t arr_b_length) {
+PmMaybeArrInt pm_arr_concat_int(int arr_a[], size_t arr_a_length, int arr_b[], size_t arr_b_length) {
     size_t arr_c_length = arr_a_length + arr_b_length;
-    int* arr_c = pm_arr_alloc_int(arr_c_length);
+    PmMaybeArrInt maybe_arr_c = pm_arr_alloc_int(arr_c_length);
+
+    if (maybe_arr_c.raised_error) {
+        return maybe_arr_c;
+    }
+
+    int* arr_c = maybe_arr_c.data;
 
     for (size_t i = 0; i < arr_a_length; i++) {
         arr_c[i] = arr_a[i];
@@ -53,7 +59,7 @@ int* pm_arr_concat_int(int arr_a[], size_t arr_a_length, int arr_b[], size_t arr
         arr_c[index] = arr_b[i];
     }
 
-    return arr_c;
+    return pm_maybe_arrint(arr_c);
 }
 
 bool pm_arr_contains_int(int arr[], size_t arr_length, int item) {
@@ -97,14 +103,14 @@ bool pm_arr_every_int(int arr[], size_t arr_length, PmArrPredicateFunctionInt pr
     return true;
 }
 
-int* pm_arr_filter_int(int arr[], size_t arr_length, PmArrPredicateFunctionInt predicate) {
-    int* filtered_arr = pm_arr_alloc_int(arr_length);
+PmMaybeArrInt pm_arr_filter_int(int arr[], size_t arr_length, PmArrPredicateFunctionInt predicate) {
+    PmMaybeArrInt maybe_filtered_arr = pm_arr_alloc_int(arr_length);
 
-    if (filtered_arr == NULL) {
-        // TODO How to handle NULL?
-        return NULL;
+    if (maybe_filtered_arr.raised_error) {
+        return maybe_filtered_arr;
     }
 
+    int* filtered_arr = maybe_filtered_arr.data;
     size_t filtered_length = 0;
 
     for (size_t i = 0; i < arr_length; i++) {
@@ -121,11 +127,11 @@ int* pm_arr_filter_int(int arr[], size_t arr_length, PmArrPredicateFunctionInt p
     int* filtered_arr_resized = (int*)realloc(filtered_arr, filtered_length * sizeof(int));
 
     if (filtered_arr_resized == NULL) {
-        // TODO How to handle NULL?
-        return NULL;
+        PmError err = pm_error(PM_ERR_ALLOCATION_FAILED, NULL, NULL);
+        return pm_maybe_raise_arrint(err);
     }
 
-    return filtered_arr_resized;
+    return pm_maybe_arrint(filtered_arr_resized);
 }
 
 int _arr_find_index_int(int arr[], size_t arr_length, PmArrPredicateFunctionInt predicate) {
@@ -152,13 +158,14 @@ int pm_arr_find_index_int(int arr[], size_t arr_length, PmArrPredicateFunctionIn
     return _arr_find_index_int(arr, arr_length, predicate);
 }
 
-int* pm_arr_map_int(int arr[], size_t arr_length, PmArrMapFunctionInt func) {
-    int* mapped_arr = (int*)malloc(sizeof(int) * arr_length);
+PmMaybeArrInt pm_arr_map_int(int arr[], size_t arr_length, PmArrMapFunctionInt func) {
+    PmMaybeArrInt maybe_mapped_arr = pm_arr_alloc_int(arr_length);
 
-    if (mapped_arr == NULL) {
-        // TODO How to handle error?
-        return NULL;
+    if (maybe_mapped_arr.raised_error) {
+        return maybe_mapped_arr;
     }
+
+    int* mapped_arr = maybe_mapped_arr.data;
 
     for (size_t i = 0; i < arr_length; i++) {
         int current_item = arr[i];
@@ -166,22 +173,23 @@ int* pm_arr_map_int(int arr[], size_t arr_length, PmArrMapFunctionInt func) {
         mapped_arr[i] = mapped_item;
     }
 
-    return mapped_arr;
+    return pm_maybe_arrint(mapped_arr);
 }
 
-int* pm_arr_reverse_int(int arr[], size_t arr_length) {
-    int* reversed_arr = pm_arr_alloc_int(arr_length);
+PmMaybeArrInt pm_arr_reverse_int(int arr[], size_t arr_length) {
+    PmMaybeArrInt maybe_reversed_arr = pm_arr_alloc_int(arr_length);
 
-    if (reversed_arr == NULL) {
-        // TODO Return a Maybe?
-        return NULL;
+    if (maybe_reversed_arr.raised_error) {
+        return maybe_reversed_arr;
     }
+
+    int* reversed_arr = maybe_reversed_arr.data;
 
     for (size_t i = 0; i < arr_length; i++) {
         reversed_arr[i] = arr[arr_length - 1 - i];
     }
 
-    return reversed_arr;
+    return pm_maybe_arrint(reversed_arr);
 }
 
 // Quick sort - Swap two integers
@@ -217,14 +225,15 @@ void quick_sort(int arr[], int low, int high) {
     }
 }
 
-int* pm_arr_sort_int(int arr[], size_t arr_length) {
-    int* sorted_arr = pm_arr_alloc_int(arr_length);
+PmMaybeArrInt pm_arr_sort_int(int arr[], size_t arr_length) {
+    PmMaybeArrInt maybe_sorted_arr = pm_arr_alloc_int(arr_length);
 
-    if (sorted_arr == NULL) {
-        fprintf(stderr, "Memory allocation failed\n");
-        return NULL; // TODO Return Maybe?
+    if (maybe_sorted_arr.raised_error) {
+        return maybe_sorted_arr;
     }
     
+    int* sorted_arr = maybe_sorted_arr.data;
+
     // Copy the original array into the sorted array
     for (size_t i = 0; i < arr_length; i++) {
         sorted_arr[i] = arr[i];
@@ -233,47 +242,48 @@ int* pm_arr_sort_int(int arr[], size_t arr_length) {
     // Perform quick sort
     quick_sort(sorted_arr, 0, arr_length - 1);
 
-    return sorted_arr;
+    return pm_maybe_arrint(sorted_arr);
 }
 
-int* pm_arr_skip_int(int arr[], size_t arr_length, size_t offset) {
+PmMaybeArrInt pm_arr_skip_int(int arr[], size_t arr_length, size_t offset) {
     if (offset >= arr_length) {
-        return NULL; // TODO Return a Maybe?
+        return pm_maybe_raise_arrint(pm_error(PM_ERR_INVALID_ARGUMENT, NULL, NULL));
     }
 
     size_t offset_arr_length = arr_length - offset;
-    int* offset_arr = pm_arr_alloc_int(offset_arr_length);
+    PmMaybeArrInt maybe_offset_arr = pm_arr_alloc_int(offset_arr_length);
 
-    if (offset_arr == NULL) {
-        perror("Memory allocation error");
-        return NULL; // TODO Return a Maybe?
+    if (maybe_offset_arr.raised_error) {
+        return maybe_offset_arr;
     }
+
+    int* offset_arr = maybe_offset_arr.data;
 
     for (size_t i = offset; i < arr_length; i++) {
         offset_arr[i - offset] = arr[i];
     }
 
-    return offset_arr;
+    return pm_maybe_arrint(offset_arr);
 }
 
-int* pm_arr_take_int(int arr[], size_t arr_length, size_t count) {
+PmMaybeArrInt pm_arr_take_int(int arr[], size_t arr_length, size_t count) {
     if (count > arr_length) {
-        printf("Error: Count is greater than array length\n");
-        return NULL; // TODO Ignore and normalize count?
+        return pm_maybe_raise_arrint(pm_error(PM_ERR_INVALID_ARGUMENT, NULL, NULL));
     }
 
-    int* result = pm_arr_alloc_int(count);
+    PmMaybeArrInt maybe_result = pm_arr_alloc_int(count);
 
-    if (result == NULL) {
-        printf("Error: Memory allocation failed\n");
-        return NULL; // TODO Return a Maybe?
+    if (maybe_result.raised_error) {
+        return maybe_result;
     }
+
+    int* result = maybe_result.data;
 
     for (size_t i = 0; i < count; i++) {
         result[i] = arr[i];
     }
 
-    return result;
+    return pm_maybe_arrint(result);
 }
 
 char* pm_arr_to_string(int* arr, size_t size) {
