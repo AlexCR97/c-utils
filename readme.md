@@ -78,52 +78,58 @@ C Utils is a collection of utility libraries that aims to facilitate development
 
 ### Maybe
 
-|                   | Pending | In Progress | Completed |
-| ----------------- | :-----: | :---------: | :-------: |
-| Error (Generic)   |    ✓    |      -      |     -     |
-| Success (Generic) |    ✓    |      -      |     -     |
-| Failed (Generic)  |    ✓    |      -      |     -     |
-| Dispose (Generic) |    ✓    |      -      |     -     |
-|                   |         |             |           |
-| Error (Integer)   |    ✓    |      -      |     -     |
-| Success (Integer) |    ✓    |      -      |     -     |
-| Failed (Integer)  |    ✓    |      -      |     -     |
-| Dispose (Integer) |    ✓    |      -      |     -     |
+|                        | Pending | In Progress | Completed |
+| ---------------------- | :-----: | :---------: | :-------: |
+| Raise (int)            |         |             |     ✓     |
+| Success (int)          |         |             |     ✓     |
+|                        |         |             |           |
+| Raise (string)         |         |             |     ✓     |
+| Success (string)       |         |             |     ✓     |
+|                        |         |             |           |
+| Raise (array int)      |         |             |     ✓     |
+| Success (array int)    |         |             |     ✓     |
+|                        |         |             |           |
+| Raise (array string)   |         |             |     ✓     |
+| Success (array string) |         |             |     ✓     |
+|                        |         |             |           |
+| Raise (generic)        |         |             |     ✓     |
+| Success (generic)      |         |             |     ✓     |
 
 ## Logging
 
 |                        | Pending | In Progress | Completed |
 | ---------------------- | :-----: | :---------: | :-------: |
-| Log Levels             |    ✓    |      -      |     -     |
-| Timestamp (Local Time) |    ✓    |      -      |     -     |
-| Timestamp (UTC)        |    ✓    |      -      |     -     |
-| File & Line            |    ✓    |      -      |     -     |
-| Categories             |    ✓    |      -      |     -     |
-| Colored Logs           |    ✓    |      -      |     -     |
-| Formatting             |    ✓    |      -      |     -     |
+| Log Levels             |    ✓    |             |           |
+| Timestamp (Local Time) |    ✓    |             |           |
+| Timestamp (UTC)        |    ✓    |             |           |
+| File & Line            |    ✓    |             |           |
+| Categories             |    ✓    |             |           |
+| Colored Logs           |    ✓    |             |           |
+| Formatting             |    ✓    |             |           |
 
 ## Strings
 
-|                     | Pending | In Progress | Completed |
-| ------------------- | :-----: | :---------: | :-------: |
-| Builder             |    ✓    |      -      |     -     |
-| Contains            |    ✓    |      -      |     -     |
-| Equals              |    ✓    |      -      |     -     |
-| Reverse             |    ✓    |      -      |     -     |
-| Split               |    ✓    |      -      |     -     |
-| To Lower            |    ✓    |      -      |     -     |
-| To Upper            |    ✓    |      -      |     -     |
-| To String (Integer) |    ✓    |      -      |     -     |
-| To String (Float)   |    ✓    |      -      |     -     |
-| To String (Double)  |    ✓    |      -      |     -     |
-| Trim Leading        |    ✓    |      -      |     -     |
-| Trim Trailing       |    ✓    |      -      |     -     |
+|                   | Pending | In Progress | Completed |
+| ----------------- | :-----: | :---------: | :-------: |
+| Allocate          |         |             |     ✓     |
+| Builder           |    ✓    |             |           |
+| Contains          |    ✓    |             |           |
+| Equals            |         |             |     ✓     |
+| Reverse           |    ✓    |             |           |
+| Split             |         |             |     ✓     |
+| ToLower           |         |             |     ✓     |
+| ToUpper           |    ✓    |             |           |
+| ToString (int)    |         |             |     ✓     |
+| ToString (float)  |    ✓    |             |           |
+| ToString (double) |    ✓    |             |           |
+| Trim Leading      |    ✓    |             |           |
+| Trim Trailing     |         |             |     ✓     |
 
 ## Testing
 
 |             | Pending | In Progress | Completed |
 | ----------- | :-----: | :---------: | :-------: |
-| Test Suites |    ✓    |      -      |     -     |
-| Unit Tests  |    ✓    |      -      |     -     |
-| Assertions  |    ✓    |      -      |     -     |
-| Test Runner |    ✓    |      -      |     -     |
+| Test Suites |         |             |     ✓     |
+| Unit Tests  |         |             |     ✓     |
+| Assertions  |         |             |     ✓     |
+| Test Runner |         |             |     ✓     |
