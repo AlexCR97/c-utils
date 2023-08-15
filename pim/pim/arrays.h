@@ -1,10 +1,10 @@
-#ifndef ARR_ARR_H
-#define ARR_ARR_H
+#ifndef PM_ARRAYS_H
+#define PM_ARRAYS_H
 
 #include <stdbool.h>
 #include <stdio.h>
 
-#define ARR_LENGTH(arr) (sizeof(arr) / sizeof(arr[0]))
+#define PM_ARR_LENGTH(arr) (sizeof(arr) / sizeof(arr[0]))
 #define ARR_DELIMETER_HEAD "{"
 #define ARR_DELIMETER_TAIL "}"
 
@@ -78,4 +78,4 @@ char* arr_tail_str(char** arr);
 
 char* arr_to_string(int* arr, size_t size);
 
-#endif // ARR_ARR_H
+#endif // PM_ARRAYS_H

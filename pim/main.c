@@ -19,7 +19,7 @@
 //	Logger log = logger(LOG_LEVEL_DEBUG, "test_arr_map");
 //
 //	int nums[] = { 1, 2, 3, 4, 5 };
-//	const int nums_length = ARR_LENGTH(nums);
+//	const int nums_length = PM_ARR_LENGTH(nums);
 //
 //	LOGGER_DEBUG(log, "Nums:");
 //	LOGGER_DEBUG(log, arr_to_string(nums, nums_length));
