@@ -13,6 +13,16 @@
 const char _PM_STR_NULL_TERMINATOR = '\0';
 const int _PM_STR_NULL_TERMINATOR_OFFSET = 1;
 
+PmMaybeStr pm_str_alloc(size_t length) {
+    char* str = (char*)malloc((length + _PM_STR_NULL_TERMINATOR_OFFSET) * sizeof(char));
+
+    if (str == NULL) {
+        return pm_maybe_raise_str(pm_error(PM_ERR_ALLOCATION_FAILED, NULL, NULL));
+    }
+
+    return pm_maybe_str(str);
+}
+
 bool pm_str_equals(char* a, char* b) {
     const int difference = strcmp(a, b);
     return difference == 0;
@@ -48,12 +58,13 @@ PmMaybeArrStr pm_str_split(const char* str, char split_by) {
 
         int length = ptr - start;
 
-        // TODO allocate with pm_str_alloc
-        result[index] = (char*)malloc((length + 1) * sizeof(char));
+        PmMaybeStr maybe_str = pm_str_alloc(length);
 
-        if (result[index] == NULL) {
-            return pm_maybe_raise_arrstr(pm_error(PM_ERR_ALLOCATION_FAILED, NULL, NULL));
+        if (maybe_str.raised_error) {
+            return pm_maybe_raise_arrstr(maybe_str.error);
         }
+
+        result[index] = maybe_str.data;
 
         strncpy_s(result[index], length + 1, start, length);
         result[index][length] = '\0';
@@ -66,8 +77,7 @@ PmMaybeArrStr pm_str_split(const char* str, char split_by) {
         ptr++;  // Skip the split character
     }
 
-    // TODO use null terminator here?
-    result[index] = NULL; // Null-terminate the array
+    result[index] = _PM_STR_NULL_TERMINATOR;
 
     return pm_maybe_arrstr(result);
 }
@@ -78,9 +88,13 @@ PmMaybeStr pm_str_to_lower(const char* str) {
     }
 
     size_t len = strlen(str);
+    PmMaybeStr maybe_lower_str = pm_str_alloc(len);
 
-    // TODO allocate with pm_str_alloc
-    char* lower_str = (char*)malloc(len + _PM_STR_NULL_TERMINATOR_OFFSET);
+    if (maybe_lower_str.raised_error) {
+        return maybe_lower_str;
+    }
+
+    char* lower_str = maybe_lower_str.data;
 
     if (lower_str == NULL) {
         return pm_maybe_raise_str(pm_error(PM_ERR_ALLOCATION_FAILED, NULL, NULL));
@@ -98,8 +112,13 @@ PmMaybeStr pm_str_to_lower(const char* str) {
 PmMaybeStr pm_str_to_string_int(int num) {
     int length = snprintf(NULL, 0, "%d", num);
     
-    // TODO allocate with pm_str_alloc
-    char* str = (char*)malloc((length + _PM_STR_NULL_TERMINATOR_OFFSET) * sizeof(char));
+    PmMaybeStr maybe_str = pm_str_alloc(length);
+
+    if (maybe_str.raised_error) {
+        return maybe_str;
+    }
+
+    char* str = maybe_str.data;
 
     snprintf(str, length + _PM_STR_NULL_TERMINATOR_OFFSET, "%d", num);
 
@@ -118,13 +137,16 @@ PmMaybeStr pm_str_trim_trailing(const char* str, char trim) {
         end--;
     }
 
-    // TODO allocate with pm_str_alloc
-    char* trimmed = (char*)malloc(end + _PM_STR_NULL_TERMINATOR_OFFSET);
+    PmMaybeStr maybe_trimmed = pm_str_alloc(end);
 
-    if (trimmed != NULL) {
-        strncpy_s(trimmed, end + _PM_STR_NULL_TERMINATOR_OFFSET, str, end);
-        trimmed[end] = _PM_STR_NULL_TERMINATOR;
+    if (maybe_trimmed.raised_error) {
+        return maybe_trimmed;
     }
+
+    char* trimmed = maybe_trimmed.data;
+
+    strncpy_s(trimmed, end + _PM_STR_NULL_TERMINATOR_OFFSET, str, end);
+    trimmed[end] = _PM_STR_NULL_TERMINATOR;
 
     return pm_maybe_str(trimmed);
 }

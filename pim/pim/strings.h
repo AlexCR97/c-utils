@@ -7,6 +7,13 @@
 #include "maybe.h"
 
 /// <summary>
+/// Allocates a string.
+/// </summary>
+/// <param name="length">The length of the string.</param>
+/// <returns>A null terminated string</returns>
+PmMaybeStr pm_str_alloc(size_t length);
+
+/// <summary>
 /// Compares 2 strings.
 /// </summary>
 /// <param name="a">The string to compare to.</param>
