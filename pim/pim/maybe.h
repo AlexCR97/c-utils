@@ -1,12 +1,12 @@
-#ifndef MAYBE_H
-#define MAYBE_H
+#ifndef PM_MAYBE_H
+#define PM_MAYBE_H
 
 #include <stdbool.h>
 #include "errors.h"
 
-////////// MaybeInt
+////////// PmMaybeInt
 
-typedef struct MaybeInt {
+typedef struct PmMaybeInt {
 	int data;
 	PmError error;
 	bool raised_error;
@@ -15,7 +15,18 @@ typedef struct MaybeInt {
 PmMaybeInt pm_maybe_int(int data);
 PmMaybeInt pm_maybe_raise_int(PmError error);
 
-////////// Maybe (generic)
+////////// PmMaybeArrInt
+
+typedef struct PmMaybeArrInt {
+	int* data;
+	PmError error;
+	bool raised_error;
+} PmMaybeArrInt;
+
+PmMaybeArrInt pm_maybe_arrint(int data[]);
+PmMaybeArrInt pm_maybe_raise_arrint(PmError error);
+
+////////// PmMaybe (generic)
 
 typedef struct PmMaybe {
 	void* data;
@@ -26,4 +37,4 @@ typedef struct PmMaybe {
 PmMaybe pm_maybe(void* data);
 PmMaybe pm_maybe_raise(PmError error);
 
-#endif // MAYBE_H
+#endif // PM_MAYBE_H

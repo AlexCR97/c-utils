@@ -21,6 +21,25 @@ PmMaybeInt pm_maybe_raise_int(PmError error) {
 	return _maybe_int(0, error, true);
 }
 
+////////// PmMaybeArrInt
+
+PmMaybeArrInt _maybe_arrint(int data[], PmError error, bool raised_error) {
+	PmMaybeArrInt maybe;
+	maybe.data = data;
+	maybe.error = error;
+	maybe.raised_error = raised_error;
+	return maybe;
+}
+
+PmMaybeArrInt pm_maybe_arrint(int data[]) {
+	PmError empty_error = pm_error(NULL, NULL, NULL);
+	return _maybe_arrint(data, empty_error, false);
+}
+
+PmMaybeArrInt pm_maybe_raise_arrint(PmError error) {
+	return _maybe_arrint(NULL, error, true);
+}
+
 ////////// Maybe (generic)
 
 PmMaybe _maybe(void* data, PmError error, bool raised_error) {
