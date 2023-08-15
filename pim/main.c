@@ -22,11 +22,11 @@
 //	const int nums_length = PM_ARR_LENGTH(nums);
 //
 //	LOGGER_DEBUG(log, "Nums:");
-//	LOGGER_DEBUG(log, arr_to_string(nums, nums_length));
+//	LOGGER_DEBUG(log, pm_arr_to_string(nums, nums_length));
 //
-//	int* mapped_nums = arr_map(nums, sizeof(int), nums_length, _increment_by_index);
+//	int* mapped_nums = pm_arr_map(nums, sizeof(int), nums_length, _increment_by_index);
 //	LOGGER_DEBUG(log, "Mapped nums:");
-//	LOGGER_DEBUG(log, arr_to_string(mapped_nums, nums_length));
+//	LOGGER_DEBUG(log, pm_arr_to_string(mapped_nums, nums_length));
 //}
 
 void test_ds_list() {

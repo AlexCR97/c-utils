@@ -119,7 +119,7 @@ void logger_log(Logger log, LogLevel level, const char* file, int line, const ch
 	if (log.show_file) {
 		const char* file_absolute_path = file;
 		const char** file_absolute_path_parts = str_split(file_absolute_path, '\\');
-		const char* file_name = arr_tail_str(file_absolute_path_parts);
+		const char* file_name = pm_arr_tail_str(file_absolute_path_parts);
 
 		printf("(");
 		printf(LOG_COLOR_MAGENTA);

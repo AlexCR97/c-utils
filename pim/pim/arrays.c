@@ -8,7 +8,7 @@
 
 const int _ARR_DEFAULT_INT = 0;
 
-int* arr_alloc_int(size_t length) {
+int* pm_arr_alloc_int(size_t length) {
     int* arr = (int*)malloc(sizeof(int) * length);
 
     if (arr == NULL) {
@@ -21,7 +21,7 @@ int* arr_alloc_int(size_t length) {
     return arr;
 }
 
-bool arr_any_int(int arr[], size_t arr_length, AnyFunctionInt predicate) {
+bool pm_arr_any_int(int arr[], size_t arr_length, PmAnyFunctionInt predicate) {
     // TODO Is there a way to improve performance?
 
     for (size_t i = 0; i < arr_length; i++) {
@@ -35,9 +35,9 @@ bool arr_any_int(int arr[], size_t arr_length, AnyFunctionInt predicate) {
     return false;
 }
 
-int* arr_concat_int(int arr_a[], size_t arr_a_length, int arr_b[], size_t arr_b_length) {
+int* pm_arr_concat_int(int arr_a[], size_t arr_a_length, int arr_b[], size_t arr_b_length) {
     size_t arr_c_length = arr_a_length + arr_b_length;
-    int* arr_c = arr_alloc_int(arr_c_length);
+    int* arr_c = pm_arr_alloc_int(arr_c_length);
 
     for (size_t i = 0; i < arr_a_length; i++) {
         arr_c[i] = arr_a[i];
@@ -51,7 +51,7 @@ int* arr_concat_int(int arr_a[], size_t arr_a_length, int arr_b[], size_t arr_b_
     return arr_c;
 }
 
-bool arr_contains_int(int arr[], size_t arr_length, int item) {
+bool pm_arr_contains_int(int arr[], size_t arr_length, int item) {
     // TODO Is there a way to improve performance?
 
     for (size_t i = 0; i < arr_length; i++) {
@@ -63,7 +63,7 @@ bool arr_contains_int(int arr[], size_t arr_length, int item) {
     return false;
 }
 
-size_t arr_count_int(int arr[], size_t arr_length, CountFunctionInt predicate) {
+size_t pm_arr_count_int(int arr[], size_t arr_length, PmCountFunctionInt predicate) {
     // TODO Is there a way to improve performance?
     size_t count = 0;
 
@@ -78,7 +78,7 @@ size_t arr_count_int(int arr[], size_t arr_length, CountFunctionInt predicate) {
     return count;
 }
 
-bool arr_every_int(int arr[], size_t arr_length, EveryFunctionInt predicate) {
+bool pm_arr_every_int(int arr[], size_t arr_length, PmEveryFunctionInt predicate) {
     // TODO Is there a way to improve performance?
 
     for (size_t i = 0; i < arr_length; i++) {
@@ -92,8 +92,8 @@ bool arr_every_int(int arr[], size_t arr_length, EveryFunctionInt predicate) {
     return true;
 }
 
-int* arr_filter_int(int arr[], size_t arr_length, FilterFunctionInt predicate) {
-    int* filtered_arr = arr_alloc_int(arr_length);
+int* pm_arr_filter_int(int arr[], size_t arr_length, PmFilterFunctionInt predicate) {
+    int* filtered_arr = pm_arr_alloc_int(arr_length);
 
     if (filtered_arr == NULL) {
         // TODO How to handle NULL?
@@ -123,7 +123,7 @@ int* arr_filter_int(int arr[], size_t arr_length, FilterFunctionInt predicate) {
     return filtered_arr_resized;
 }
 
-int _arr_find_index_int(int arr[], size_t arr_length, FindFunctionInt predicate) {
+int _arr_find_index_int(int arr[], size_t arr_length, PmFindFunctionInt predicate) {
     // TODO Is there a way to improve performance?
 
     for (size_t i = 0; i < arr_length; i++) {
@@ -138,16 +138,16 @@ int _arr_find_index_int(int arr[], size_t arr_length, FindFunctionInt predicate)
     return -1; // TODO Return a Maybe?
 }
 
-int arr_find_int(int arr[], size_t arr_length, FindFunctionInt predicate) {
+int pm_arr_find_int(int arr[], size_t arr_length, PmFindFunctionInt predicate) {
     int index = _arr_find_index_int(arr, arr_length, predicate);
     return arr[index];
 }
 
-int arr_find_index_int(int arr[], size_t arr_length, FindFunctionInt predicate) {
+int pm_arr_find_index_int(int arr[], size_t arr_length, PmFindFunctionInt predicate) {
     return _arr_find_index_int(arr, arr_length, predicate);
 }
 
-void* arr_map(void* arr, size_t item_size, size_t arr_length, MapFunction func) {
+void* pm_arr_map(void* arr, size_t item_size, size_t arr_length, PmMapFunction func) {
     void* mapped_arr = malloc(item_size * arr_length);  // Allocate memory for the result array
 
     if (mapped_arr == NULL) {
@@ -165,7 +165,7 @@ void* arr_map(void* arr, size_t item_size, size_t arr_length, MapFunction func) 
     return mapped_arr;
 }
 
-int* arr_map_int(int arr[], size_t arr_length, MapFunctionInt func) {
+int* pm_arr_map_int(int arr[], size_t arr_length, PmMapFunctionInt func) {
     int* mapped_arr = (int*)malloc(sizeof(int) * arr_length);
 
     if (mapped_arr == NULL) {
@@ -182,8 +182,8 @@ int* arr_map_int(int arr[], size_t arr_length, MapFunctionInt func) {
     return mapped_arr;
 }
 
-int* arr_reverse_int(int arr[], size_t arr_length) {
-    int* reversed_arr = arr_alloc_int(arr_length);
+int* pm_arr_reverse_int(int arr[], size_t arr_length) {
+    int* reversed_arr = pm_arr_alloc_int(arr_length);
 
     if (reversed_arr == NULL) {
         // TODO Return a Maybe?
@@ -230,8 +230,8 @@ void quick_sort(int arr[], int low, int high) {
     }
 }
 
-int* arr_sort_int(int arr[], size_t arr_length) {
-    int* sorted_arr = arr_alloc_int(arr_length);
+int* pm_arr_sort_int(int arr[], size_t arr_length) {
+    int* sorted_arr = pm_arr_alloc_int(arr_length);
 
     if (sorted_arr == NULL) {
         fprintf(stderr, "Memory allocation failed\n");
@@ -249,13 +249,13 @@ int* arr_sort_int(int arr[], size_t arr_length) {
     return sorted_arr;
 }
 
-int* arr_skip_int(int arr[], size_t arr_length, size_t offset) {
+int* pm_arr_skip_int(int arr[], size_t arr_length, size_t offset) {
     if (offset >= arr_length) {
         return NULL; // TODO Return a Maybe?
     }
 
     size_t offset_arr_length = arr_length - offset;
-    int* offset_arr = arr_alloc_int(offset_arr_length);
+    int* offset_arr = pm_arr_alloc_int(offset_arr_length);
 
     if (offset_arr == NULL) {
         perror("Memory allocation error");
@@ -269,13 +269,13 @@ int* arr_skip_int(int arr[], size_t arr_length, size_t offset) {
     return offset_arr;
 }
 
-int* arr_take_int(int arr[], size_t arr_length, size_t count) {
+int* pm_arr_take_int(int arr[], size_t arr_length, size_t count) {
     if (count > arr_length) {
         printf("Error: Count is greater than array length\n");
         return NULL; // TODO Ignore and normalize count?
     }
 
-    int* result = arr_alloc_int(count);
+    int* result = pm_arr_alloc_int(count);
 
     if (result == NULL) {
         printf("Error: Memory allocation failed\n");
@@ -289,7 +289,7 @@ int* arr_take_int(int arr[], size_t arr_length, size_t count) {
     return result;
 }
 
-char* arr_tail_str(char** arr) {
+char* pm_arr_tail_str(char** arr) {
     if (arr == NULL || *arr == NULL) {
         return NULL;  // Return NULL if the input is invalid or the array is empty
     }
@@ -306,7 +306,7 @@ char* arr_tail_str(char** arr) {
     return *current;
 }
 
-char* arr_to_string(int* arr, size_t size) {
+char* pm_arr_to_string(int* arr, size_t size) {
     StringBuilder sb = string_builder();
     string_builder_append(&sb, PM_ARR_DELIMETER_HEAD);
     string_builder_append(&sb, " ");
