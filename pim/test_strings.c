@@ -33,11 +33,19 @@ void _test_pm_str_to_lower() {
 	free(str_lower);
 }
 
+void _test_pm_str_to_string_int() {
+	int num = 1972;
+	char* num_str = pm_str_to_string_int(num);
+	PM_ASSERT_EQ_STR(num_str, "1972");
+	free(num_str);
+}
+
 void test_strings() {
 	Test tests[] = {
 		test(PM_NAMEOF(pm_str_equals), _test_pm_str_equals),
 		test(PM_NAMEOF(pm_str_split), _test_pm_str_split),
 		test(PM_NAMEOF(pm_str_to_lower), _test_pm_str_to_lower),
+		test(PM_NAMEOF(pm_str_to_string_int), _test_pm_str_to_string_int),
 	};
 
 	TestSuite suite = test_suite("pim/strings", tests);
