@@ -9,12 +9,12 @@ typedef struct _DivisionByZeroErrData {
 	int dividend;
 } _DivisionByZeroErrData;
 
-MaybeInt _divide(int a, int b) {
+PmMaybeInt _divide(int a, int b) {
 	if (b == 0) {
 		_DivisionByZeroErrData err_data;
 		err_data.dividend = a;
 		err_data.divisor = b;
-		Error err = error(ERR_DIVISION_BY_ZERO, "Cannot divide by zero", &err_data);
+		PmError err = pm_error(ERR_DIVISION_BY_ZERO, "Cannot divide by zero", &err_data);
 		return pm_maybe_int_raise(err);
 	}
 
@@ -22,7 +22,7 @@ MaybeInt _divide(int a, int b) {
 }
 
 void _test_maybe_int_succeeded() {
-	MaybeInt maybe_division = _divide(100, 10);
+	PmMaybeInt maybe_division = _divide(100, 10);
 	PM_ASSERT_EQ(maybe_division.data, 100 / 10);
 	PM_ASSERT_EQ(maybe_division.error.code, NULL);
 	PM_ASSERT_EQ(maybe_division.error.message, NULL);
@@ -31,7 +31,7 @@ void _test_maybe_int_succeeded() {
 };
 
 void _test_maybe_int_raised() {
-	MaybeInt maybe_division = _divide(100, 0);
+	PmMaybeInt maybe_division = _divide(100, 0);
 	PM_ASSERT_EQ(maybe_division.data, 0);
 	PM_ASSERT_EQ(maybe_division.raised_error, true);
 	PM_ASSERT(maybe_division.error.code != NULL);

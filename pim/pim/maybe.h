@@ -8,21 +8,21 @@
 
 typedef struct MaybeInt {
 	int data;
-	Error error;
+	PmError error;
 	bool raised_error;
-} MaybeInt;
+} PmMaybeInt;
 
-MaybeInt pm_maybe_int(int data);
-MaybeInt pm_maybe_int_raise(Error error);
+PmMaybeInt pm_maybe_int(int data);
+PmMaybeInt pm_maybe_int_raise(PmError error);
 
 // Maybe for generics
 
 typedef struct {
-	Error* error;
+	PmError* error;
 	void* data;
 } Maybe;
 
-Maybe maybe_error(Error* error);
+Maybe maybe_error(PmError* error);
 Maybe maybe_success(void* data);
 bool maybe_failed(Maybe maybe);
 void maybe_dispose(Maybe* maybe);

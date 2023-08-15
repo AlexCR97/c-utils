@@ -8,14 +8,14 @@
 #define ERR_NULL_ARGUMENT "null_argument"
 #define ERR_UNKNOWN "unknown"
 
-typedef struct {
+typedef struct PmError {
 	char* code;
 	char* message;
 	void* data;
-} Error;
+} PmError;
 
-Error error(char* code, char* message, void* data);
-void error_dispose(Error* error);
-char* error_to_string(Error error);
+PmError pm_error(char* code, char* message, void* data);
+void pm_error_dispose(PmError error);
+char* pm_error_to_string(PmError error);
 
 #endif // ERR_H

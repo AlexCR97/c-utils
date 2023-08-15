@@ -4,33 +4,33 @@
 
 // Maybe for int
 
-MaybeInt _maybe_int(int data, Error error, bool raised_error) {
-	MaybeInt maybe;
+PmMaybeInt _maybe_int(int data, PmError error, bool raised_error) {
+	PmMaybeInt maybe;
 	maybe.data = data;
 	maybe.error = error;
 	maybe.raised_error = raised_error;
 	return maybe;
 }
 
-MaybeInt pm_maybe_int(int data) {
-	Error empty_error = error(NULL, NULL, NULL);
+PmMaybeInt pm_maybe_int(int data) {
+	PmError empty_error = pm_error(NULL, NULL, NULL);
 	return _maybe_int(data, empty_error, false);
 }
 
-MaybeInt pm_maybe_int_raise(Error error) {
+PmMaybeInt pm_maybe_int_raise(PmError error) {
 	return _maybe_int(0, error, true);
 }
 
 // Maybe for generics
 
-Maybe _maybe(Error* error, void* data) {
+Maybe _maybe(PmError* error, void* data) {
 	Maybe maybe;
 	maybe.error = error;
 	maybe.data = data;
 	return maybe;
 }
 
-Maybe maybe_error(Error* error) {
+Maybe maybe_error(PmError* error) {
 	return _maybe(error, NULL);
 }
 
@@ -43,11 +43,6 @@ bool maybe_failed(Maybe maybe) {
 }
 
 void maybe_dispose(Maybe* maybe) {
-	if (maybe->data != NULL) {
-		free(maybe->data);
-	}
-
-	if (maybe->error != NULL) {
-		error_dispose(maybe->error);
-	}
+	free(maybe->data);
+	pm_error_dispose(*maybe->error);
 }

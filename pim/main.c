@@ -39,9 +39,9 @@ void test_ds_list() {
 
 void test_err() {
 	Logger log = logger(LOG_LEVEL_DEBUG, "test_err");
-	Error err = error(NULL, NULL, NULL);
-	LOGGER_WARNING(log, error_to_string(err));
-	LOGGER_ERROR(log, error_to_string(err));
+	PmError err = pm_error(NULL, NULL, NULL);
+	LOGGER_WARNING(log, pm_error_to_string(err));
+	LOGGER_ERROR(log, pm_error_to_string(err));
 }
 
 void test_logger() {
@@ -91,7 +91,7 @@ Maybe _input_favorite_programming_lang() {
 	input = str_to_lower(input);
 
 	if (!str_equals(input, "c")) {
-		const Error err = error("invalid_programming_lang", "Nope! You must answer \"C\"", NULL);
+		const PmError err = pm_error("invalid_programming_lang", "Nope! You must answer \"C\"", NULL);
 		return maybe_error(&err);
 	}
 	
@@ -102,7 +102,7 @@ void test_maybe_2() {
 	Maybe maybe_answer = _input_favorite_programming_lang();
 
 	if (maybe_failed(maybe_answer)) {
-		printf("%s\n", error_to_string(*maybe_answer.error));
+		printf("%s\n", pm_error_to_string(*maybe_answer.error));
 	}
 	else {
 		printf("That's right, that's the only correct answer.\n");
