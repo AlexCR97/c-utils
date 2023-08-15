@@ -3,13 +3,13 @@
 #include "pim/arrays.h"
 #include "pim/test.h"
 
-void _test_ARR_LENGTH() {
+void _test_PM_ARR_LENGTH() {
 	int arr[] = { 1, 2, 3, 4, 5 };
 	int length = PM_ARR_LENGTH(arr);
 	PM_ASSERT_EQ(length, 5);
 }
 
-void _test_arr_alloc_int() {
+void _test_pm_arr_alloc_int() {
 	int* arr = pm_arr_alloc_int(5);
 	PM_ASSERT_EQ(arr[0], 0);
 }
@@ -18,7 +18,7 @@ bool _is_even(size_t index, int item) {
 	return item % 2 == 0;
 }
 
-void _test_arr_any_int() {
+void _test_pm_arr_any_int() {
 	int nums[] = { 1, 2, 3, 4, 5 };
 	bool nums_any_even = pm_arr_any_int(nums, PM_ARR_LENGTH(nums), _is_even);
 	PM_ASSERT(nums_any_even == true);
@@ -32,7 +32,7 @@ int _increment_by_index(int index, int item) {
 	return item + index;
 }
 
-void _test_arr_concat_int() {
+void _test_pm_arr_concat_int() {
 	int arr_a[] = { 1, 2, 3, 4 };
 	int arr_b[] = { 5, 6, 7, 8 };
 	int* arr_c = pm_arr_concat_int(arr_a, PM_ARR_LENGTH(arr_a), arr_b, PM_ARR_LENGTH(arr_b));
@@ -46,7 +46,7 @@ void _test_arr_concat_int() {
 	PM_ASSERT_EQ(arr_c[7], 8);
 }
 
-void _test_arr_contains_int() {
+void _test_pm_arr_contains_int() {
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
 	bool contains_7 = pm_arr_contains_int(arr, PM_ARR_LENGTH(arr), 7);
@@ -64,7 +64,7 @@ bool _is_num_odd(int index, int item) {
 	return item % 2 != 0;
 }
 
-void _test_arr_count_int() {
+void _test_pm_arr_count_int() {
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
 
 	int even_count = pm_arr_count_int(arr, PM_ARR_LENGTH(arr), _is_num_even);
@@ -74,7 +74,7 @@ void _test_arr_count_int() {
 	PM_ASSERT_EQ(odd_count, 6);
 }
 
-void _test_arr_every_int() {
+void _test_pm_arr_every_int() {
 	int evens[] = { 2, 4, 6, 8, 10 };
 	bool all_even = pm_arr_every_int(evens, PM_ARR_LENGTH(evens), _is_num_even);
 	PM_ASSERT(all_even == true);
@@ -94,7 +94,7 @@ bool _is_divisible_by_5(int index, int item) {
 	return item % 5 == 0;
 }
 
-void _test_arr_filter_int() {
+void _test_pm_arr_filter_int() {
 	int nums[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
 	int* even_nums = pm_arr_filter_int(nums, PM_ARR_LENGTH(nums), _is_num_even);
@@ -112,20 +112,20 @@ void _test_arr_filter_int() {
 	PM_ASSERT_EQ(odd_nums[4], 9);
 }
 
-void _test_arr_find_int() {
+void _test_pm_arr_find_int() {
 	int nums[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	int divisible_by_5 = pm_arr_find_int(nums, PM_ARR_LENGTH(nums), _is_divisible_by_5);
 	PM_ASSERT_EQ(divisible_by_5, 5);
 }
 
-void _test_arr_find_index_int() {
+void _test_pm_arr_find_index_int() {
 	int nums[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	int divisible_by_5_index = pm_arr_find_index_int(nums, PM_ARR_LENGTH(nums), _is_divisible_by_5);
 	PM_ASSERT_EQ(divisible_by_5_index, 4);
 	PM_ASSERT_EQ(nums[divisible_by_5_index], 5);
 }
 
-void _test_arr_map_int() {
+void _test_pm_arr_map_int() {
 	int arr[] = { 1, 2, 3, 4, 5 };
 	int* mapped_arr = pm_arr_map_int(arr, PM_ARR_LENGTH(arr), _increment_by_index);
 	PM_ASSERT_EQ(mapped_arr[0], arr[0] + 0);
@@ -135,7 +135,7 @@ void _test_arr_map_int() {
 	PM_ASSERT_EQ(mapped_arr[4], arr[4] + 4);
 }
 
-void _test_arr_reverse_int() {
+void _test_pm_arr_reverse_int() {
 	int arr[] = { 1, 2, 3, 4, 5 };
 	const int arr_length = PM_ARR_LENGTH(arr);
 	int* reversed = pm_arr_reverse_int(arr, arr_length);
@@ -146,7 +146,7 @@ void _test_arr_reverse_int() {
 	PM_ASSERT_EQ(reversed[4], arr[arr_length - 5]);
 }
 
-void _test_arr_sort_int() {
+void _test_pm_arr_sort_int() {
 	int arr[] = { 2, 4, 6, 8, 10, 1, 3, 5, 7, 9 };
 	int* sorted = pm_arr_sort_int(arr, PM_ARR_LENGTH(arr));
 	PM_ASSERT_EQ(sorted[0], 1);
@@ -161,7 +161,7 @@ void _test_arr_sort_int() {
 	PM_ASSERT_EQ(sorted[9], 10);
 }
 
-void _test_arr_skip_int() {
+void _test_pm_arr_skip_int() {
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	size_t arr_length = PM_ARR_LENGTH(arr);
 
@@ -177,7 +177,7 @@ void _test_arr_skip_int() {
 	PM_ASSERT_EQ(arr_with_offset[6], arr[6 + offset]);
 }
 
-void _test_arr_take_int() {
+void _test_pm_arr_take_int() {
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	size_t take = 3;
 	int* taken = pm_arr_take_int(arr, PM_ARR_LENGTH(arr), take);
@@ -187,7 +187,7 @@ void _test_arr_take_int() {
 	PM_ASSERT(taken[3] != arr[3]);
 }
 
-void _test_arr_to_string() {
+void _test_pm_arr_to_string() {
 	int arr[] = { 1, 2, 3, 4, 5 };
 	char* arr_str = pm_arr_to_string(arr, PM_ARR_LENGTH(arr));
 	PM_ASSERT_EQ_STR(arr_str, "{ 1, 2, 3, 4, 5 }");
@@ -195,25 +195,25 @@ void _test_arr_to_string() {
 
 void test_arrays() {
 	Test tests[] = {
-		test(PM_NAMEOF(PM_ARR_LENGTH), _test_ARR_LENGTH),
-		test(PM_NAMEOF(pm_arr_alloc_int), _test_arr_alloc_int),
-		test(PM_NAMEOF(pm_arr_any_int), _test_arr_any_int),
-		test(PM_NAMEOF(pm_arr_concat_int), _test_arr_concat_int),
-		test(PM_NAMEOF(pm_arr_contains_int), _test_arr_contains_int),
-		test(PM_NAMEOF(pm_arr_count_int), _test_arr_count_int),
-		test(PM_NAMEOF(pm_arr_every_int), _test_arr_every_int),
-		test(PM_NAMEOF(pm_arr_filter_int), _test_arr_filter_int),
-		test(PM_NAMEOF(pm_arr_find_int), _test_arr_find_int),
-		test(PM_NAMEOF(pm_arr_find_index_int), _test_arr_find_index_int),
-		test(PM_NAMEOF(pm_arr_map_int), _test_arr_map_int),
-		test(PM_NAMEOF(pm_arr_reverse_int), _test_arr_reverse_int),
-		test(PM_NAMEOF(pm_arr_sort_int), _test_arr_sort_int),
-		test(PM_NAMEOF(pm_arr_skip_int), _test_arr_skip_int),
-		test(PM_NAMEOF(pm_arr_take_int), _test_arr_take_int),
-		test(PM_NAMEOF(pm_arr_to_string), _test_arr_to_string),
+		test(PM_NAMEOF(PM_ARR_LENGTH), _test_PM_ARR_LENGTH),
+		test(PM_NAMEOF(pm_arr_alloc_int), _test_pm_arr_alloc_int),
+		test(PM_NAMEOF(pm_arr_any_int), _test_pm_arr_any_int),
+		test(PM_NAMEOF(pm_arr_concat_int), _test_pm_arr_concat_int),
+		test(PM_NAMEOF(pm_arr_contains_int), _test_pm_arr_contains_int),
+		test(PM_NAMEOF(pm_arr_count_int), _test_pm_arr_count_int),
+		test(PM_NAMEOF(pm_arr_every_int), _test_pm_arr_every_int),
+		test(PM_NAMEOF(pm_arr_filter_int), _test_pm_arr_filter_int),
+		test(PM_NAMEOF(pm_arr_find_int), _test_pm_arr_find_int),
+		test(PM_NAMEOF(pm_arr_find_index_int), _test_pm_arr_find_index_int),
+		test(PM_NAMEOF(pm_arr_map_int), _test_pm_arr_map_int),
+		test(PM_NAMEOF(pm_arr_reverse_int), _test_pm_arr_reverse_int),
+		test(PM_NAMEOF(pm_arr_sort_int), _test_pm_arr_sort_int),
+		test(PM_NAMEOF(pm_arr_skip_int), _test_pm_arr_skip_int),
+		test(PM_NAMEOF(pm_arr_take_int), _test_pm_arr_take_int),
+		test(PM_NAMEOF(pm_arr_to_string), _test_pm_arr_to_string),
 	};
 
-	TestSuite suite = test_suite("Arrays", tests);
+	TestSuite suite = test_suite("pim/arrays", tests);
 
 	test_suite_run(suite, sizeof(tests) / sizeof(tests[0]));
 }
