@@ -79,36 +79,6 @@ void test_logger() {
 	LOGGER_DEBUG(simple_logger, "%d %c %d %c %s", 1, '+', 2, '=', str_to_string(3));
 }
 
-Maybe _input_favorite_programming_lang() {
-	const int input_capacity = 10;
-	Maybe maybe_input = cns_prompt("What's your favorite programming language?\n > ", input_capacity);
-
-	if (maybe_failed(maybe_input)) {
-		return maybe_error(maybe_input.error);
-	}
-
-	char* input = (char*)maybe_input.data;
-	input = str_to_lower(input);
-
-	if (!str_equals(input, "c")) {
-		const PmError err = pm_error("invalid_programming_lang", "Nope! You must answer \"C\"", NULL);
-		return maybe_error(&err);
-	}
-	
-	return maybe_success(input);
-}
-
-void test_maybe_2() {
-	Maybe maybe_answer = _input_favorite_programming_lang();
-
-	if (maybe_failed(maybe_answer)) {
-		printf("%s\n", pm_error_to_string(*maybe_answer.error));
-	}
-	else {
-		printf("That's right, that's the only correct answer.\n");
-	}
-}
-
 void test_str_to_string() {
 	int number = 12345;
 	char* string = str_to_string(number);

@@ -5,6 +5,6 @@
 #include <stdlib.h>
 #include "maybe.h"
 
-Maybe cns_prompt(const char* message, size_t capacity);
+PmMaybe cns_prompt(const char* message, size_t capacity);
 
 #endif // CNS_H

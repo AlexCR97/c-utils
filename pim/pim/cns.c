@@ -2,10 +2,10 @@
 
 #include "str_string.h"
 
-Maybe cns_prompt(const char* message, size_t capacity) {
+PmMaybe cns_prompt(const char* message, size_t capacity) {
     if (message == NULL) {
-        const PmError err = pm_error(PM_ERR_NULL_ARGUMENT, "The argument \"message\" is null", NULL);
-        return maybe_error(&err);
+        PmError err = pm_error(PM_ERR_NULL_ARGUMENT, "The argument \"message\" is null", NULL);
+        return pm_maybe_raise(err);
     }
 
     printf("%s", message);
@@ -13,17 +13,17 @@ Maybe cns_prompt(const char* message, size_t capacity) {
     char* input = (char*)malloc(capacity * sizeof(char));
 
     if (input == NULL) {
-        const PmError err = pm_error(PM_ERR_ALLOCATION_FAILED, "Could not allocate buffer for input", NULL);
-        return maybe_error(&err);
+        PmError err = pm_error(PM_ERR_ALLOCATION_FAILED, "Could not allocate buffer for input", NULL);
+        return pm_maybe_raise(err);
     }
 
     if (fgets(input, capacity, stdin) == NULL) {
         free(input);
-        const PmError err = pm_error("invalid_input", NULL, NULL);
-        return maybe_error(&err);
+        PmError err = pm_error("invalid_input", NULL, NULL);
+        return pm_maybe_raise(err);
     }
 
     input = str_trim_trailing(input, '\n');
 
-    return maybe_success(input);
+    return pm_maybe(input);
 }

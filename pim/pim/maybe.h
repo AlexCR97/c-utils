@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include "errors.h"
 
-// Maybe for int
+////////// MaybeInt
 
 typedef struct MaybeInt {
 	int data;
@@ -15,16 +15,15 @@ typedef struct MaybeInt {
 PmMaybeInt pm_maybe_int(int data);
 PmMaybeInt pm_maybe_int_raise(PmError error);
 
-// Maybe for generics
+////////// Maybe (generic)
 
-typedef struct {
-	PmError* error;
+typedef struct PmMaybe {
 	void* data;
-} Maybe;
+	PmError error;
+	bool raised_error;
+} PmMaybe;
 
-Maybe maybe_error(PmError* error);
-Maybe maybe_success(void* data);
-bool maybe_failed(Maybe maybe);
-void maybe_dispose(Maybe* maybe);
+PmMaybe pm_maybe(void* data);
+PmMaybe pm_maybe_raise(PmError error);
 
 #endif // MAYBE_H
