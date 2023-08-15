@@ -24,6 +24,36 @@ PmMaybeStr pm_str_alloc(size_t length) {
     return pm_maybe_str(str);
 }
 
+bool pm_str_contains(const char* str, const char* substring) {
+    if (str == NULL || substring == NULL) {
+        return false; // TODO How to handle NULL args?
+    }
+
+    size_t str_len = strlen(str);
+    size_t substr_len = strlen(substring);
+
+    if (substr_len > str_len) {
+        return false; // TODO How to handle substring greater than string?
+    }
+
+    for (size_t i = 0; i <= str_len - substr_len; i++) {
+        bool found = true;
+
+        for (size_t j = 0; j < substr_len; j++) {
+            if (str[i + j] != substring[j]) {
+                found = false;
+                break;
+            }
+        }
+
+        if (found) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 bool pm_str_equals(char* a, char* b) {
     const int difference = strcmp(a, b);
     return difference == 0;

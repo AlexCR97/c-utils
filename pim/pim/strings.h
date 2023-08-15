@@ -14,6 +14,11 @@
 PmMaybeStr pm_str_alloc(size_t length);
 
 /// <summary>
+/// Checks if a substring is contained within the string.
+/// </summary>
+bool pm_str_contains(const char* str, const char* substring);
+
+/// <summary>
 /// Compares 2 strings.
 /// </summary>
 /// <param name="a">The string to compare to.</param>
