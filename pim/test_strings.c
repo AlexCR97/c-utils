@@ -4,6 +4,15 @@
 #include "pim/strings.h"
 #include "pim/test.h"
 
+void _test_pm_str_contains() {
+	char* str = "This is a string used for testing";
+	PM_ASSERT_EQ(pm_str_contains(str, "a string"), true);
+	PM_ASSERT_EQ(pm_str_contains(str, "a String"), false);
+	PM_ASSERT_EQ(pm_str_contains(str, "d f"), true);
+	PM_ASSERT_EQ(pm_str_contains(str, " "), true);
+	PM_ASSERT_EQ(pm_str_contains(str, "  "), false);
+}
+
 void _test_pm_str_equals() {
 	char* a = "Foo bar!";
 	char* b = "Foo bar!";
@@ -54,6 +63,7 @@ void _test_pm_str_trim_trailing() {
 
 void test_strings() {
 	Test tests[] = {
+		test(PM_NAMEOF(pm_str_contains), _test_pm_str_contains),
 		test(PM_NAMEOF(pm_str_equals), _test_pm_str_equals),
 		test(PM_NAMEOF(pm_str_split), _test_pm_str_split),
 		test(PM_NAMEOF(pm_str_to_lower), _test_pm_str_to_lower),
