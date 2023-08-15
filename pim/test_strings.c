@@ -23,6 +23,11 @@ void _test_pm_str_split() {
 	PM_ASSERT_EQ_STR(tokens[1], "is");
 	PM_ASSERT_EQ_STR(tokens[2], "a");
 	PM_ASSERT_EQ_STR(tokens[3], "string");
+
+	free(tokens[0]);
+	free(tokens[1]);
+	free(tokens[2]);
+	free(tokens[3]);
 	free(tokens);
 }
 
