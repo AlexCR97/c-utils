@@ -315,6 +315,16 @@ char* pm_arr_to_string(int* arr, size_t size) {
 
 #pragma region char*
 
+PmMaybeArrStr pm_arr_alloc_str(size_t length) {
+    char** arr = (char**)malloc(sizeof(char*) * (length + 2)); // +2 to account for the strings and a NULL terminator
+
+    if (arr == NULL) {
+        return pm_maybe_raise_arrstr(pm_error(PM_ERR_ALLOCATION_FAILED, NULL, NULL));
+    }
+
+    return pm_maybe_arrstr(arr);
+}
+
 char* pm_arr_tail_str(char** arr) {
     if (arr == NULL || *arr == NULL) {
         return NULL;  // Return NULL if the input is invalid or the array is empty

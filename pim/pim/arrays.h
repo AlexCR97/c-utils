@@ -63,6 +63,11 @@ char* pm_arr_to_string(int* arr, size_t size);
 
 #pragma region char*
 
+/// <summary>
+/// Allocates an array of string of the specified length;
+/// </summary>
+PmMaybeArrStr pm_arr_alloc_str(size_t length);
+
 char* pm_arr_tail_str(char** arr);
 
 #pragma endregion
