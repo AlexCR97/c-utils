@@ -1,5 +1,5 @@
-#ifndef STR_STRING_H
-#define STR_STRING_H
+#ifndef PM_STRINGS_H
+#define PM_STRINGS_H
 
 #include <stdbool.h>
 #include <stdio.h>
@@ -13,4 +13,4 @@ char* str_to_lower(const char* str);
 char* str_to_string(int num);
 char* str_trim_trailing(const char* str, char trim);
 
-#endif // STR_STRING_H
+#endif // PM_STRINGS_H

@@ -1,6 +1,6 @@
 #include "cns.h"
 
-#include "str_string.h"
+#include "strings.h"
 
 PmMaybe cns_prompt(const char* message, size_t capacity) {
     if (message == NULL) {

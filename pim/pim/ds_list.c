@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ds_list.h"
-#include "str_string.h"
+#include "strings.h"
 #include "str_string_builder.h"
 
 ListNode* _list_node(int data);

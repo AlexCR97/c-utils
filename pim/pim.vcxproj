@@ -135,7 +135,7 @@
     <ClCompile Include="pim\errors.c" />
     <ClCompile Include="pim\log.c" />
     <ClCompile Include="pim\maybe.c" />
-    <ClCompile Include="pim\str_string.c" />
+    <ClCompile Include="pim\strings.c" />
     <ClCompile Include="pim\str_string_builder.c" />
     <ClCompile Include="pim\test.c" />
     <ClCompile Include="test_arrays.c" />
@@ -149,7 +149,7 @@
     <ClInclude Include="pim\errors.h" />
     <ClInclude Include="pim\log.h" />
     <ClInclude Include="pim\maybe.h" />
-    <ClInclude Include="pim\str_string.h" />
+    <ClInclude Include="pim\strings.h" />
     <ClInclude Include="pim\str_string_builder.h" />
     <ClInclude Include="pim\test.h" />
     <ClInclude Include="test_arrays.h" />

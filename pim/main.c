@@ -4,7 +4,7 @@
 #include "pim/errors.h"
 #include "pim/log.h"
 #include "pim/maybe.h"
-#include "pim/str_string.h"
+#include "pim/strings.h"
 #include "pim/str_string_builder.h"
 #include "pim/test.h"
 #include "test_arrays.h"

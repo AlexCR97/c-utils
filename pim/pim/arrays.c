@@ -3,7 +3,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "str_string.h"
+#include "strings.h"
 #include "str_string_builder.h"
 
 const char* _PM_ARR_DELIMETER_HEAD = "{";

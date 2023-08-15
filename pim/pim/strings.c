@@ -1,4 +1,4 @@
-#include "str_string.h"
+#include "strings.h"
 
 #include <ctype.h>
 #include <stdio.h>

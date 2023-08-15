@@ -48,7 +48,7 @@
     <ClCompile Include="pim\maybe.c">
       <Filter>Source Files\pim</Filter>
     </ClCompile>
-    <ClCompile Include="pim\str_string.c">
+    <ClCompile Include="pim\strings.c">
       <Filter>Source Files\pim</Filter>
     </ClCompile>
     <ClCompile Include="pim\str_string_builder.c">
@@ -86,7 +86,7 @@
     <ClInclude Include="pim\maybe.h">
       <Filter>Header Files\pim</Filter>
     </ClInclude>
-    <ClInclude Include="pim\str_string.h">
+    <ClInclude Include="pim\strings.h">
       <Filter>Header Files\pim</Filter>
     </ClInclude>
     <ClInclude Include="pim\str_string_builder.h">

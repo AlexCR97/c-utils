@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 #include "arrays.h"
-#include "str_string.h"
+#include "strings.h"
 
 #define LOG_COLOR_DEFAULT "\x1B[0m"
 #define LOG_COLOR_RED     "\x1B[31m"
