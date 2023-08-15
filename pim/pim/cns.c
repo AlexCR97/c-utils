@@ -23,7 +23,7 @@ PmMaybe cns_prompt(const char* message, size_t capacity) {
         return pm_maybe_raise(err);
     }
 
-    input = str_trim_trailing(input, '\n');
+    input = pm_str_trim_trailing(input, '\n');
 
     return pm_maybe(input);
 }

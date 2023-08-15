@@ -292,7 +292,7 @@ char* pm_arr_to_string(int* arr, size_t size) {
     string_builder_append(&sb, " ");
 
     for (size_t i = 0; i < size; i++) {
-        string_builder_append(&sb, str_to_string(arr[i]));
+        string_builder_append(&sb, pm_str_to_string_int(arr[i]));
 
         if (i != size - 1) {
             string_builder_append(&sb, ", ");

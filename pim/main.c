@@ -76,12 +76,12 @@ void test_logger() {
 	simple_logger.show_level = false;
 	simple_logger.show_timestamp = false;
 	LOGGER_DEBUG(simple_logger, "Hello, %s", "World!");
-	LOGGER_DEBUG(simple_logger, "%d %c %d %c %s", 1, '+', 2, '=', str_to_string(3));
+	LOGGER_DEBUG(simple_logger, "%d %c %d %c %s", 1, '+', 2, '=', pm_str_to_string_int(3));
 }
 
 void test_str_to_string() {
 	int number = 12345;
-	char* string = str_to_string(number);
+	char* string = pm_str_to_string_int(number);
 	printf("number: %i\n", number);
 	printf("string: %s\n", string);
 }

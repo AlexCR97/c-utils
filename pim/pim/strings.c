@@ -5,12 +5,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-bool str_equals(char* a, char* b) {
+/// <summary>
+/// A character that represents the end of a string.
+/// Strings should always end with this character. The purpose is to distinguish the
+/// end of a string and to allow string manipulation functions to work properly.
+/// </summary>
+const char _PM_STR_NULL_TERMINATOR = '\0';
+const int _PM_STR_NULL_TERMINATOR_OFFSET = 1;
+
+bool pm_str_equals(char* a, char* b) {
     const int difference = strcmp(a, b);
     return difference == 0;
 }
 
-char** str_split(const char* str, char split_by) {
+char** pm_str_split(const char* str, char split_by) {
     // Count the number of occurrences of the split character
     int count = 0;
     const char* ptr = str;
@@ -60,7 +68,7 @@ char** str_split(const char* str, char split_by) {
     return result;
 }
 
-char* str_to_lower(const char* str) {
+char* pm_str_to_lower(const char* str) {
     if (str == NULL) {
         return NULL; // Handle NULL input gracefully
     }
@@ -78,14 +86,14 @@ char* str_to_lower(const char* str) {
     return lower_str;
 }
 
-char* str_to_string(int num) {
+char* pm_str_to_string_int(int num) {
     int length = snprintf(NULL, 0, "%d", num);
     char* str = (char*)malloc((length + 1) * sizeof(char)); // +1 for null terminator
     snprintf(str, length + 1, "%d", num);
     return str;
 }
 
-char* str_trim_trailing(const char* str, char trim) {
+char* pm_str_trim_trailing(const char* str, char trim) {
     if (str == NULL) {
         return NULL; // Handle NULL input gracefully
     }
