@@ -52,6 +52,12 @@ PmMaybeStr pm_str_to_upper(const char* str);
 PmMaybeStr pm_str_to_string_int(int num);
 
 /// <summary>
+/// Removes the specified leading characters from the string.
+/// </summary>
+/// <returns>A string without the trailing characters.</returns>
+PmMaybeStr pm_str_trim_leading(const char* str, char trim);
+
+/// <summary>
 /// Removes the specified trailing characters from the string.
 /// </summary>
 /// <returns>A string without the trailing characters.</returns>

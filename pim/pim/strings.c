@@ -185,6 +185,33 @@ PmMaybeStr pm_str_to_string_int(int num) {
     return pm_maybe_str(str);
 }
 
+PmMaybeStr pm_str_trim_leading(const char* str, char trim) {
+    if (str == NULL) {
+        return pm_maybe_raise_str(pm_error(PM_ERR_NULL_ARGUMENT, NULL, NULL));
+    }
+
+    size_t len = strlen(str);
+    size_t start = 0;
+
+    while (start < len && str[start] == trim) {
+        start++;
+    }
+
+    size_t trimmed_len = len - start;
+    PmMaybeStr maybe_trimmed = pm_str_alloc(trimmed_len);
+
+    if (maybe_trimmed.raised_error) {
+        return maybe_trimmed;
+    }
+
+    char* trimmed = maybe_trimmed.data;
+
+    strncpy_s(trimmed, trimmed_len + _PM_STR_NULL_TERMINATOR_OFFSET, str + start, trimmed_len);
+    trimmed[trimmed_len] = _PM_STR_NULL_TERMINATOR;
+
+    return pm_maybe_str(trimmed);
+}
+
 PmMaybeStr pm_str_trim_trailing(const char* str, char trim) {
     if (str == NULL) {
         return pm_maybe_raise_str(pm_error(PM_ERR_NULL_ARGUMENT, NULL, NULL));
