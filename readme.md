@@ -7,6 +7,7 @@ C Utils is a collection of utility libraries that aims to facilitate development
 - [Date & Time](#date--time)
 - [Data Structures](#data-structures)
 - [Error Handling](#error-handling)
+- [File System](#file-system)
 - [Logging](#logging)
 - [Strings](#strings)
 - [Testing](#testing)
@@ -62,6 +63,8 @@ C Utils is a collection of utility libraries that aims to facilitate development
 | Push     |    ✓    |      -      |     -     |
 | ToString |    ✓    |      -      |     -     |
 
+## Directories
+
 ## Error Handling
 
 |                 | Pending | In Progress | Completed |
@@ -95,6 +98,31 @@ C Utils is a collection of utility libraries that aims to facilitate development
 | Raise (generic)        |         |             |     ✓     |
 | Success (generic)      |         |             |     ✓     |
 
+## File System
+
+|             | Pending | In Progress | Completed |
+| ----------- | :-----: | :---------: | :-------: |
+| AppendLines |    ✓    |             |           |
+| AppendText  |    ✓    |             |           |
+| CopyDir     |    ✓    |             |           |
+| CopyFile    |    ✓    |             |           |
+| CreateFile  |    ✓    |             |           |
+| DeleteDir   |    ✓    |             |           |
+| DeleteFile  |    ✓    |             |           |
+| ExistsDir   |    ✓    |             |           |
+| ExistsFile  |    ✓    |             |           |
+| List        |    ✓    |             |           |
+| ListDirs    |    ✓    |             |           |
+| ListFiles   |    ✓    |             |           |
+| MoveDir     |    ✓    |             |           |
+| MoveFile    |    ✓    |             |           |
+| ReadBytes   |    ✓    |             |           |
+| ReadLines   |    ✓    |             |           |
+| ReadText    |    ✓    |             |           |
+| WriteBytes  |    ✓    |             |           |
+| WriteLines  |    ✓    |             |           |
+| WriteText   |    ✓    |             |           |
+
 ## Logging
 
 |                        | Pending | In Progress | Completed |
@@ -113,23 +141,26 @@ C Utils is a collection of utility libraries that aims to facilitate development
 | ----------------- | :-----: | :---------: | :-------: |
 | Allocate          |         |             |     ✓     |
 | Builder           |    ✓    |             |           |
-| Contains          |    ✓    |             |           |
+| Contains          |         |             |     ✓     |
 | Equals            |         |             |     ✓     |
+| PadLeft           |    ✓    |             |           |
+| PadRight          |    ✓    |             |           |
 | Reverse           |    ✓    |             |           |
 | Split             |         |             |     ✓     |
 | ToLower           |         |             |     ✓     |
-| ToUpper           |    ✓    |             |           |
+| ToUpper           |         |             |     ✓     |
 | ToString (int)    |         |             |     ✓     |
 | ToString (float)  |    ✓    |             |           |
 | ToString (double) |    ✓    |             |           |
-| Trim Leading      |    ✓    |             |           |
+| Trim Leading      |         |             |     ✓     |
 | Trim Trailing     |         |             |     ✓     |
 
 ## Testing
 
-|             | Pending | In Progress | Completed |
-| ----------- | :-----: | :---------: | :-------: |
-| Test Suites |         |             |     ✓     |
-| Unit Tests  |         |             |     ✓     |
-| Assertions  |         |             |     ✓     |
-| Test Runner |         |             |     ✓     |
+|              | Pending | In Progress | Completed |
+| ------------ | :-----: | :---------: | :-------: |
+| Assertions   |         |             |     ✓     |
+| Benchmarking |    ✓    |             |           |
+| Test Runner  |         |             |     ✓     |
+| Test Suites  |         |             |     ✓     |
+| Unit Tests   |         |             |     ✓     |
