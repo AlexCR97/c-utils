@@ -142,6 +142,33 @@ PmMaybeStr pm_str_to_lower(const char* str) {
     return pm_maybe_str(lower_str);
 }
 
+PmMaybeStr pm_str_to_upper(const char* str) {
+    if (str == NULL) {
+        return pm_maybe_raise_str(pm_error(PM_ERR_NULL_ARGUMENT, NULL, NULL));
+    }
+
+    size_t len = strlen(str);
+    PmMaybeStr maybe_str = pm_str_alloc(len);
+
+    if (maybe_str.raised_error) {
+        return maybe_str;
+    }
+
+    char* upper_str = maybe_str.data;
+
+    if (upper_str == NULL) {
+        return pm_maybe_raise_str(pm_error(PM_ERR_ALLOCATION_FAILED, NULL, NULL));
+    }
+
+    for (size_t i = 0; i < len; i++) {
+        upper_str[i] = toupper(str[i]);
+    }
+
+    upper_str[len] = _PM_STR_NULL_TERMINATOR;
+
+    return pm_maybe_str(upper_str);
+}
+
 PmMaybeStr pm_str_to_string_int(int num) {
     int length = snprintf(NULL, 0, "%d", num);
     

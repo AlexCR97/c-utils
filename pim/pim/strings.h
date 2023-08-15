@@ -41,6 +41,12 @@ PmMaybeArrStr pm_str_split(const char* str, char split_by);
 PmMaybeStr pm_str_to_lower(const char* str);
 
 /// <summary>
+/// Converts a string to uppercase.
+/// </summary>
+/// <returns>An uppercase string.</returns>
+PmMaybeStr pm_str_to_upper(const char* str);
+
+/// <summary>
 /// Converts an int to it's string representation.
 /// </summary>
 PmMaybeStr pm_str_to_string_int(int num);
