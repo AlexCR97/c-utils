@@ -26,10 +26,18 @@ void _test_pm_str_split() {
 	free(tokens);
 }
 
+void _test_pm_str_to_lower() {
+	char* str = "This Is A String Used For Testing\0";
+	char* str_lower = pm_str_to_lower(str);
+	PM_ASSERT_EQ_STR(str_lower, "this is a string used for testing");
+	free(str_lower);
+}
+
 void test_strings() {
 	Test tests[] = {
 		test(PM_NAMEOF(pm_str_equals), _test_pm_str_equals),
 		test(PM_NAMEOF(pm_str_split), _test_pm_str_split),
+		test(PM_NAMEOF(pm_str_to_lower), _test_pm_str_to_lower),
 	};
 
 	TestSuite suite = test_suite("pim/strings", tests);
