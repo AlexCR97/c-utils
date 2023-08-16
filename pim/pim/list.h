@@ -1,20 +1,17 @@
 #ifndef PM_LIST_H
 #define PM_LIST_H
 
-#define LIST_DELIMETER_HEAD "["
-#define LIST_DELIMETER_TAIL "]"
-
-typedef struct {
+typedef struct PmListNodeInt {
     int data;
-    struct ListNode* next;
-} ListNode;
+    struct PmListNodeInt* next;
+} PmListNodeInt;
 
-typedef struct {
-    ListNode* head;
-} List;
+typedef struct PmListInt {
+    PmListNodeInt* head;
+} PmListInt;
 
-List list();
-void list_push(List* list, int data);
-char* list_to_string(List list);
+PmListInt pm_list();
+void pm_list_push(PmListInt* list, int data);
+char* pm_list_to_string(PmListInt list);
 
 #endif // PM_LIST_H

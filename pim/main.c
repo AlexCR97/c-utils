@@ -8,11 +8,11 @@
 #include "test_strings.h"
 
 void test_ds_list() {
-	List my_list = list();
-	list_push(&my_list, 1);
-	list_push(&my_list, 2);
-	list_push(&my_list, 3);
-	printf("list: %s\n", list_to_string(my_list));
+	PmListInt my_list = pm_list();
+	pm_list_push(&my_list, 1);
+	pm_list_push(&my_list, 2);
+	pm_list_push(&my_list, 3);
+	printf("list: %s\n", pm_list_to_string(my_list));
 }
 
 void test_err() {
