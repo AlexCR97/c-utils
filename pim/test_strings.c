@@ -25,6 +25,20 @@ void _test_pm_str_equals() {
 	PM_ASSERT_EQ(are_equal_cd, false);
 }
 
+void _test_pm_str_pad_start() {
+	char* str = "this is a string\0";
+	char* str_padded = pm_str_pad_start(str, ' ', 4).data;
+	PM_ASSERT_EQ_STR(str_padded, "    this is a string");
+	free(str_padded);
+}
+
+void _test_pm_str_pad_end() {
+	char* str = "this is a string\0";
+	char* str_padded = pm_str_pad_end(str, ' ', 4).data;
+	PM_ASSERT_EQ_STR(str_padded, "this is a string    ");
+	free(str_padded);
+}
+
 void _test_pm_str_split() {
 	char* str = "this is a string\0";
 	char** tokens = pm_str_split(str, ' ').data;
@@ -79,7 +93,8 @@ void test_strings() {
 	Test tests[] = {
 		test(PM_NAMEOF(pm_str_contains), _test_pm_str_contains),
 		test(PM_NAMEOF(pm_str_equals), _test_pm_str_equals),
-		test(PM_NAMEOF(pm_str_split), _test_pm_str_split),
+		test(PM_NAMEOF(pm_str_pad_start), _test_pm_str_pad_start),
+		test(PM_NAMEOF(pm_str_pad_end), _test_pm_str_pad_end),
 		test(PM_NAMEOF(pm_str_to_lower), _test_pm_str_to_lower),
 		test(PM_NAMEOF(pm_str_to_upper), _test_pm_str_to_upper),
 		test(PM_NAMEOF(pm_str_to_string_int), _test_pm_str_to_string_int),
