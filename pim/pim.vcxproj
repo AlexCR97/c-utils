@@ -135,6 +135,7 @@
     <ClCompile Include="pim\dt.c" />
     <ClCompile Include="pim\errors.c" />
     <ClCompile Include="pim\log.c" />
+    <ClCompile Include="pim\map.c" />
     <ClCompile Include="pim\maybe.c" />
     <ClCompile Include="pim\strings.c" />
     <ClCompile Include="pim\test.c" />
@@ -151,6 +152,7 @@
     <ClInclude Include="pim\dt.h" />
     <ClInclude Include="pim\errors.h" />
     <ClInclude Include="pim\log.h" />
+    <ClInclude Include="pim\map.h" />
     <ClInclude Include="pim\maybe.h" />
     <ClInclude Include="pim\strings.h" />
     <ClInclude Include="pim\test.h" />

@@ -1,6 +1,7 @@
 #include "pim/errors.h"
 #include "pim/hashmap.h"
 #include "pim/log.h"
+#include "pim/map.h"
 #include "pim/strings.h"
 #include "pim/test.h"
 #include "test_arrays.h"
@@ -83,15 +84,28 @@ void test_hashmap() {
 	cleanup(&map);
 }
 
+void test_map() {
+	PmMap map = pm_map(PM_DATA_TYPE_STRING, PM_DATA_TYPE_INT, 10);
+	pm_map_set(&map, "key1", 1);
+	pm_map_set(&map, "key2", 2);
+	pm_map_set(&map, "key3", 3);
+	PM_ASSERT_EQ(pm_map_get(map, "key1"), 1);
+	PM_ASSERT_EQ(pm_map_get(map, "key2"), 2);
+	PM_ASSERT_EQ(pm_map_get(map, "key3"), 3);
+	PM_ASSERT(pm_map_get(map, "key4") == NULL);
+	pm_map_dispose(&map);
+}
+
 int main() {
 	//test_arrays();
-	test_hashmap();
 	//test_list();
 	//test_maybe();
 	//test_strings();
 
 	//test_err();
 	//test_logger();
+	//test_hashmap();
+	test_map();
 
 	return 0;
 }
