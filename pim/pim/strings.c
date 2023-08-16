@@ -322,12 +322,20 @@ PmStringBuilder pm_str_builder() {
 void pm_str_builder_append(PmStringBuilder* sb, const char* str) {
     size_t str_length = strlen(str);
 
-    if (sb->length + str_length + 1 > sb->capacity) {
-        sb->capacity = sb->length + str_length + 1; // +1 for null terminator
-        sb->data = (char*)realloc(sb->data, sb->capacity * sizeof(char));
+    if (sb->length + str_length + _PM_STR_NULL_TERMINATOR_OFFSET > sb->capacity) {
+        sb->capacity = sb->length + str_length + _PM_STR_NULL_TERMINATOR_OFFSET;
+
+        char* extended_data = (char*)realloc(sb->data, sb->capacity * sizeof(char));
+
+        if (extended_data == NULL) {
+            // TODO how to handle NULL?
+        }
+
+        sb->data = extended_data;
     }
 
     strcpy_s(sb->data + sb->length, sb->capacity - sb->length, str);
+
     sb->length += str_length;
 }
 

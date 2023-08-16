@@ -1,34 +1,11 @@
-#include "pim/arrays.h"
-#include "pim/cns.h"
 #include "pim/ds_list.h"
 #include "pim/errors.h"
 #include "pim/log.h"
-#include "pim/maybe.h"
 #include "pim/strings.h"
 #include "pim/test.h"
 #include "test_arrays.h"
 #include "test_maybe.h"
 #include "test_strings.h"
-
-//int* _increment_by_index(size_t index, int* item) {
-//	int* result = malloc(sizeof(int));
-//	*result = *item + index;
-//	return result;
-//}
-//
-//void test_arr_map() {
-//	Logger log = logger(LOG_LEVEL_DEBUG, "test_arr_map");
-//
-//	int nums[] = { 1, 2, 3, 4, 5 };
-//	const int nums_length = PM_ARR_LENGTH(nums);
-//
-//	LOGGER_DEBUG(log, "Nums:");
-//	LOGGER_DEBUG(log, pm_arr_to_string(nums, nums_length));
-//
-//	int* mapped_nums = pm_arr_map(nums, sizeof(int), nums_length, _increment_by_index);
-//	LOGGER_DEBUG(log, "Mapped nums:");
-//	LOGGER_DEBUG(log, pm_arr_to_string(mapped_nums, nums_length));
-//}
 
 void test_ds_list() {
 	List my_list = list();
@@ -80,46 +57,14 @@ void test_logger() {
 	LOGGER_DEBUG(simple_logger, "%d %c %d %c %s", 1, '+', 2, '=', pm_str_to_string_int(3).data);
 }
 
-void test_string_builder() {
-	PmStringBuilder sb = pm_str_builder();
-	pm_str_builder_append(&sb, "Hello, ");
-	pm_str_builder_append(&sb, "world!");
-	pm_str_builder_append(&sb, "\n");
-	pm_str_builder_append(&sb, "This is a new line.");
-	printf("%s\n", pm_str_builder_to_string(sb));
-	pm_str_builder_dispose(&sb);
-
-	sb = pm_str_builder();
-	pm_str_builder_append(&sb, "After dispose: ");
-	pm_str_builder_append(&sb, "New content!");
-	printf("%s\n", pm_str_builder_to_string(sb));
-}
-
 int main() {
 	test_arrays();
 	test_maybe();
 	test_strings();
 
-	/*Test tests[] = {
-		test("Test 1", _test_1),
-		test("Test 2", _test_2),
-	};
-	TestSuite suite = test_suite("My Test Suite", tests);
-	test_suite_run(suite, sizeof(tests) / sizeof(tests[0]));
-
-	Test tests2[] = {
-		test("Test 3", _test_3),
-		test("Test 4", _test_4),
-	};
-	TestSuite suite2 = test_suite("My Test Suite 2", tests2);
-	test_suite_run(suite2, sizeof(tests2) / sizeof(tests2[0]));*/
-
-	//test_arr_map();
 	//test_ds_list();
 	//test_err();
-	test_logger();
-	//test_maybe_2();
-	//test_string_builder();
+	//test_logger();
 
 	return 0;
 }
