@@ -60,6 +60,9 @@
     <ClCompile Include="test_strings.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="test_list.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pim\test.h">
@@ -96,6 +99,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="test_strings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

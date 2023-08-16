@@ -14,6 +14,22 @@ PmListInt pm_list() {
     return list;
 }
 
+void pm_list_dispose(PmListInt* list) {
+    if (list == NULL) {
+        return;
+    }
+
+    PmListNodeInt* current = list->head;
+
+    while (current != NULL) {
+        PmListNodeInt* temp = current;
+        current = current->next;
+        free(temp);
+    }
+
+    list->head = NULL;
+}
+
 void pm_list_push(PmListInt* list, int data) {
     PmListNodeInt* new_node = _list_node(data);
 

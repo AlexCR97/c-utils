@@ -1,19 +1,11 @@
 #include "pim/errors.h"
-#include "pim/list.h"
 #include "pim/log.h"
 #include "pim/strings.h"
 #include "pim/test.h"
 #include "test_arrays.h"
+#include "test_list.h"
 #include "test_maybe.h"
 #include "test_strings.h"
-
-void test_ds_list() {
-	PmListInt my_list = pm_list();
-	pm_list_push(&my_list, 1);
-	pm_list_push(&my_list, 2);
-	pm_list_push(&my_list, 3);
-	printf("list: %s\n", pm_list_to_string(my_list));
-}
 
 void test_err() {
 	Logger log = logger(LOG_LEVEL_DEBUG, "test_err");
@@ -58,11 +50,11 @@ void test_logger() {
 }
 
 int main() {
-	test_arrays();
-	test_maybe();
-	test_strings();
+	//test_arrays();
+	test_list();
+	//test_maybe();
+	//test_strings();
 
-	//test_ds_list();
 	//test_err();
 	//test_logger();
 
