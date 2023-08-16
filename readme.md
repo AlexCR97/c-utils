@@ -140,11 +140,11 @@ C Utils is a collection of utility libraries that aims to facilitate development
 |                   | Pending | In Progress | Completed |
 | ----------------- | :-----: | :---------: | :-------: |
 | Allocate          |         |             |     ✓     |
-| Builder           |    ✓    |             |           |
+| Builder           |         |             |     ✓     |
 | Contains          |         |             |     ✓     |
 | Equals            |         |             |     ✓     |
-| PadLeft           |    ✓    |             |           |
-| PadRight          |    ✓    |             |           |
+| PadLeft           |         |             |     ✓     |
+| PadRight          |         |             |     ✓     |
 | Reverse           |    ✓    |             |           |
 | Split             |         |             |     ✓     |
 | ToLower           |         |             |     ✓     |
