@@ -305,9 +305,15 @@ PmMaybeStr pm_str_trim_trailing(const char* str, char trim) {
 const int STRING_BUILDER_INITIAL_CAPACITY = 16;
 
 PmStringBuilder pm_str_builder() {
+    PmMaybeStr maybe_str = pm_str_alloc(STRING_BUILDER_INITIAL_CAPACITY);
+
+    if (maybe_str.raised_error) {
+        // TODO How to handle error?
+    }
+
     PmStringBuilder sb;
-    sb.data = (char*)malloc(STRING_BUILDER_INITIAL_CAPACITY * sizeof(char));
-    sb.data[0] = '\0';
+    sb.data = maybe_str.data;
+    sb.data[0] = '\0'; // TODO is this necessary?
     sb.length = 0;
     sb.capacity = STRING_BUILDER_INITIAL_CAPACITY;
     return sb;

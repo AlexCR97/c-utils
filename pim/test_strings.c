@@ -4,6 +4,21 @@
 #include "pim/strings.h"
 #include "pim/test.h"
 
+void _test_pm_str_builder() {
+	PmStringBuilder sb = pm_str_builder();
+
+	pm_str_builder_append(&sb, "Hello, ");
+	PM_ASSERT_EQ_STR(pm_str_builder_to_string(sb), "Hello, ");
+
+	pm_str_builder_append(&sb, "world");
+	PM_ASSERT_EQ_STR(pm_str_builder_to_string(sb), "Hello, world");
+
+	pm_str_builder_append(&sb, "!");
+	PM_ASSERT_EQ_STR(pm_str_builder_to_string(sb), "Hello, world!");
+
+	pm_str_builder_dispose(&sb);
+}
+
 void _test_pm_str_contains() {
 	char* str = "This is a string used for testing";
 	PM_ASSERT_EQ(pm_str_contains(str, "a string"), true);
@@ -91,6 +106,7 @@ void _test_pm_str_trim_trailing() {
 
 void test_strings() {
 	Test tests[] = {
+		test(PM_NAMEOF(pm_str_builder), _test_pm_str_builder),
 		test(PM_NAMEOF(pm_str_contains), _test_pm_str_contains),
 		test(PM_NAMEOF(pm_str_equals), _test_pm_str_equals),
 		test(PM_NAMEOF(pm_str_pad_start), _test_pm_str_pad_start),
