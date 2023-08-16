@@ -1,5 +1,5 @@
-#ifndef DS_LIST_H
-#define DS_LIST_H
+#ifndef PM_LIST_H
+#define PM_LIST_H
 
 #define LIST_DELIMETER_HEAD "["
 #define LIST_DELIMETER_TAIL "]"
@@ -17,4 +17,4 @@ List list();
 void list_push(List* list, int data);
 char* list_to_string(List list);
 
-#endif // DS_LIST_H
+#endif // PM_LIST_H

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "ds_list.h"
+#include "list.h"
 #include "strings.h"
 
 ListNode* _list_node(int data);

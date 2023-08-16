@@ -33,7 +33,7 @@
     <ClCompile Include="pim\cns.c">
       <Filter>Source Files\pim</Filter>
     </ClCompile>
-    <ClCompile Include="pim\ds_list.c">
+    <ClCompile Include="pim\list.c">
       <Filter>Source Files\pim</Filter>
     </ClCompile>
     <ClCompile Include="pim\dt.c">
@@ -71,7 +71,7 @@
     <ClInclude Include="pim\cns.h">
       <Filter>Header Files\pim</Filter>
     </ClInclude>
-    <ClInclude Include="pim\ds_list.h">
+    <ClInclude Include="pim\list.h">
       <Filter>Header Files\pim</Filter>
     </ClInclude>
     <ClInclude Include="pim\dt.h">
