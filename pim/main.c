@@ -1,4 +1,5 @@
 #include "pim/errors.h"
+#include "pim/hashmap.h"
 #include "pim/log.h"
 #include "pim/strings.h"
 #include "pim/test.h"
@@ -49,9 +50,43 @@ void test_logger() {
 	LOGGER_DEBUG(simple_logger, "%d %c %d %c %s", 1, '+', 2, '=', pm_str_to_string_int(3).data);
 }
 
+void test_hashmap() {
+	size_t customSize = 20; // Custom hashmap size
+	Hashmap* map = createHashmap(customSize);
+
+	map->keyDataType = STRING_KEY; // Set the key data type
+
+	char key1[] = "key1";
+	int value1 = 100;
+	insert(&map, key1, &value1);
+
+	char key2[] = "key2";
+	double value2 = 3.14;
+	insert(&map, key2, &value2);
+
+	int* result1 = (int*)get(&map, key1);
+	if (result1) {
+		printf("Value for key1: %d\n", *result1);
+	}
+	else {
+		printf("Key1 not found\n");
+	}
+
+	double* result2 = (double*)get(&map, key2);
+	if (result2) {
+		printf("Value for key2: %lf\n", *result2);
+	}
+	else {
+		printf("Key2 not found\n");
+	}
+
+	cleanup(&map);
+}
+
 int main() {
 	//test_arrays();
-	test_list();
+	test_hashmap();
+	//test_list();
 	//test_maybe();
 	//test_strings();
 

@@ -63,6 +63,9 @@
     <ClCompile Include="test_list.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pim\hashmap.c">
+      <Filter>Source Files\pim</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pim\test.h">
@@ -103,6 +106,9 @@
     </ClInclude>
     <ClInclude Include="test_list.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pim\hashmap.h">
+      <Filter>Header Files\pim</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
