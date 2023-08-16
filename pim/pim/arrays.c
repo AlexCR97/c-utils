@@ -287,27 +287,27 @@ PmMaybeArrInt pm_arr_take_int(int arr[], size_t arr_length, size_t count) {
 
 // TODO return PmMaybeStr
 char* pm_arr_to_string(int* arr, size_t size) {
-    StringBuilder sb = string_builder();
-    string_builder_append(&sb, _PM_ARR_DELIMETER_HEAD);
-    string_builder_append(&sb, " ");
+    PmStringBuilder sb = pm_str_builder();
+    pm_str_builder_append(&sb, _PM_ARR_DELIMETER_HEAD);
+    pm_str_builder_append(&sb, " ");
 
     for (size_t i = 0; i < size; i++) {
         char* str = pm_str_to_string_int(arr[i]).data;
 
         // TODO handle error
 
-        string_builder_append(&sb, str);
+        pm_str_builder_append(&sb, str);
 
         if (i != size - 1) {
-            string_builder_append(&sb, ", ");
+            pm_str_builder_append(&sb, ", ");
         } else {
-            string_builder_append(&sb, " ");
+            pm_str_builder_append(&sb, " ");
         }
     }
 
-    string_builder_append(&sb, _PM_ARR_DELIMETER_TAIL);
+    pm_str_builder_append(&sb, _PM_ARR_DELIMETER_TAIL);
 
-    return string_builder_to_string(sb);
+    return pm_str_builder_to_string(sb);
 }
 
 #pragma endregion

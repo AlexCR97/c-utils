@@ -41,9 +41,9 @@ ListNode* _list_node(int data) {
 }
 
 char* list_to_string(List list) {
-    StringBuilder sb = string_builder();
-    string_builder_append(&sb, LIST_DELIMETER_HEAD);
-    string_builder_append(&sb, " ");
+    PmStringBuilder sb = pm_str_builder();
+    pm_str_builder_append(&sb, LIST_DELIMETER_HEAD);
+    pm_str_builder_append(&sb, " ");
 
     ListNode* current_node = list.head;
 
@@ -52,18 +52,18 @@ char* list_to_string(List list) {
 
         // TODO handle error
 
-        string_builder_append(&sb, str);
+        pm_str_builder_append(&sb, str);
 
         if (current_node->next != NULL) {
-            string_builder_append(&sb, ", ");
+            pm_str_builder_append(&sb, ", ");
         } else {
-            string_builder_append(&sb, " ");
+            pm_str_builder_append(&sb, " ");
         }
 
         current_node = current_node->next;
     }
 
-    string_builder_append(&sb, LIST_DELIMETER_TAIL);
+    pm_str_builder_append(&sb, LIST_DELIMETER_TAIL);
 
-    return string_builder_to_string(sb);
+    return pm_str_builder_to_string(sb);
 }

@@ -20,11 +20,11 @@ void pm_error_dispose(PmError error) {
 }
 
 char* pm_error_to_string(PmError error) {
-	StringBuilder sb = string_builder();
-	string_builder_append(&sb, _error_code_get(error));
-	string_builder_append(&sb, ": ");
-	string_builder_append(&sb, _error_message_get(error));
-	return string_builder_to_string(sb);
+	PmStringBuilder sb = pm_str_builder();
+	pm_str_builder_append(&sb, _error_code_get(error));
+	pm_str_builder_append(&sb, ": ");
+	pm_str_builder_append(&sb, _error_message_get(error));
+	return pm_str_builder_to_string(sb);
 }
 
 char* _error_code_get(PmError error) {

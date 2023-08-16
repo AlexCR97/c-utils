@@ -304,8 +304,8 @@ PmMaybeStr pm_str_trim_trailing(const char* str, char trim) {
 
 const int STRING_BUILDER_INITIAL_CAPACITY = 16;
 
-StringBuilder string_builder() {
-    StringBuilder sb;
+PmStringBuilder pm_str_builder() {
+    PmStringBuilder sb;
     sb.data = (char*)malloc(STRING_BUILDER_INITIAL_CAPACITY * sizeof(char));
     sb.data[0] = '\0';
     sb.length = 0;
@@ -313,7 +313,7 @@ StringBuilder string_builder() {
     return sb;
 }
 
-void string_builder_append(StringBuilder* sb, const char* str) {
+void pm_str_builder_append(PmStringBuilder* sb, const char* str) {
     size_t str_length = strlen(str);
 
     if (sb->length + str_length + 1 > sb->capacity) {
@@ -325,11 +325,11 @@ void string_builder_append(StringBuilder* sb, const char* str) {
     sb->length += str_length;
 }
 
-void string_builder_dispose(StringBuilder* sb) {
+void pm_str_builder_dispose(PmStringBuilder* sb) {
     free(sb->data);
 }
 
-char* string_builder_to_string(StringBuilder sb) {
+char* pm_str_builder_to_string(PmStringBuilder sb) {
     return sb.data;
 }
 

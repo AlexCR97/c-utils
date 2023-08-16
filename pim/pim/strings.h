@@ -77,16 +77,16 @@ PmMaybeStr pm_str_trim_trailing(const char* str, char trim);
 
 #pragma region PmStringBuilder
 
-typedef struct StringBuilder {
+typedef struct PmStringBuilder {
     char* data;
     size_t length;
     size_t capacity;
-} StringBuilder;
+} PmStringBuilder;
 
-StringBuilder string_builder();
-void string_builder_append(StringBuilder* sb, const char* str);
-void string_builder_dispose(StringBuilder* sb);
-char* string_builder_to_string(StringBuilder sb);
+PmStringBuilder pm_str_builder();
+void pm_str_builder_append(PmStringBuilder* sb, const char* str);
+void pm_str_builder_dispose(PmStringBuilder* sb);
+char* pm_str_builder_to_string(PmStringBuilder sb);
 
 #pragma endregion
 

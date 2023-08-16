@@ -81,18 +81,18 @@ void test_logger() {
 }
 
 void test_string_builder() {
-	StringBuilder sb = string_builder();
-	string_builder_append(&sb, "Hello, ");
-	string_builder_append(&sb, "world!");
-	string_builder_append(&sb, "\n");
-	string_builder_append(&sb, "This is a new line.");
-	printf("%s\n", string_builder_to_string(sb));
-	string_builder_dispose(&sb);
+	PmStringBuilder sb = pm_str_builder();
+	pm_str_builder_append(&sb, "Hello, ");
+	pm_str_builder_append(&sb, "world!");
+	pm_str_builder_append(&sb, "\n");
+	pm_str_builder_append(&sb, "This is a new line.");
+	printf("%s\n", pm_str_builder_to_string(sb));
+	pm_str_builder_dispose(&sb);
 
-	sb = string_builder();
-	string_builder_append(&sb, "After dispose: ");
-	string_builder_append(&sb, "New content!");
-	printf("%s\n", string_builder_to_string(sb));
+	sb = pm_str_builder();
+	pm_str_builder_append(&sb, "After dispose: ");
+	pm_str_builder_append(&sb, "New content!");
+	printf("%s\n", pm_str_builder_to_string(sb));
 }
 
 int main() {
