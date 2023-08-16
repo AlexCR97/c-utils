@@ -1,6 +1,6 @@
 #include <stddef.h>
 #include "errors.h"
-#include "str_string_builder.h"
+#include "strings.h"
 
 char* _error_code_get(PmError error);
 char* _error_message_get(PmError error);

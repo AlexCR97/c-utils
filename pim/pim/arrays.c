@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "strings.h"
-#include "str_string_builder.h"
 
 const char* _PM_ARR_DELIMETER_HEAD = "{";
 const char* _PM_ARR_DELIMETER_TAIL = "}";

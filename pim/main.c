@@ -5,7 +5,6 @@
 #include "pim/log.h"
 #include "pim/maybe.h"
 #include "pim/strings.h"
-#include "pim/str_string_builder.h"
 #include "pim/test.h"
 #include "test_arrays.h"
 #include "test_maybe.h"

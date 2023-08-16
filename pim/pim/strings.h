@@ -75,4 +75,19 @@ PmMaybeStr pm_str_trim_leading(const char* str, char trim);
 /// <returns>A string without the trailing characters.</returns>
 PmMaybeStr pm_str_trim_trailing(const char* str, char trim);
 
+#pragma region PmStringBuilder
+
+typedef struct StringBuilder {
+    char* data;
+    size_t length;
+    size_t capacity;
+} StringBuilder;
+
+StringBuilder string_builder();
+void string_builder_append(StringBuilder* sb, const char* str);
+void string_builder_dispose(StringBuilder* sb);
+char* string_builder_to_string(StringBuilder sb);
+
+#pragma endregion
+
 #endif // PM_STRINGS_H
