@@ -59,6 +59,68 @@ bool pm_str_equals(char* a, char* b) {
     return difference == 0;
 }
 
+PmMaybeStr pm_str_pad_start(const char* str, char pad, int amount) {
+    if (str == NULL) {
+        return pm_maybe_raise_str(pm_error(PM_ERR_NULL_ARGUMENT, NULL, NULL));
+    }
+
+    if (amount <= 0) {
+        return pm_maybe_raise_str(pm_error(PM_ERR_INVALID_ARGUMENT, "The amount must be greater than 0", NULL));
+    }
+
+    int str_len = strlen(str);
+    int new_str_len = str_len + amount;
+    
+    PmMaybeStr maybe_str = pm_str_alloc(new_str_len);
+
+    if (maybe_str.raised_error) {
+        return maybe_str;
+    }
+
+    char* new_str = maybe_str.data;
+
+    for (int i = 0; i < amount; i++) {
+        new_str[i] = pad;
+    }
+
+    strcpy_s(new_str + amount, new_str_len - amount + _PM_STR_NULL_TERMINATOR_OFFSET, str);
+
+    new_str[new_str_len] = _PM_STR_NULL_TERMINATOR;
+
+    return pm_maybe_str(new_str);
+}
+
+PmMaybeStr pm_str_pad_end(const char* str, char pad, int amount) {
+    if (str == NULL) {
+        return pm_maybe_raise_str(pm_error(PM_ERR_NULL_ARGUMENT, NULL, NULL));
+    }
+
+    if (amount <= 0) {
+        return pm_maybe_raise_str(pm_error(PM_ERR_INVALID_ARGUMENT, "The amount must be greater than 0", NULL));
+    }
+
+    int str_len = strlen(str);
+    int new_str_len = str_len + amount;
+
+    PmMaybeStr maybe_str = pm_str_alloc(new_str_len);
+
+    if (maybe_str.raised_error) {
+        return maybe_str;
+    }
+
+    char* new_str = maybe_str.data;
+
+    strcpy_s(new_str, new_str_len + _PM_STR_NULL_TERMINATOR_OFFSET, str);
+
+    for (int i = str_len; i < new_str_len; i++) {
+        new_str[i] = pad;
+    }
+
+    new_str[new_str_len] = _PM_STR_NULL_TERMINATOR;
+
+    return pm_maybe_str(new_str);
+}
+
 PmMaybeArrStr pm_str_split(const char* str, char split_by) {
     // Count the number of occurrences of the split character
     int count = 0;

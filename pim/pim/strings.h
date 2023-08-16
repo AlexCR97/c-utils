@@ -27,6 +27,18 @@ bool pm_str_contains(const char* str, const char* substring);
 bool pm_str_equals(const char* a, const char* b);
 
 /// <summary>
+/// Prepends a character the specified amount of times.
+/// </summary>
+/// <returns>A string with the prepended characters</returns>
+PmMaybeStr pm_str_pad_start(const char* str, char pad, int amount);
+
+/// <summary>
+/// Appends a character the specified amount of times.
+/// </summary>
+/// <returns>A string with the appended characters</returns>
+PmMaybeStr pm_str_pad_end(const char* str, char pad, int amount);
+
+/// <summary>
 /// Splits a string by a given character.
 /// </summary>
 /// <param name="str">The string to split.</param>
