@@ -6,6 +6,7 @@
 #include "pim/test.h"
 #include "test_arrays.h"
 #include "test_list.h"
+#include "test_map.h"
 #include "test_maybe.h"
 #include "test_strings.h"
 
@@ -51,61 +52,15 @@ void test_logger() {
 	LOGGER_DEBUG(simple_logger, "%d %c %d %c %s", 1, '+', 2, '=', pm_str_to_string_int(3).data);
 }
 
-void test_hashmap() {
-	size_t customSize = 20; // Custom hashmap size
-	Hashmap* map = createHashmap(customSize);
-
-	map->keyDataType = STRING_KEY; // Set the key data type
-
-	char key1[] = "key1";
-	int value1 = 100;
-	insert(&map, key1, &value1);
-
-	char key2[] = "key2";
-	double value2 = 3.14;
-	insert(&map, key2, &value2);
-
-	int* result1 = (int*)get(&map, key1);
-	if (result1) {
-		printf("Value for key1: %d\n", *result1);
-	}
-	else {
-		printf("Key1 not found\n");
-	}
-
-	double* result2 = (double*)get(&map, key2);
-	if (result2) {
-		printf("Value for key2: %lf\n", *result2);
-	}
-	else {
-		printf("Key2 not found\n");
-	}
-
-	cleanup(&map);
-}
-
-void test_map() {
-	PmMap map = pm_map(PM_DATA_TYPE_STRING, PM_DATA_TYPE_INT, 10);
-	pm_map_set(&map, "key1", 1);
-	pm_map_set(&map, "key2", 2);
-	pm_map_set(&map, "key3", 3);
-	PM_ASSERT_EQ(pm_map_get(map, "key1"), 1);
-	PM_ASSERT_EQ(pm_map_get(map, "key2"), 2);
-	PM_ASSERT_EQ(pm_map_get(map, "key3"), 3);
-	PM_ASSERT(pm_map_get(map, "key4") == NULL);
-	pm_map_dispose(&map);
-}
-
 int main() {
 	//test_arrays();
 	//test_list();
+	test_map();
 	//test_maybe();
 	//test_strings();
 
 	//test_err();
 	//test_logger();
-	//test_hashmap();
-	test_map();
 
 	return 0;
 }
