@@ -5,6 +5,14 @@
 
 void _test_pm_map() {
 	PmMap map = pm_map(PM_DATA_TYPE_STRING, PM_DATA_TYPE_INT, 10);
+	PM_ASSERT_EQ(map.key_type, PM_DATA_TYPE_STRING);
+	PM_ASSERT_EQ(map.value_type, PM_DATA_TYPE_INT);
+	PM_ASSERT_EQ(map.length, 10);
+	pm_map_dispose(&map);
+}
+
+void _test_pm_map_getset() {
+	PmMap map = pm_map(PM_DATA_TYPE_STRING, PM_DATA_TYPE_INT, 10);
 	pm_map_set(&map, "key1", 1);
 	pm_map_set(&map, "key2", 2);
 	pm_map_set(&map, "key3", 3);
@@ -18,6 +26,7 @@ void _test_pm_map() {
 void test_map() {
 	Test tests[] = {
 		test(PM_NAMEOF(pm_map), _test_pm_map),
+		test("pm_map_getset", _test_pm_map_getset),
 	};
 
 	TestSuite suite = test_suite("pim/map", tests);

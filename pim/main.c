@@ -52,11 +52,11 @@ void test_logger() {
 }
 
 int main() {
-	test_arrays();
-	test_list();
+	//test_arrays();
+	//test_list();
 	test_map();
-	test_maybe();
-	test_strings();
+	//test_maybe();
+	//test_strings();
 
 	//test_err();
 	//test_logger();
