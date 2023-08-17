@@ -1,6 +1,7 @@
 #include "map.h"
 
 #include <stdbool.h>
+#include "arrays.h"
 #include "strings.h"
 
 PmMap pm_map(PmDataType key_type, PmDataType value_type, size_t length) {
@@ -130,6 +131,41 @@ void* pm_map_get(PmMap map, const void* key) {
 	}
 
 	return NULL;
+}
+
+void** _pm_alloc_keys_array(PmDataType type, size_t length) {
+	if (type == PM_DATA_TYPE_INT) {
+		PmMaybeArrInt maybe_arrint = pm_arr_alloc_int(length);
+		// TODO Handle error
+		return maybe_arrint.data;
+	}
+
+	if (type == PM_DATA_TYPE_STRING) {
+		PmMaybeArrStr maybe_arrstr = pm_arr_alloc_str(length);
+		// TODO Handle error
+		return maybe_arrstr.data;
+	}
+
+	fprintf(stderr, "_pm_alloc_keys_array is not implemented for PmDataType %d\n", type);
+	exit(EXIT_FAILURE);
+}
+
+void** pm_map_keys(PmMap map) {
+	void** keys = _pm_alloc_keys_array(map.key_type, map.length);
+	int keys_index = 0;
+
+	for (size_t i = 0; i < map.length; i++) {
+		PmPair* pair = map.buckets[i];
+
+		while (pair != NULL) {
+			PmPair* next = pair->next;
+			keys[keys_index] = pair->key;
+			keys_index++;
+			pair = next;
+		}
+	}
+
+	return keys;
 }
 
 PmPair* _pm_pair(PmDataType key_type, void* key, PmDataType value_type, void* value) {
