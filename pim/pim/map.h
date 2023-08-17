@@ -88,6 +88,10 @@ void pm_map_remove(PmMap* map, const void* key);
 
 void pm_map_set(PmMap* map, const void* key, const void* value);
 
-void** pm_map_values(PmMap map, const void* key);
+/// <summary>
+/// Collects the values of the map.
+/// </summary>
+/// <returns>An array that contains the values of the map.</returns>
+void** pm_map_values(PmMap map);
 
 #endif // PM_MAP_H

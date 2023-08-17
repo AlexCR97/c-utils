@@ -76,6 +76,29 @@ void _test_pm_map_remove() {
 	pm_map_dispose(&map);
 
 }
+
+void _test_pm_map_values() {
+	PmMap map = pm_map(PM_DATA_TYPE_STRING, PM_DATA_TYPE_INT, 10);
+	pm_map_set(&map, "key1", 1);
+	pm_map_set(&map, "key2", 2);
+	pm_map_set(&map, "key3", 3);
+	pm_map_set(&map, "key4", 4);
+	pm_map_set(&map, "key5", 5);
+
+	int* values = pm_map_values(map);
+	int value_at_0 = values[0];
+	int value_at_1 = values[1];
+	int value_at_2 = values[2];
+	int value_at_3 = values[3];
+	int value_at_4 = values[4];
+
+	for (int i = 0; i < map.length; i++) {
+		PM_ASSERT(values[i] == 0 || values[i] == 1 || values[i] == 2 || values[i] == 3 || values[i] == 4 || values[i] == 5);
+	}
+
+	pm_map_dispose(&map);
+}
+
 void test_map() {
 	Test tests[] = {
 		test(PM_NAMEOF(pm_map), _test_pm_map),
@@ -84,6 +107,7 @@ void test_map() {
 		test(PM_NAMEOF(pm_map_contains_value), _test_pm_map_contains_value),
 		test(PM_NAMEOF(pm_map_keys), _test_pm_map_keys),
 		test(PM_NAMEOF(pm_map_remove), _test_pm_map_remove),
+		test(PM_NAMEOF(pm_map_values), _test_pm_map_values),
 	};
 
 	TestSuite suite = test_suite("pim/map", tests);

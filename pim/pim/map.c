@@ -133,7 +133,7 @@ void* pm_map_get(PmMap map, const void* key) {
 	return NULL;
 }
 
-void** _pm_alloc_keys_array(PmDataType type, size_t length) {
+void** _pm_alloc_typed_array(PmDataType type, size_t length) {
 	if (type == PM_DATA_TYPE_INT) {
 		PmMaybeArrInt maybe_arrint = pm_arr_alloc_int(length);
 		// TODO Handle error
@@ -151,7 +151,7 @@ void** _pm_alloc_keys_array(PmDataType type, size_t length) {
 }
 
 void** pm_map_keys(PmMap map) {
-	void** keys = _pm_alloc_keys_array(map.key_type, map.length);
+	void** keys = _pm_alloc_typed_array(map.key_type, map.length);
 	int keys_index = 0;
 
 	for (size_t i = 0; i < map.length; i++) {
@@ -220,4 +220,22 @@ void pm_map_set(PmMap* map, const void* key, const void* value) {
 
 	pair->next = map->buckets[index];
 	map->buckets[index] = pair;
+}
+
+void** pm_map_values(PmMap map) {
+	void** values = _pm_alloc_typed_array(map.key_type, map.length);
+	int values_index = 0;
+
+	for (size_t i = 0; i < map.length; i++) {
+		PmPair* pair = map.buckets[i];
+
+		while (pair != NULL) {
+			PmPair* next = pair->next;
+			values[values_index] = pair->value;
+			values_index++;
+			pair = next;
+		}
+	}
+
+	return values;
 }
