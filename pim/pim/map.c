@@ -183,6 +183,34 @@ PmPair* _pm_pair(PmDataType key_type, void* key, PmDataType value_type, void* va
 	return pair;
 }
 
+void pm_map_remove(PmMap* map, const void* key) {
+	for (size_t i = 0; i < map->length; i++) {
+		PmPair* pair = map->buckets[i];
+
+		while (pair != NULL) {
+			PmPair* next = pair->next;
+
+			if (_pm_equals(pair->key, key, map->key_type)) {
+				// TODO Check if key type is a pointer
+				if (false) {
+					free(pair->key);
+				}
+
+				// TODO Check if value type is a pointer
+				if (false) {
+					free(pair->value);
+				}
+
+				free(pair);
+				map->buckets[i] = NULL;
+				return;
+			}
+
+			pair = next;
+		}
+	}
+}
+
 void pm_map_set(PmMap* map, const void* key, const void* value) {
 	const int index = _pm_map_hash(*map, key);
 

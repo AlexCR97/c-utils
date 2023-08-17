@@ -64,6 +64,18 @@ void _test_pm_map_keys() {
 	pm_map_dispose(&map);
 }
 
+void _test_pm_map_remove() {
+	PmMap map = pm_map(PM_DATA_TYPE_STRING, PM_DATA_TYPE_INT, 10);
+
+	pm_map_set(&map, "foo", 1);
+	PM_ASSERT_EQ(pm_map_contains_key(map, "foo"), true);
+
+	pm_map_remove(&map, "foo");
+	PM_ASSERT_EQ(pm_map_contains_key(map, "foo"), false);
+
+	pm_map_dispose(&map);
+
+}
 void test_map() {
 	Test tests[] = {
 		test(PM_NAMEOF(pm_map), _test_pm_map),
@@ -71,6 +83,7 @@ void test_map() {
 		test(PM_NAMEOF(pm_map_contains_key), _test_pm_map_contains_key),
 		test(PM_NAMEOF(pm_map_contains_value), _test_pm_map_contains_value),
 		test(PM_NAMEOF(pm_map_keys), _test_pm_map_keys),
+		test(PM_NAMEOF(pm_map_remove), _test_pm_map_remove),
 	};
 
 	TestSuite suite = test_suite("pim/map", tests);

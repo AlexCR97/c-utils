@@ -81,7 +81,10 @@ void* pm_map_get(PmMap map, const void* key);
 /// <returns>An array that contains the keys of the map.</returns>
 void** pm_map_keys(PmMap map);
 
-void pm_map_remove(PmMap* map);
+/// <summary>
+/// Removes a key from the map.
+/// </summary>
+void pm_map_remove(PmMap* map, const void* key);
 
 void pm_map_set(PmMap* map, const void* key, const void* value);
 
