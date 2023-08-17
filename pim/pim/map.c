@@ -1,6 +1,7 @@
 #include "map.h"
 
 #include <stdbool.h>
+#include "strings.h"
 
 PmMap pm_map(PmDataType key_type, PmDataType value_type, size_t length) {
 	PmMap map;
@@ -9,6 +10,42 @@ PmMap pm_map(PmDataType key_type, PmDataType value_type, size_t length) {
 	map.length = length;
 	map.buckets = (PmPair**)calloc(length, sizeof(PmPair*));
 	return map;
+}
+
+// TODO Move this to another header?
+bool _pm_equals(void* a, void* b, PmDataType type) {
+	if (type == PM_DATA_TYPE_INT) {
+		int a_int = (int)a;
+		int b_int = (int)b;
+		return a_int == b_int;
+	}
+
+	if (type == PM_DATA_TYPE_STRING) {
+		char* a_str = a;
+		char* b_str = b;
+		return pm_str_equals(a_str, b_str);
+	}
+
+	fprintf(stderr, "_pm_equals is not implemented for PmDataType %d\n", type);
+	exit(EXIT_FAILURE);
+}
+
+bool pm_map_contains_key(PmMap map, const void* key) {
+	for (size_t i = 0; i < map.length; i++) {
+		PmPair* pair = map.buckets[i];
+
+		while (pair != NULL) {
+			PmPair* next = pair->next;
+
+			if (_pm_equals(pair->key, key, map.key_type)) {
+				return true;
+			}
+
+			pair = next;
+		}
+	}
+
+	return false;
 }
 
 void pm_map_dispose(PmMap* map) {

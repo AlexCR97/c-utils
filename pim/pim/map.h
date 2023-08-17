@@ -51,8 +51,17 @@ typedef struct PmMap {
 	PmPair** buckets;
 } PmMap;
 
+/// <summary>
+/// Creates a map.
+/// </summary>
+/// <param name="key_type">The data type of the map's keys</param>
+/// <param name="value_type">The data type of the key's values</param>
+/// <param name="length">The amount of pairs supported by the map</param>
 PmMap pm_map(PmDataType key_type, PmDataType value_type, size_t length);
 
+/// <summary>
+/// Checks if the map contains the specified key.
+/// </summary>
 bool pm_map_contains_key(PmMap map, const void* key);
 
 bool pm_map_contains_value(PmMap map, const void* value);
