@@ -62,8 +62,13 @@ PmMap pm_map(PmDataType key_type, PmDataType value_type, size_t length);
 /// <summary>
 /// Checks if the map contains the specified key.
 /// </summary>
+/// <returns>true if the key is found, false otherwise.</returns>
 bool pm_map_contains_key(PmMap map, const void* key);
 
+/// <summary>
+/// Checks if the map contains the specified value.
+/// </summary>
+/// <returns>true if the value is found, false otherwise.</returns>
 bool pm_map_contains_value(PmMap map, const void* value);
 
 void pm_map_dispose(PmMap* map);

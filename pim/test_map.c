@@ -31,11 +31,20 @@ void _test_pm_map_contains_key() {
 	pm_map_dispose(&map);
 }
 
+void _test_pm_map_contains_value() {
+	PmMap map = pm_map(PM_DATA_TYPE_STRING, PM_DATA_TYPE_INT, 10);
+	pm_map_set(&map, "foo", 1);
+	PM_ASSERT_EQ(pm_map_contains_value(map, 1), true);
+	PM_ASSERT_EQ(pm_map_contains_value(map, 2), false);
+	pm_map_dispose(&map);
+}
+
 void test_map() {
 	Test tests[] = {
 		test(PM_NAMEOF(pm_map), _test_pm_map),
 		test("pm_map_getset", _test_pm_map_getset),
 		test(PM_NAMEOF(pm_map_contains_key), _test_pm_map_contains_key),
+		test(PM_NAMEOF(pm_map_contains_value), _test_pm_map_contains_value),
 	};
 
 	TestSuite suite = test_suite("pim/map", tests);

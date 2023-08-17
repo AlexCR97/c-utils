@@ -48,6 +48,24 @@ bool pm_map_contains_key(PmMap map, const void* key) {
 	return false;
 }
 
+bool pm_map_contains_value(PmMap map, const void* value) {
+	for (size_t i = 0; i < map.length; i++) {
+		PmPair* pair = map.buckets[i];
+
+		while (pair != NULL) {
+			PmPair* next = pair->next;
+
+			if (_pm_equals(pair->value, value, map.value_type)) {
+				return true;
+			}
+
+			pair = next;
+		}
+	}
+
+	return false;
+}
+
 void pm_map_dispose(PmMap* map) {
 	for (size_t i = 0; i < map->length; i++) {
 		PmPair* pair = map->buckets[i];
