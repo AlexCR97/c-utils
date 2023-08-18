@@ -4,6 +4,7 @@
 #include "pim/strings.h"
 #include "pim/test.h"
 #include "test_arrays.h"
+#include "test_files.h"
 #include "test_list.h"
 #include "test_map.h"
 #include "test_maybe.h"
@@ -53,8 +54,9 @@ void test_logger() {
 
 int main() {
 	//test_arrays();
+	test_files();
 	//test_list();
-	test_map();
+	//test_map();
 	//test_maybe();
 	//test_strings();
 

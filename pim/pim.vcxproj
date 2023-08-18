@@ -130,6 +130,7 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="pim\arrays.c" />
     <ClCompile Include="pim\cns.c" />
+    <ClCompile Include="pim\files.c" />
     <ClCompile Include="pim\list.c" />
     <ClCompile Include="pim\dt.c" />
     <ClCompile Include="pim\errors.c" />
@@ -139,6 +140,7 @@
     <ClCompile Include="pim\strings.c" />
     <ClCompile Include="pim\test.c" />
     <ClCompile Include="test_arrays.c" />
+    <ClCompile Include="test_files.c" />
     <ClCompile Include="test_list.c" />
     <ClCompile Include="test_map.c" />
     <ClCompile Include="test_maybe.c" />
@@ -147,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="pim\arrays.h" />
     <ClInclude Include="pim\cns.h" />
+    <ClInclude Include="pim\files.h" />
     <ClInclude Include="pim\list.h" />
     <ClInclude Include="pim\dt.h" />
     <ClInclude Include="pim\errors.h" />
@@ -156,10 +159,14 @@
     <ClInclude Include="pim\strings.h" />
     <ClInclude Include="pim\test.h" />
     <ClInclude Include="test_arrays.h" />
+    <ClInclude Include="test_files.h" />
     <ClInclude Include="test_list.h" />
     <ClInclude Include="test_map.h" />
     <ClInclude Include="test_maybe.h" />
     <ClInclude Include="test_strings.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="_test_pm_fs_read_text.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
