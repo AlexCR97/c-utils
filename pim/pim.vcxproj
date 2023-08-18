@@ -166,6 +166,7 @@
     <ClInclude Include="test_strings.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="_test_pm_fs_read_lines.txt" />
     <Text Include="_test_pm_fs_read_text.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

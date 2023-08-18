@@ -2,7 +2,12 @@
 #define PM_FILES_H
 
 /// <summary>
-/// Reads the text of a path into a string.
+/// Opens a file, reads the contents into a string array, and closes the file.
+/// </summary>
+char** pm_fs_read_lines(const char* path);
+
+/// <summary>
+/// Opens a file, reads the contents into a string, and closes the file.
 /// </summary>
 char* pm_fs_read_text(const char* path);
 

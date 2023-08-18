@@ -133,5 +133,8 @@
     <Text Include="_test_pm_fs_read_text.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="_test_pm_fs_read_lines.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
